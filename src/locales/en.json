@@ -1,0 +1,781 @@
+{
+  "Common": {
+    "Day": "Day",
+    "Date": "Date",
+    "Action": "Action :",
+    "Visual": "Visual",
+    "Gratitude": "Gratitude",
+    "MentalBank": "Mental bank",
+    "Remarks": "Remarks",
+    "Morning": "Morning",
+    "MidDay": "Mid Day",
+    "Evening": "Evening",
+    "Knowledge": "Knowledge",
+    "Health": "Health",
+    "Food": "Food",
+    
+    "Shelter": "Shelter",
+    "Cloth": "Cloth",
+    "Income": "Income",
+    "Others": "Others",
+    "Family": "Family",
+    "Name": "Name",
+    "Mentor": "Mentor",
+    "Signither": "Signither",
+    "FullName": "Full Name",
+    "Time": "Time",
+    "Venue": "Venue",
+    "Participants": "Participants",
+    "Ajenda": "Ajenda",
+    "Assignments": "Assignments",
+    "Deadline": "Deadline",
+    "Department": "Department",
+    "SpecificTask": "Specific Task",
+    "Purpose": "Purpose",
+    "ResponsibleLeader": "Responsible Leader",
+    "RequiredFinance": "Required Finance",
+    "PreparedBy": "Prepared By",
+    "CheckedBy": "Checked By",
+    "TeamLeader": "Team Leader",
+    "DepartmentLeader": "Department Leader",
+    "Year": "Year",
+    "Month": "Month",
+    "Position": "Position",
+    "Telephone": "Telephone",
+    "Email": "Email",
+    "TeamLeaders": "TeamLeaders",
+    "Activity": "Activity",
+    "Quality": "Quality",
+    "NameLeader": "Name of Leader",
+    "Place": "Place",
+    "Fund": "Fund",
+    "LastFive":"Last Five Days Report",
+    "Progress":"Progress",
+    "Habit":"Workbook Alpha Habit Building",
+    "Status":"status",
+    "CreateAccount":"Create an Account!",
+    "moreThan8":"Password has to be more than 8 digits",
+    "areNotSame":"The passwords are not the same",
+    "Welcome":"Welcome Back!",
+    "Vision":"Vision Workbook",
+    "MindProgramming":"Workbook Alpha Mind Programming",
+    "TeamBuilding":"Workbook Alpha Team Building And Leadership",
+    "Home":"Home",
+    "Selectpage":"Select Page To View User Answer",
+    "WorkBooks":"Work Books",
+    "OverAll":"Over All Progress",
+    "Completed":"Completed Daily Task",
+    "GournalProgress":"Gratitude Gournal Progress",
+    "Page":"Page",
+    "YouCompleted":"You Have Completed",
+    "123":"You have to Finsh Work Book One, Two And Three First",
+    "12":"You have to Finsh Work Book One And Two First",
+    "1":"You have to Finsh Work Book One First"
+  },
+  "Habit": {
+    "HabitControl": "Habit Control",
+    "Detail": "Alpha Number One Wealth Health Gratitude Persistence Consistency Progress 1Billion USD Recruitment Prospecting Invitation Success Wealth Homparty Persistence Consistency Action  Believe Trust Love Peace Joy Success Wealth Health Gratitude Persistence  Alpha Number One Wealth Health Gratitude Persistence Consistency Progress 1Billion USD Recruitment Prospecting Invitation Success Wealth Homparty Persistence Consistency Action  Believe Trust Love Peace Joy Success Wealth Health Gratitude Persistence",
+    "Header": "Create a Positive Self-Image (New Identity) –make lists of the following:",
+    "1stQuestion": "1. Assets: Every good thing about who you are and what you are.",
+    "2ndQuestion": {
+      "main": "2. Write a description of the person that you would like to be in the area that needs improvement.",
+      "subQuestion1": "What are the traits, characteristics and benefits?",
+      "subQuestion2": "How would it feel to achieve that?",
+      "subQuestion3": "How would your life improve? "
+    },
+    "3rdQuestion": "3. Daily concentrate on the mental image of the person you want to be. Use imagery to help yourself create “knowns” of how it looks and feels to be that person.",
+    "f,v,a": "Feeling, visualization, affirmation"
+  },
+  "How_To_Build": {
+    "HowToBuild": "How to build Habit?",
+    "Detail": "Alpha Number One Wealth Health Gratitude Persistence Consistency Progress 1Billion USD Recruitment Prospecting Invitation Success Wealth Homparty Persistence Consistency Action  Believe Trust Love Peace Joy Success Wealth Health Gratitude Persistence  Alpha Number One Wealth Health Gratitude Persistence Consistency Progress 1Billion USD Recruitment Prospecting Invitation Success Wealth Homparty Persistence Consistency Action  Believe Trust Love Peace Joy Success Wealth Health Gratitude Persistence ",
+    "MainHeader": "1st – Identify your Goal",
+    "Header": "Create a clear vision of what you desire and reinforce this in hypnosis. You need to see, feel, hear and experience the end result of your goal, and create “knowns” in the subconscious mind so you move toward it. ",
+    "1stQuestion": {
+      "subQuestion1": "My Goal; what I desire:",
+      "subQuestion2": "What I see",
+      "subQuestion3": "What I feel and experience",
+      "subQuestion4": "What I hear",
+      "subQuestion5": "Path of List Resistance"
+    },
+    "MainHeader2": "2nd - Create Habit",
+    "Header2": "The 3Rs of Habit Formation",
+    "2ndQuestion": {
+      "subQuestion1": "1 Reminder (use current habit as reminder)",
+      "subQuestion2": "2 Routine (the new habit you want to do) Start very very small",
+      "subQuestion3": "3 Reward (any reward that makes u happy after doing the habit)"
+    },
+    "Header3": "TO DRIVE BEHAVIOR – CREATE NEW IDENTITY AND MINDSET",
+    "3rdQuestion": "1.Decide the type of person you want to be (Identity) in connection with this specific habit you want to build. – Example “I’m the type of person that wakes up early.” ",
+    "Header4": "Prove it to yourself with small wins – sticking to your habits – start small! Achieving results is not the first step, it’s the action itself. Start small, THEN increase performance!",
+    "h,v": "Habit, Visualization"
+  },
+  "Process_Of_Change": {
+    "ProcessOfChange": "Process Of Change",
+    "Detail": "Alpha Number One Wealth Health Gratitude Persistence Consistency Progress 1Billion USD Recruitment Prospecting Invitation Success Wealth Homparty Persistence Consistency Action  Believe Trust Love Peace Joy Success Wealth Health Gratitude Persistence  Alpha Number One Wealth Health Gratitude Persistence Consistency Progress 1Billion USD Recruitment Prospecting Invitation Success Wealth Homparty Persistence Consistency Action  Believe Trust Love Peace Joy Success Wealth Health Gratitude Persistence",
+    "MainHeader": "How to step from unconscious wrong to conscious wrong!",
+    "Header": "State what you do unconscious wrong:",
+    "Action": " Read, Trainings,  experience, build strong Desire, dream, goal, vision",
+    "1stQuestion": {
+      "subQuestion1": "List down unconscious wrong deeds",
+      "subQuestion2": "List down what you should do instead",
+      "subQuestion3": "What will be the result of your new action",
+      "subQuestion4": "What will be your new feeling",
+      "subQuestion5": "Required Resource"
+    },
+    "MainHeader2": "How to Step from Concisous wrong to conscious wright",
+    "Header2": "State what you do conscious wrong:",
+    "Action2": " Believe, Keep on the imagination Process, Positive mental attitude habit.",
+    "2ndQuestion": {
+      "subQuestion1": "List down conscious wrong deeds",
+      "subQuestion2": "List down what you should do instead",
+      "subQuestion3": "Expected challenges and how to overcome them"
+    },
+    "MainHeader3": "How to Step from Conscious wright to unconcious wright", 
+    "Header3": "State what you do conscious right:.",
+    "Action3": " Keep on the imagination and action build goal setting habit :",
+    "3rdQuestion": {
+      "subQuestion1": "List down conscious wright deeds",
+      "subQuestion2": "List down what you should do to make it automatic",
+      "subQuestion3": "Expected challenges and how to overcome them"
+    },
+    "Header4": "NAC (Neuro Associative Conditioning) making sure that your change lasts.",
+    "Action4": " Imagination and Action Automation (asper habit training). Persistence Nurture your positive Thoughts (Gratitude, autosuggestion),  and stay away from negative.",
+    "h,v,a": "Habit, Visualization, auto suggestion, gratitude, effort to avoid negative"
+  },
+  "Silence_Time": {
+    "SilenceTime": "Silence Time For Special Attraction Check List",
+    "Detail": "Alpha Number One Wealth Health Gratitude Persistence Consistency Progress Billion USD Recruitment Prospecting Invitation Success Wealth Daily Opp Homparty Persistence Consistency Action  Believe Trust Love Peace Joy Success Wealth Health Gratitude Persistence",
+    "1stQuestion": "Goal to be achieved:",
+    "2ndQuestion": "Paragraph to be visualized and rewritten:",
+    "3ndQuestion": "Goal in picture form",
+    "Header": "Check List to be marked till its achieved!"
+  },
+  "Alpha_Discipline": {
+    "AlphaDiscipline": "Alpha Discipline Work Book",
+    "Detail": "Alpha Number One Wealth Health Gratitude Persistence Consistency Progress Billion USD Recruitment Prospecting Invitation Success Wealth Daily Opp Homparty Persistence Consistency Action  Believe Trust Love Peace Joy Success Wealth Health Gratitude Persistence",
+    "1stQuestion": "List down What’s holding you back not to achieve your dreams, goals, and live your purpose?",
+    "2ndQuestion": "Write five areas where you luck discipline. Write them down as per priority.",
+    "Header": "Take 15 minutes in the morning 5 minutes mid day and 5 minutes at night and plan on that specific discipline and evaluate your activity."
+  },
+  "Alpha_Responsibility": {
+    "AlphaResponsibility": "Alpha Responsibility Work Book",
+    "Detail": "Alpha Number One Wealth Health Gratitude Persistence Consistency Progress Billion USD Recruitment Prospecting Invitation Success Wealth Daily Opp Homparty Persistence Consistency Action  Believe Trust Love Peace Joy Success Wealth Health Gratitude Persistence",
+    "1stQuestion": {
+      "main": "Measure what responsibility do shoulder today!",
+      "subQuestion1": "If I don’t give time?",
+      "subQuestion2": "If I don’t give money?",
+      "subQuestion3": "If I don’t give effort?",
+      "subQuestion4": "My current level of responsibility"
+    },
+    "2ndQuestion": {
+      "main": "Write down which Area you want to start to take responsibility ",
+      "subQuestion1": "Responsibility Area",
+      "subQuestion2": "Time to accomplish 100%",
+      "subQuestion3": "Activities required to achieve it"
+    },
+    "3rdQuestion": "Take 15 minutes in the morning 5 minutes mid day and 5 minutes at night and plan on that specific discipline and evaluate your activity. The discipline required"
+  },
+  "Gratitude_Journal": {
+    "GratitudeJournal": "Gratitude Journal",
+    "Detail": "Tiens Number One Wealth Health Gratitude Persistence Consistency Progress 5000USD Recruitment Prospecting Invitation Success Wealth Daily Opp Homparty Persistence Consistency Action  Believe Trust Love Peace Joy Success Wealth Health Gratitude Persistence"
+  },
+  "My_Dream": {
+    "MyDream": "My Dream Board",
+    "DreamHouse": "Dream House",
+    "DreamCars": "Dream Cars",
+    "DreamIntertainment": "Dream Intertainment",
+    "DreamFamily": "Dream Family",
+    "DreamSpiritualLife": "Dream Spiritual Life",
+    "DreamServiceLifeStyle": "Dream Service Life Style",
+    "DreamPhysicalStructure": "Dream Physical Structure",
+    "DreamSocialLife": "DreamSocialLife",
+    "OtherDreamLifestyles": "Other Dream Lifestyles",
+    "Others": "Others"
+  },
+  "Gsystem_Belief": {
+    "GsystemBelief": "Gsystem Belief workbook",
+    "Detail": "Tiens Number One Wealth Health Gratitude Persistence Consistency Progress 5000USD Recruitment Prospecting Invitation Success Wealth Daily Opp Homparty Persistence Consistency Action  Believe Trust Love Peace Joy Success Wealth Health Gratitude Persistence",
+    "1stQuestion": "Identifying your limiting belief",
+    "2ndQuestion": {
+      "main": "Discribe your thought about",
+      "money": "Money",
+      "merrage": "Merrage",
+      "happiness": "Happiness",
+      "love": "Love",
+      "life": "Life",
+      "success": "Success"
+    },
+    "Placeholder": "I cant……………………………………………………………… because………………………………………………………………………………………………",
+    "3rdQuestion": "List down things that you have been delaying for some time.",
+    "4thQuestion": "List Down top 5 things you want to have to be and to do in your life."
+  },
+  "Alpha_Dream": {
+    "AlphaDream": "Alpha Dream Research Transformational Questions",
+    "Detail": "Alpha Number One Wealth Health Gratitude Persistence Consistency Progress 1Billion USD Recruitment Prospecting Invitation Success Wealth Daily Opp Homparty Persistence Consistency Action  Believe Trust Love Peace Joy Success Wealth Health Gratitude Persistence",
+    "Hi": "Hi, I am",
+    "FromAlpha": " From Alpha int. S.C. We are doing research on people's dreams. I would like to ask you some questions. It will take only 8 minutes. Are you willing?",
+    "1stQuestion": "1. What do you do currently?",
+    "2ndQuestion": "2. How long have you been doing it?",
+    "3rdQuestion": "3. What do you like most about what you do?",
+    "4thQuestion": "4. What are the biggest challenges of your work?",
+    "5thQuestion": "5. What do you dislike about your work?",
+    "6thQuestion": "6. What is your Dream?",
+    "7thQuestion": "7. What do you want to achieve before you die?",
+    "8thQuestion": "8. Do you have a dream car and dream house? Please explain if you have it.?",
+    "9thQuestion": "9. If money was not an issue what are your three major holiday destinations?",
+    "10thQuestion": "10. If your challenges to make money is solved what is your dream monthly income?",
+    "11thQuestion": "11. When you retire what monthly income would you want to have?",
+    "12thQuestion": "12. If you achieve all your dreams in your life what would you feel?",
+    "13thQuestion": "13. What are you doing now to achieve all these dreams?",
+    "14thQuestion": "14. If you continue to d the same thing in the next 5 years just like the way you have been working in the past 5 years, then, would you achieve all your dreams?",
+    "15thQuestion": "15. If you come across an opportunity by which you can definitely achieve all your dreams, you will surely grab it. Isnt it?",
+    "ThankYouHere": "Thank you here is my address if you would like to achieve your dreams call me I would be glad to show you an opportunity to help you achieve your dreams. Have a great time!"
+  },
+  "Gsystem_Attitude": {
+    "GsystemAttitude": "Gsystem Attitude workbook",
+    "Detail": "Tiens Number One Wealth Health Gratitude Persistence Consistency Progress 5000USD Recruitment Prospecting Invitation Success Wealth Daily Opp Homparty Persistence Consistency Action  Believe Trust Love Peace Joy Success Wealth Health Gratitude Persistence",
+    "Header": "A person who made you unhappy",
+    "Header2": "Something you did that makes you feel guilty.",
+    "Header3": "Something that worries you.",
+    "Header4": "Something that worries you.",
+    "1stQuestion": "Write down how you feel when you think about it.",
+    "2ndQuestion": "Discribe your negative feeling in image",
+    "3rdQuestion": "Write down the opposite that you want to feel about it.",
+    "4thQuestion": "Describe your positive feeling image .",
+    "5thQuestion": "Write down how you feel when you think about it.",
+    "6thQuestion": "Discribe your negative feeling in image",
+    "7thQuestion": "Write down the opposite that you want to feel about it.",
+    "8thQuestion": "Describe your positive feeling image .",
+    "9thQuestion": "Write down how you feel when you think about it.",
+    "10thQuestion": "Discribe your negative feeling in image",
+    "11thQuestion": "Write down the opposite that you want to feel about it.",
+    "12thQuestion": "Describe your positive feeling image .",
+    "13thQuestion": "Write down how you feel when you think about it.",
+    "14thQuestion": "Discribe your negative feeling in image",
+    "15thQuestion": "Write down the opposite that you want to feel about it.",
+    "16thQuestion": "Describe your positive feeling image ."
+  },
+  "Team_Meeting": {
+    "TeamMeeting": "Team Meeting Ajenda",
+    "Detail": "Alpha Number one 20 million USD Love peace joy happiness positive attitude health wealth success",
+    "Header": "The leader or the representative",
+    "Point1": "1. Welcomes and appriciates for coming",
+    "Point2": "2. Reminds the team vision and goal",
+    "Point3": "3. announces the following ajendas",
+    "1stQuestion": "1. New Information:",
+    "2ndQuestion": "2. Upcoming events and responsibilities.",
+    "3rdQuestion": "3. Other ajendas to be hold by leaders."
+  },
+  "Team_Task": {
+    "TeamTask": "Team Task Allocation"
+  },
+  "Alpha_Team": {
+    "AlphaTeam": "Alpha Team Format",
+    "Detail": "Alpha Number one 20 million USD Love peace joy happiness positive attitude health wealth success ",
+    "TeamVision": "Team Vision",
+    "TeamName": "Team Name",
+    "MeaningOfName": "Meaning of name",
+    "TeamGoals": "Team Goals",
+    "LongTerm": "Long Term",
+    "Medium": "Medium",
+    "ShortTerm": "Short Term",
+    "ActivitySchedule": "Activity Schedule",
+    "Monthly": "Monthly (by Core Team)",
+    "Weekly": "Weekly (By Functional Team)",
+    "Daily": "Daily Productive activity",
+    "Quality": "Quality"
+  },
+  "Alpha": {
+    "Alpha": "Alpha",
+    "Dear": "Dear",
+    "Like": "I like you because:"
+  },
+  "Qualities": {
+    "Qualities": "qualities required to be successful at each level",
+    "Leadership": "Leadership Level",
+    "Positional": "Positional Leader",
+    "Permision": "Permision Leader",
+    "Production": "Production Leader",
+    "People": "People Development Leader",
+    "Personhood": "Personhood leader"
+  },
+  "Levels_of_Leadership": {
+    "LevelsOfLeadership": "Levels of Leadership Action",
+    "1stQuestion": {
+      "subQuestion1": "1.List the five top influencers in your organization.",
+      "subQuestion2": "1.What level of influence are you on with them?"
+    },
+    "Header": "Spend an hour a week with the top five influencers, individually, building a relationship with them. (Relationship is built through time not overnight",
+    "2ndQuestion": "1.Spend couple of hours a month with them as a group.",
+    "3rdQuestion": "2.Review the 5 levels and pick out 3 points that you are weak in and need to improve."
+  },
+  "Login": {
+    "Login": "Login",
+    "Email": "Email",
+    "Password": "Password",
+    "ConfirmPassword": "Repeat Password",
+    "FirstName": "First Name",
+    "LastName": "Last Name",
+    "SignUp": "SignUp",
+    "Register":"Register Account"
+  },
+  "Four_Attributes": {
+    "FourAttributes": "Four attributes of Emotional intelligence",
+    "Detail": "Alpha Number One Wealth Health Gratitude Persistence Consistency Progress 1Billion USD Recruitment Prospecting Invitation Success Wealth Homparty Persistence Consistency Action  Believe Trust Love Peace Joy Success Wealth Health Gratitude Persistence  Alpha Number One Wealth Health Gratitude Persistence Consistency Progress 1Billion USD Recruitment Prospecting Invitation Success Wealth Homparty Persistence Consistency Action  Believe Trust Love Peace Joy Success Wealth Health Gratitude Persistence ",
+    "1stQuestion": {
+      "main": "Self Awairness",
+      "subQuestion1": "recognize your own emotions",
+      "subQuestion2": "how they affect your thoughts and behavior"
+    },
+    "2ndQuestion": {
+      "main": "Self-management",
+      "subQuestion1": "List impulsive feelings ",
+      "subQuestion2": "List healthy way emotion management"
+    },
+    "3rdQuestion": {
+      "main": "Social awareness",
+      "subQuestion1": "What is the need and concern of …............................... (person) ",
+      "subQuestion2": "emotional cues"
+    },
+    "4thQuestion": {
+      "main": "Relationship management ",
+      "subQuestion1": "ways to develop and mentain good relationship",
+      "subQuestion2": "my clear communicaction ways",
+      "subQuestion3": "my ways to inspire and influence others",
+      "subQuestion4": "my conflict management ways"
+    },
+    "Header": "STEP SIX: Read your written statement aloud, twice daily, once just before retiring at night, and once after arising in the morning. AS YOU READ – SEE AND FEEL & BELIEVE YOURSELF ALREADY IN POSSESSION OF THE MONEY",
+    "ReadingMorining": "Reading morining",
+    "ReadingEvening": "Reading evening"
+  },
+  "The_Five": {
+    "TheFive": "The five key skills of emotional intelligence",
+    "Detail": "Alpha Number One Wealth Health Gratitude Persistence Consistency Progress 1Billion USD Recruitment Prospecting Invitation Success Wealth Homparty Persistence Consistency Action  Believe Trust Love Peace Joy Success Wealth Health Gratitude Persistence  Alpha Number One Wealth Health Gratitude Persistence Consistency Progress 1Billion USD Recruitment Prospecting Invitation Success Wealth Homparty Persistence Consistency Action  Believe Trust Love Peace Joy Success Wealth Health Gratitude Persistence ",
+    "1stQuestion": {
+      "main": "Skill 1: Rapidly reduce stress",
+      "subQuestion1": "How does your body feel when you’re stressed? ",
+      "subQuestion2": "Write down your stress response?",
+      "subQuestion3": "My stress-busting techniques"
+    },
+    "2ndQuestion": {
+      "main": "Skill 2: Emotional awareness",
+      "subQuestion1": "Fix time, and place to practice daily emptying your mind."
+    },
+    "3rdQuestion": {
+      "main": "Skill 3: Nonverbal communication (what you say is less important than how you say it) exercise on your inner circles",
+      "PracticeOn": "Practice on",
+      "FocusOn": "Focus on the other persons body language",
+      "PracticeEye": "Practice eye contact",
+      "WriteDown": "Write down your findings and what you have learned from the practice",
+      "FamilyMember": "Family member",
+      "Friend": "Friend",
+      "Workmate": "workmate"
+    },
+    "4thQuestion": {
+      "main": "skill 4: Use humor and play to deal with challenges Humor, laughter, and play are natural antidotes to life’s difficulties. ",
+      "subQuestion1": "How to develop playful communication",
+      "subQuestion2": "quality play time",
+      "subQuestion3": "joyable activities",
+      "subQuestion4": "playing with animals, kids,…"
+    },
+    "5thQuestion": {
+      "main": "Skill 5: Resolve conflict positively: (Conflict and disagreements are inevitable in relationships.)",
+      "subQuestion1": "Write existing conflict you may have",
+      "subQuestion2": "Healthy, constructive, resolving methodes"
+    }
+  },
+  "Alpha_Belief": {
+    "AlphaBelief": "Alpha Belief workbook",
+    "Detail": "Alpha Number One Wealth Health Gratitude Persistence Consistency Progress 1Billion USD  Success Wealth Homparty Persistence Consistency Action  Believe Trust Love Peace Joy Success Wealth Health Gratitude Persistence ",
+    "Header": "Which area of your life do you want to build belief? Remember what you have worked for but didn’t get the result is because of your belief system.",
+    "1stQuestion": {
+      "main": "STEP 1: Know what you want clearly: Knock it shall be open",
+      "subQuestion1": "Write is simple presnet and positive sentence:",
+      "subQuestion2": "Put the picture equivalent to your desired result."
+    },
+    "2ndQuestion": "STEP 2: Focus on what you want consistently: As a man thinks in his heart so is he.",
+    "Visualization": "visualization",
+    "Rewrite": "rewrite",
+    "Read": "read",
+    "Gratitude": "gratitude",
+    "Listen": "listen",
+    "3rdQuestion": {
+      "main": "STEP 3: Accepting manifastation: Give you shall receive",
+      "subQuestion1": "1. Write your Action plan as per Goal Setting training: Use Goal Format:",
+      "subQuestion2": "2. Write down how to be receptive:(How to give free service in your life purpose )as per powerfull process package training .",
+      "subQuestion3": "3. Write down how to have fun daily:"
+    }
+  },
+  "Mental_Transformation": {
+    "MentalTransformation": "Mental Transformation",
+    "Detail": "Alpha Number One Wealth Health Gratitude Persistence Consistency Progress 1Billion USD Recruitment Prospecting Invitation Success Wealth Homparty Persistence Consistency Action  Believe Trust Love Peace Joy Success Wealth Health Gratitude Persistence  Alpha Number One Wealth Health Gratitude Persistence Consistency Progress 1Billion USD Recruitment Prospecting Invitation Success Wealth Homparty Persistence Consistency Action  Believe Trust Love Peace Joy Success Wealth Health Gratitude Persistence",
+    "1stQuestion": {
+      "main": "DECIDE what you want. (what’s preventing you from having it now?)",
+      "subQuestion1": "List down what you want",
+      "subQuestion2": "Whats Preventing you from having it now"
+    },
+    "2ndQuestion": {
+      "main": "Associate Massive pain to not changing now and massive pleasure to experience of changing now.",
+      "subQuestion1": "What you want",
+      "subQuestion2": "Associate Massive pain if you don’t change",
+      "subQuestion3": "Associate massive pleasure changing now"
+    },
+    "3rdQuestion": "3. Stop the old limiting pattern. (madness is…)",
+    "4thQuestion": "Create a new, Empowering alternative. (focus on pleasure not pain)",
+    "5thQuestion": "1.Condition the new pattern until it is consistent.",
+    "6thQuestion": {
+      "main": "1.Act up on it and enjoy change.",
+      "subQuestion1": "What are your 1st step activities list down. When? Where? Whith whom? How? Why?"
+    }
+  },
+  "Positive_Affirmation":{
+    "PositiveAffirmation":"Positive Affirmation",
+    "Detail":"Alpha Number One Wealth Health Gratitude Persistence Consistency Progress 1Billion USD Recruitment Prospecting Invitation Success Wealth Homparty Persistence Consistency Action  Believe Trust Love Peace Joy Success Wealth Health Gratitude Persistence  Alpha Number One Wealth Health Gratitude Persistence Consistency Progress 1Billion USD Recruitment Prospecting Invitation Success Wealth Homparty Persistence Consistency Action  Believe Trust Love Peace Joy Success Wealth Health Gratitude Persistence ",
+    "1stQuestion":"If you have 6 months to Live what will you do?",
+    "2ndQuestion":"What’s holding you not to do it now?",
+    "3rdQuestion":{
+      "main":"Steps to change from your subconscious",
+      "subQuestion1":"Think what you want repeatedly:",
+      "subQuestion2":"Write what you want repeatedly:",
+      "subQuestion3":"Read what you want repeatedly:",
+      "subQuestion4":"Speak What you want repeatedly:",
+      "subQuestion5":"Imagine what you want repeatedly:"
+    },
+    "LifeBalance":"Life Balance",
+    "Social":"Social",
+    "Health":"Health",
+    "Familys":"Family",
+    "Spiritual":"Spiritual",
+    "Financials":"Financial",
+    "Mental":"Mental",
+    "Vision":"Vision"
+  },
+  "Six_Steps":{ 
+    "SixSteps":"Six steps to change your desire to reality",
+    "Detail":"Alpha Number One Wealth Health Gratitude Persistence Consistency Progress 1Billion USD Recruitment Prospecting Invitation Success Wealth Homparty Persistence Consistency Action  Believe Trust Love Peace Joy Success Wealth Health Gratitude Persistence  Alpha Number One Wealth Health Gratitude Persistence Consistency Progress 1Billion USD Recruitment Prospecting Invitation Success Wealth Homparty Persistence Consistency Action  Believe Trust Love Peace Joy Success Wealth Health Gratitude Persistence ",
+    "1stQuestion":"STEP ONE: Fix in your mind the exact amount of money you desire. Write in simple present and harmonious sentence",
+    "2ndQuestion":"STEP TWO: Determine exactly what you intend to give in return for the money you desire. The service you give.",
+    "3rdQuestion":"STEP THREE: Establish deadline.",
+    "4thQuestion":"STEP FOUR: Create a definite plan, and begin at once, whether you are ready or not, to put this plan in to action.",
+    "5thQuestion":"STEP FIVE: Write a clear, concise statement of the amount of money you intend to acquire, name the time limit for its acquisition, state what you intend to give in return for the money and describe clearly the plan through which you intend to accumulate it. ",
+    "6thQuestion":"STEP SIX: Read your written statement aloud, twice daily, once just before retiring at night, and once after arising in the morning. AS YOU READ – SEE AND FEEL & BELIEVE YOURSELF ALREADY IN POSSESSION OF THE MONEY"
+  },
+  "How_To_Search":{
+    "HowToSearch":"How to search your vision?",
+    "1stQuestion":{
+      "Header":"1. Look Back :",
+      "main":"In your child hood what are the things that you were attracted to? The things you used to like and do most of the time? (You may ask your caretakers or parents)"
+    },
+    "2ndQuestion":{
+      "Header":"2 .Look Forward :",
+      "main":"What is the biggest picture of your life? Let’s say that you have no financial, knowledge, time, space constraints then what things would you achieve in 10-year time?"
+    },
+    "3rdQuestion":{
+      "Header":"3 .Look beside :",
+      "main":"Who are your 5 closest people in your life? Give them the attached questions and get their reply orally or in written form.",
+      "mainBoald":"Who are your 5 closest people in your life? Give them the attached questions and get their reply orally or in written form.",
+      "mainQestion":"What do you admire most from my character, behavior and activity? What do you think is my strength?"
+    },
+    "4thQuestion":{
+      "Header":"4 .Look up :",
+      "main":"Prayer is the most indispensable power you could ever have IF YOU DO IT RIGHT. (you will learn about the right prayer power in Silence time training. Start to write down your prayer as follows and keep record until it manifests.",
+      "Day":"Day",
+      "Visual":"Visual",
+      "Reading":"Reading",
+      "Writing":"Writing",
+      "Manifestations":"Manifestations (events, dreams, people, actions, opportunities, challenges, your feelings)",
+      "Achievements":{
+        "Achievements":"Achievements after 30 days:",
+        "subQuestion1":"A. Change on your feelings about the issue:",
+        "subQuestion2":"B. Actual achievements:",
+        "subQuestion3":"C. Cognitive Dreams",
+        "subQuestion4":"D. Other manifestations that you strongly feel it’s because of your prayer"
+      }
+    },
+    "5thQuestion":{
+      "Header":"5. See inside: ",
+      "main":"Answer the following questions.",
+      "subQuestion1":"A. Make a list of your unique gifts,personal qualities and interests.check weather or not there is strong connection between   them",
+      "subQuestion2":"B. What work would you love to do even with out getting paid?.",
+      "subQuestion3":{
+        "main":"C. If you are on a funeral ceremony and family members of the late person, the country president, the AU representative, UN representative, relatives, friends are there and every one is coming to the podium and they are talking about the late person. Now, if it were you who passed away",
+        "1":"i. What do you want your spouse to say about you?",
+        "2":"ii. What do you want your children to say about you?",
+        "3":"iii. What do you want your parents to say about you?",
+        "4":"iv. What do you want your friends to say about you?",
+        "5":"v. What do you want your president to say about you?",
+        "6":"vi. What do you want AU & UN secretary general to say about you?",
+        "7":"v. What do you want your creator to say about you?"
+      },
+      "subQuestion4":"D. If you have all the MONEY, LAND, KNOWLEDGE, MAN POWER, AUTHORITY in the world now, what would you be doing daily the rest of your life?",
+      "subQuestion5":"E. If your creator comes and tells you that you will die exactly after 6 months then what will you do, feel?"
+    },
+    "Summarize":{
+      "Summarize":"Summarize",
+      "subQuestion1":"From all the five ways of searching, what did you get in common that is repeated in most of the searches? Write it in one sentence. Remember your vision/ purpose of life is giving specific service. We are here to serve",
+      "subQuestion2":"Explain what are the various activities that allows you to serve your purpose. (DO NOT WRITE IT WITH ANY LIMITATION but ABUNDANCE)"
+    }
+  },
+  "Personal_Information":{
+    "PersonalInformation":"Personal Information",
+    "FullName":"Full Name",
+    "Age":"Age/D.O.B",
+    "Height":"Height",
+    "Address":"Address",
+    "POBox":"P.O.Box",
+    "Fax":"Fax",
+    "PassportNo":"Passport No",
+    "BloodType":"Blood Type",
+    "Hobby":"Hobby",
+    "Gender":"Gender",
+    "Education":"Education",
+    "Weight":"Weight",
+    "Tel":"Tel",
+    "Email":"Email",
+    "Web":"Web",
+    "DriverLNo":"Driver L.No",
+    "InsuranceNo":"InsuranceNo",
+    "BankBookNo":"Bank Book No",
+    "Talent":"Talent",
+    "Countries":"Countries Visited",
+    "blessed":"1. I am blessed!",
+    "great":"2. I am great!",
+    "amazing":"3 I am amazing!",
+    "love":"4. I am love",
+    "peace":"5. I am peace",
+    "powerful":"6. I am powerful",
+    "joy":"7. I am joy",
+    "focused":"8. I am focused",
+    "believer":"9. I am a believer",
+    "persistent":"10. I am persistent",
+    "consisten":"11. I am consisten",
+    "positive":"12. I am positive",
+    "healthy":"13. I am healthy",
+    "wealth":"14. I am wealth",
+    "genuine":"15. I am genuine",
+    "visionary":"16. I am visionary",
+    "organized":"17. I am organized",
+    "strong":"18. I am strong",
+    "couragious":"19. I am couragious",
+    "attractive":"20. I am attractive",
+    "giver":"21. I am a giver",
+    "active":"22. I am active",
+    "forgiving":"23. I am forgiving"
+  },
+  "My_Life_Purpose":{
+    "MyLifePurpose":"My Life purpose",
+    "MyLifeHistory":"My Life History",
+    "Year":"Year",
+    "MajorEvent":"Major Event",
+    "MyPurpose":"My Purpose",
+    "MyMission":"My Mission",
+    "MyLifePrinciple":"My Life Principle"
+  },
+  "My_Dream_Board":"My Dream Board",
+  "My_House":{
+    "MyHouse":"My House",
+    "Kind":"Kind",
+    "CompoundSize":"Compound Size",
+    "SizeOfTheHouse":"Size Of The House",
+    "NumberOfRooms":"Number Of Rooms",
+    "KindsOfRooms":"Kinds Of Rooms",
+    "InTheCompound":"In The Compound",
+    "YearToAchieve":"Year To Achieve",
+    "EstimatedCost":"Estimated Cost",
+    "PictureOfTheHouse":"Picture Of TheHouse",
+    "Starting":"Starting Today",
+    "Action":"Action",
+    "Cost":"Cost",
+    "Time":"Time",
+    "1staction":"1st action",
+    "2ndaction":"2nd action",
+    "3rdaction":"3rd action",
+    "5thaction":"5th action",
+    "4thaction":"4th action"
+  },
+  "Socal_Dream":{
+    "SocalDream":"Socal Dream Life Style",
+    "Header":"1. My Socal Life Style Theme :",
+    "People":"People",
+    "Place":"Place",
+    "Country":"Country And Area",
+    "SocalLife":"Size Of Socal Life",
+    "PicterOfSocal":"Picter Of The Socal Activities",
+    "HowOften":"How Often",
+    "Kinds":"Kinds Of Socal Events", 
+    "InEvent":"In The Event"
+  },
+  "My_Mental":{
+    "MyMental":"Mental Dream Life Style",
+    "Header":"1. My Mental Life Style Theme :",
+    "Education":"Education Level",
+    "Knowlage":"Knowlage Activities",
+    "Subject":"Subject And Arear",
+    "Content":"Content Of Knowlage",
+    "MentalEvent":"Kind Of Mental Events",
+    "Picther":"Picther Of Mental Activitys"
+  },
+  "Spirtual":{
+    "Spirtual":"Spirtual Dream Life Style",
+    "Header":"1. My Spritual Life Style Theme :",
+    "People":"People (Who With)",
+    "Depth":"Depth Of Spirtual Life",
+    "SpirtualEvent":"Kind Of spirtual Events",
+    "Picture":"Picther Of Spirtual Activitys"
+  },
+  "Service":{
+    "Service":"Service Dream Life Style",
+    "Header":"1. My Service Life Style Theme :",
+    "Depth":"Depth Of Service Life",
+    "ServiceEvent":"Kind Of service Events",
+    "Picture":"Picther Of service Activitys"
+  },
+  "Physical":{
+    "Physical":"Physical Dream life Style",
+    "Header":"1. My Physical Life Style Theme :",
+    "Depth":"Depth Of Physical Life",
+    "PhysicalEvent":"Kind Of Physical Events",
+    "Picture":"Picther Of Physical Activitys"
+  },
+  "Family":{
+    "Family":"Family Dream life Style",
+    "Header":"1. My Family Life Style Theme :",
+    "Depth":"Depth Of Family Life",
+    "FamilyEvent":"Kind Of Family Events",
+    "Picture":"Picther Of Family Activitys"
+  },
+  "Financial":{
+    "Financial":"Financial Dream Life Style",
+    "Header":"1. My Family Life Style Theme :",
+    "WhatService":"What Service",
+    "Where":"Where",
+    "HowMuchPerYear":"How Much Finance Per Year",
+    "HowOften":"How Often Want To Work",
+    "FinancialEvent":"Kind Of Financial Activity Events",
+    "Picture":"Picther Of Financial Activitys"
+  },
+  "MyCar":{
+    "MyCar":"My Car",
+    "Header":"2 : My Car",
+    "MoreThanOne":"If More Than One",
+    "TypeCar":"type(name) of the car",
+    "Color":"Color",
+    "Cost":"Cost",
+    "Model":"Model & Content",
+    "Year":"Year To Achive",
+    "Picture":"Picther Of The Car"
+  },
+  "Use_Postive":{
+    "UsePostive":"Use Postive Simple Present Harmonious Words",
+    "DreamFamily":"Dream Family Life :",
+    "DreamSpiritual":"Dream Spritual :",
+    "DreamSocal":"Dream Socal Life :",
+    "DreamLife" :"Dream Life Purpose Service :",
+    "DreamHealth":"Dream Health Life Style :",
+    "DreamKnowledge":"Dream Knowledge Life Style",
+    "DreamFinancial": "Dream Financial Life Style"
+  },
+  "GoalCommon":{
+    "Goal":"My Goal",
+    "Well":"Well Formed Goal",
+    "Detail":"Detail",
+    "Process":"Process Target Activity",
+    "FirstStep":"1st Step Action",
+    "DeadLine":"Dead Line for 1st Action",
+    "Where":"Where how with whom",
+    "Required":"Required Resources & Skills",
+    "Skills":"Skills & Resources @ Hand",
+    "DidI":"Did I do it before? How did I do it?",
+    "AnyOne":"Any one who did it before? How?",
+    "Purpose":"Purpose of the goal",
+    "WhatWill":"What will I gain/ lose when I achieve",
+    "Impact":"Impact on other people",
+    "Visualization":"Visualization",
+    "Check":"9Check list",
+    "WhoCold":"Who could provide or teach you the skills",
+    "None":"None useful Behaviors",
+    "Useful":"Useful Behaviors",
+    "Hindering":"Hindering Environment",
+    "Daily":"Daily",
+    "Weekly":"Weekly",
+    "Monthly":"Monthly",
+    "Yearly":"Yearly",
+    "Calendar":"Calendar",
+
+    "LongTerm":"Long Term",
+    "ShortTerm":"Short Term",
+    "MidTerm":"Mid Term",
+
+  "FinancialGoal":"Financial",
+  "FamilyGoal":"Family",
+  "SocalGoal":"Socal",
+  "PhysicalGoal":"Physical",
+  "SpritualGoal":"Spritual",
+  "VitionGoal":"Vition",
+  "MentalGoal":"Mental"
+  },
+  "Ensure_The_Goal":{
+    "EnsureTheGoal":"Ensure the goal is well formed.",
+    "MajorLong":"Your Major Long Term goal:",
+    "MajorMid":"Your Major Mid Term goal:",
+    "MajorShort":"Your Major Short Term goal:",
+    "1":"1. Is it stated in positive terms?",
+    "2":"2 Can I start and maintain the progress?",
+    "3":"3 Do I know what I’ll be seeing hearing feeling,… when I achieved it, and is there a specific date?",
+    "4":"4 Is it truly right for me and others in my life?",
+    "5":"5 Is there more than one way to achieve this?",
+    "6":"6 Do I know the first step?",
+    "7":"7 Will more doors and possibilities open for me when I’ve achieved the goal?",
+    "8":"8 Will the positives of the current situation remain?",
+    "9":"9 Is the goal achievable and realistic for me?"
+  },
+  "My_New_Mental":{
+    "MyNewMental":"My new mental bank contract",
+    "Instructions":"Instructions:",
+    "PleaseRead":"please read this sample page over carefully and use it for notes if you wish. But it is important that you write out your mental bank contract and list your value events in your own handwriting on the next page.",
+    "I":"I",
+    "Agree":"agree on this",
+    "ToRewrite":"to rewrite my mental bank contract to arrive at a yearly income of $",
+    "PerHour":"per hour for “value events”listed below.with varying amounts for special activities listed.",
+    "Value":"Value  events",
+    "Hourly":"Hourly rate",
+    "Flat":"Flat rate",
+    "Example":"Example of value events:",
+    "Present":"present job or business, reading and accumulating information, working on your mental bank. Searching for added income, mental and physical improvement time (exercise, classes, church meeting, etc.),any time used productively."
+  },
+  "Mental_Bank_Ledger":{
+    "MentalBankLedger":"My new mental bank ledger",
+    "goal":"mental bank goal:",
+   "Bank":"My mental bank",
+   "Rate":"Rate",
+   "Deposite":"Today’s deposite",
+   "Balance":"Balance forward",
+   "NewBalance":"New MB balance",
+   "NewMental":"My new mental bank balance",
+   "Happennings":"My mental bank Happennings",
+   "Affirmation":"My mental bank Affirmation"
+  },
+  "Action_Plan":{
+    "ActionPlan":"Action Plan",
+    "LifeArea":"life area",
+    "Repetition":"Repetition",
+    "Goal":"Goal",
+    "EssentialActivity":"Essential Activity",
+    "ShortTermGoal":"Short Term Goal",
+    "MidTermGoal":"Mid Term Goal",
+    "LongTermGoal":"Long Term Goal",
+    "Spritual":"Spritual",
+    "Yearly":"Yearly",
+    "Monthly":"Monthly",
+    "Weakly":"Weakly",
+    "Daily":"Daily",
+    "Social":"Social",
+    "Family":"Family",
+    "Mental":"Mental",
+    "Finacial":"Finacial",
+    "Purpose":"Purpose",
+    "Physical":"Physical"
+  },
+  "message": "test"
+}
