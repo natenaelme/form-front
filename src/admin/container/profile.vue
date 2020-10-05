@@ -92,7 +92,50 @@
                         </div>
                         <div class="card-body py-3">
                             <b-col>
+                                <div class="form-row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="first_name">
+                                                <strong>Current Password</strong>
+                                            </label>
+                                            <input v-model="password.oldPassword" class="form-control" type="password" name="first_name">
+                                            <p v-if="currentReq" style="color:red">Current Password is requiered</p>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="last_name">
+                                                <strong>New Password</strong>
+                                            </label>
+                                            <input v-model="password.newPassword" class="form-control" type="password" name="last_name">
+                                            <p v-if="newReq" style="color:red">New Password is requiered</p>
+                                            <p v-if="minpass" style="color:red">The minimum Length Of the password has to be more than 8 characters</p>
+                                            <label for="last_name">
+                                                <strong>Confirm Password</strong>
+                                            </label>
+                                            <input v-model="confirmPassword" class="form-control" type="password" name="last_name">
+                                            <p v-if="notSame" style="color:red">Passwords are not the same</p>
+                                        </div>
 
+                                        <div class="text-center">
+                                            <b-button variant="primary" @click="changePassword()">
+                                                Change Password
+                                            </b-button>
+                                        </div>
+                                        <div class="position-relative row form-check">
+                                            <div v-if="loading" class="text-center">
+
+                                                <div class="lds-ripple">
+                                                    <div></div>
+                                                    <div></div>
+
+                                                </div>loading..
+                                            </div><br>
+
+                                        </div>
+
+                                    </div>
+                                </div>
                             </b-col>
                         </div>
 
@@ -115,7 +158,8 @@ import {
     TeamBuildingPages,
     getUrl,
     patchData,
-    patchDataId
+    patchDataId,
+    postsToken
 } from '../../assets/js/service'
 import vue2Dropzone from "vue2-dropzone";
 import "vue2-dropzone/dist/vue2Dropzone.min.css";
@@ -136,6 +180,16 @@ export default {
                 userType: "",
 
             },
+            password: {
+                oldPassword: '',
+                newPassword: ''
+            },
+            confirmPassword: '',
+            loading: false,
+            currentReq: false,
+            newReq: false,
+            notSame: false,
+            minpass: false,
             id: localStorage.getItem('userId'),
             token: localStorage.getItem('token'),
             userType: localStorage.getItem('userType'),
@@ -201,6 +255,53 @@ export default {
                 variant: variant,
                 solid: true
             })
+        },
+        changePassword() {
+            this.currentReq = false;
+            this.loading = true;
+            this.newReq = false;
+            this.notSame = false;
+            this.minpass = false;
+            let pass = true;
+            if (!this.password.oldPassword) {
+                this.currentReq = true;
+                pass = false;
+            }
+            if (!this.password.newPassword) {
+                this.newReq = true;
+                pass = false;
+            }
+            if (this.password.newPassword != this.confirmPassword) {
+                this.notSame = true;
+                pass = false;
+            }
+            if (this.password.newPassword.length < 8 && this.password.newPassword) {
+                this.minpass = true;
+                pass = false;
+            }
+            if (pass) {
+                let dataBase = '/users/change-password';
+                let token = localStorage.getItem('token');
+                postsToken(dataBase, this.password, token).then(resp => {
+                    this.loading = false;
+                    this.password = {
+                        oldPassword: '',
+                        newPassword: ''
+                    };
+                    this.changePassword = '';
+                    this.makeToast("success", "Dear " + this.user.firstName + " You Have Success Fully Changed Your Password");
+                }).catch(err => {
+                    if (err.response) {
+                        // client received an error response (5xx, 4xx)
+                        this.makeToast("danger", "There is Some Error.Please Check If your Current Password is Right")
+
+                    } else if (err.request) {
+                        this.makeToast("danger", "Connection Problem")
+                    } else {
+                        this.makeToast("danger", "Some Error has Happened")
+                    }
+                })
+            }
         },
         saveProfile() {
             patchDataId(this.id, 'users/', this.token, this.user).then(resp => {

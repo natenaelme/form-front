@@ -138,6 +138,9 @@ export function patchDataId(id,dataBase,token,data){
 export function posts(dataBase,data){
     return(Vue.axios.post(url+dataBase,data))
 }
+export function postsToken(dataBase,data,token){
+    return(Vue.axios.post(url+dataBase+'?'+'access_token=' + token,data))
+}
 
 export function Notification(variant, message) { 
     this.$bvToast.toast(message, {
