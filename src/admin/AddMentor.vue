@@ -123,7 +123,7 @@ export default {
             password: "",
             firstName: '',
             vdropzoneOptions: {
-                url: getUrl() + "/containers/imags/upload",
+                url: getUrl(),
                 thumbnailWidth: 150,
                 maxFilesize: 3.5,
                 addRemoveLinks: true,
@@ -211,11 +211,11 @@ export default {
             }
         },
         vsuccess(file, response) {
+            console.log('file upload')
             console.log(response);
-            console.log(response.result.files.file[0].name);
-            this.user.profileImage =
-                getUrl() + "/Containers/imags/download/" +
-                response.result.files.file[0].name;
+
+            this.user.profileImage = response.url;
+            console.log(this.user.profileImage)
         },
 
     },

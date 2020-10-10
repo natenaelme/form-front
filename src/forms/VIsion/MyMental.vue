@@ -322,7 +322,7 @@ export default {
             token: localStorage.getItem("token"),
             id: localStorage.getItem("userId"),
             vdropzoneOptions: {
-                url: getUrl() + "/containers/imags/upload",
+                url: getUrl(),
                 thumbnailWidth: 150,
                 maxFilesize: 3.5,
                 addRemoveLinks: true,
@@ -358,9 +358,7 @@ export default {
     methods: {
         vsuccess(file, response) {
 
-            this.form.PictureOfMental =
-                getUrl() + "/Containers/imags/download/" +
-                response.result.files.file[0].name;
+            this.form.PictureOfMental = response.url
         },
         makeToast(variant, message) {
             this.$bvToast.toast(message, {

@@ -33,8 +33,16 @@
                                     </form>
 
                                     <button class="btn btn-primary btn-block text-white btn-user" @click="login()" type="submit">{{$t('Login.Login')}}</button>
+
                                     <div class="text-center">
                                         <router-link to="/signup">{{$t('Common.CreateAccount')}}</router-link>
+                                    </div>
+                                    <div v-if="!show" class="text-center">
+                                        <div class="lds-ripple">
+                                            <div></div>
+                                            <div></div>
+
+                                        </div>loading..
                                     </div>
                                 </div>
                             </div>
@@ -74,6 +82,7 @@ export default {
                 email: '',
                 password: ''
             },
+            show: true,
             token: localStorage.getItem('token'),
             userType: localStorage.getItem('userType'),
             id: localStorage.getItem('userId')
@@ -90,6 +99,7 @@ export default {
             })
         },
         login() {
+            this.show = false;
 
             posts('/users/login', this.form).then(resp => {
                         console.log(resp);
@@ -101,7 +111,7 @@ export default {
                             console.log(getUserInfo());
 
                             if (resps.data.userType == "user") {
-                                console.log('why here')
+
                                 if (resps.data.canAccess) {
                                     localStorage.setItem("token", resp.data.id);
                                     localStorage.setItem("userId", resp.data.userId);
@@ -111,10 +121,16 @@ export default {
                                     localStorage.setItem("progress", resps.data.progress);
                                     localStorage.setItem("pages", resps.data.pages);
                                     localStorage.setItem("workBook", resps.data.workBook);
+                                    this.show = true;
                                     this.makeToast("success", "Sucessfull login");
                                     console.log("user");
                                     this.$router.replace('/question/main')
+                                } else if (!resps.data.canAccess) {
+                                    this.makeToast("danger", "Your Account has not been approved by admin");
+                                    this.show = true;
+
                                 }
+
                             } else if (resps.data.userType == "admin") {
                                 console.log(resps.data.profileImage);
                                 localStorage.setItem("token", resp.data.id);
@@ -125,6 +141,7 @@ export default {
                                 localStorage.setItem("progress", resps.data.progress);
                                 localStorage.setItem("pages", resps.data.pages);
                                 localStorage.setItem("workBook", resps.data.workBook);
+                                this.show = true;
                                 this.makeToast("success", "Sucessfull login");
                                 this.$router.replace('/admin/view')
                             } else if (resps.data.userType == "mentor") {
@@ -137,6 +154,7 @@ export default {
                                 localStorage.setItem("progress", resps.data.progress);
                                 localStorage.setItem("pages", resps.data.pages);
                                 localStorage.setItem("workBook", resps.data.workBook);
+                                this.show = true;
                                 this.makeToast("success", "Sucessfull login");
                                 this.$router.replace('/admin/view')
                             }
@@ -150,11 +168,14 @@ export default {
                         // client received an error response (5xx, 4xx)
 
                         this.makeToast("danger", "Username Or Password Dosn't Match");
+                        this.show = true;
 
                     } else if (err.request) {
                         this.makeToast("danger", "Connection Problem");
+                        this.show = true;
                     } else {
                         this.makeToast("danger", "Some Error has Happened");
+                        this.show = true;
                     }
                 })
         }

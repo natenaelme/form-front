@@ -66,6 +66,17 @@
                                 </div>
                             </div>
                             <div class="form-group"><button class="btn btn-primary btn-sm" @click="saveProfile()">Save Profile</button></div>
+                            <div class="position-relative row form-check">
+                                <div v-if="loading1" class="text-center">
+
+                                    <div class="lds-ripple">
+                                        <div></div>
+                                        <div></div>
+
+                                    </div>loading..
+                                </div><br>
+
+                            </div>
 
                         </div>
                     </div>
@@ -150,6 +161,12 @@
 </template>
 
 <script>
+import Vue from "vue"
+import {
+    BootstrapVue,
+
+} from "bootstrap-vue"
+Vue.use(BootstrapVue);
 import {
     getUserDataMentor,
     getVisionPages,
@@ -185,6 +202,7 @@ export default {
                 newPassword: ''
             },
             confirmPassword: '',
+            loading1: false,
             loading: false,
             currentReq: false,
             newReq: false,
@@ -227,6 +245,7 @@ export default {
         getUserDataMentor('users/', this.id, token).then(
             resps => {
                 this.user = resps.data;
+
                 console.log(this.user)
                 this.VisionMax = getVisionPages().length;
                 this.VisionValue = resps.data.pages[0];
@@ -258,7 +277,7 @@ export default {
         },
         changePassword() {
             this.currentReq = false;
-            this.loading = true;
+
             this.newReq = false;
             this.notSame = false;
             this.minpass = false;
@@ -280,6 +299,7 @@ export default {
                 pass = false;
             }
             if (pass) {
+                this.loading = true;
                 let dataBase = '/users/change-password';
                 let token = localStorage.getItem('token');
                 postsToken(dataBase, this.password, token).then(resp => {
@@ -294,40 +314,46 @@ export default {
                     if (err.response) {
                         // client received an error response (5xx, 4xx)
                         this.makeToast("danger", "There is Some Error.Please Check If your Current Password is Right")
+                        this.loading = false;
 
                     } else if (err.request) {
                         this.makeToast("danger", "Connection Problem")
+                        this.loading = false;
                     } else {
                         this.makeToast("danger", "Some Error has Happened")
+                        this.loading = false;
                     }
                 })
             }
         },
         saveProfile() {
+            this.loading1 = true;
             patchDataId(this.id, 'users/', this.token, this.user).then(resp => {
 
                     console.log("before tost");
                     this.makeToast("success", "Dear " + resp.data.firstName + " you have success fully Changed Your Profile");
+                    this.loading1 = false;
                     localStorage.setItem('fullName', resp.data.firstName + ' ' + resp.data.lastName)
                 })
                 .catch(err => {
                     if (err.response) {
                         // client received an error response (5xx, 4xx)
                         this.makeToast("danger", "There is Some Error.Please Check your Form")
+                        this.loading1 = false;
 
                     } else if (err.request) {
                         this.makeToast("danger", "Connection Problem")
+                        this.loading1 = false;
                     } else {
                         this.makeToast("danger", "Some Error has Happened")
+                        this.loading1 = false;
                     }
                 })
         },
         vsuccess(file, response) {
             console.log(response);
             console.log(response.result.files.file[0].name);
-            this.user.profileImage =
-                getUrl() + "/Containers/imags/download/" +
-                response.result.files.file[0].name;
+            this.user.profileImage = response.url;
             patchDataId(this.id, 'users/', this.token, this.user).then(resp => {
 
                     localStorage.setItem('profileImage', resp.data.profileImage);

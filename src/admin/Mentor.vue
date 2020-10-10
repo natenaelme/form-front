@@ -31,7 +31,20 @@
                 </tr>
 
             </tbody>
+            <tbody class="text-center" v-if="usersData.length == 0">
+                <th colspan="6"> <strong>There Is no AnApproved User</strong></th>
+
+            </tbody>
         </table>
+        <div v-if="loading" class="text-center">
+
+            <div class="lds-ripple">
+                <div></div>
+                <div></div>
+
+            </div>loading..
+        </div><br>
+
     </div>
 
 </div>
@@ -45,15 +58,17 @@ const {
 export default {
     data() {
         return {
-            usersData: {}
+            usersData: {},
+            loading: ''
         }
     },
     mounted() {
-
+        this.loading = true;
         let token = localStorage.getItem('token')
         getterMentors(token, 'mentor').then(resp => {
             this.usersData = resp.data;
             console.log(this.usersData)
+            this.loading = false;
         })
     },
     methods: {

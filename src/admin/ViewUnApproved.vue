@@ -26,9 +26,10 @@
                     <th>
                         <div class="mb-2">
 
-                            <b-button v-b-modal.modal-1>Approve</b-button>
+                            <b-button @click="$bvModal.show('modal-'+(index))">Approve</b-button>
+                            <b-modal :id="'modal-'+index" title="Assigne WorkBook" @ok="approveUser(user)">
+                                <p>{{user.firstName + " " + user.lastName}}</p>
 
-                            <b-modal id="modal-1" title="Assigne WorkBook" @ok="approveUser(user)">
                                 <p class="my-4">Select WorkBook</p>
 
                                 <b-form-select v-model="selected" class="mb-3">
@@ -40,17 +41,27 @@
                                 </b-form-select>
 
                             </b-modal>
-
                         </div>
                     </th>
                 </tr>
 
             </tbody>
+
             <tbody class="text-center" v-if="usersData.length == 0">
                 <th colspan="6"> <strong>There Is no AnApproved User</strong></th>
 
             </tbody>
         </table>
+
+        <div v-if="loading" class="text-center">
+
+            <div class="lds-ripple">
+                <div></div>
+                <div></div>
+
+            </div>loading..
+        </div><br>
+
     </div>
     <div>
         <div>
@@ -73,14 +84,16 @@ export default {
             usersData: {},
             selectedUser: '',
             modalShow: false,
-            selected: ''
+            selected: '',
+            loading: false
         }
     },
     mounted() {
-
+        this.loading = true;
         let token = localStorage.getItem('token')
         getterUnApproUsers(token, 'user').then(resp => {
             this.usersData = resp.data
+            this.loading = false;
         })
 
     },

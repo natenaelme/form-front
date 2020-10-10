@@ -89,6 +89,13 @@
                             <div class="text-center">
                                 <router-link to="/signin">Already have an account? Login</router-link>
                             </div>
+                            <div v-if="!show" class="text-center">
+                                <div class="lds-ripple">
+                                    <div></div>
+                                    <div></div>
+
+                                </div>loading..
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -143,18 +150,21 @@ export default {
                 canAccess: false
             },
             submitted: false,
+            show: true,
             password: "",
             firstName: '',
             vdropzoneOptions: {
-                url: getUrl() + "/containers/imags/upload",
+                url: getUrl(),
                 thumbnailWidth: 150,
                 maxFilesize: 3.5,
                 addRemoveLinks: true,
+
                 maxFiles: 1,
                 dictDefaultMessage: "<i class='fa fa-cloud-upload'></i> UPLOAD PICTURE",
                 headers: {
                     "X-Requested-With": "XMLHttpRequest",
                 },
+
             },
             show: true,
             imageuploaded: true,
@@ -222,11 +232,14 @@ export default {
                             // client received an error response (5xx, 4xx)
 
                             this.makeToast("danger", "the Information that you entered is not correct.or the email allrady existed");
+                            this.show = true;
                             console.log(err);
                         } else if (err.request) {
                             this.$toasted.show("Connection Problem");
+                            this.show = true;
                         } else {
                             this.$toasted.show("Some Error has Happened");
+                            this.show = true;
                         }
                     });
             } else {
@@ -235,10 +248,9 @@ export default {
         },
         vsuccess(file, response) {
             console.log(response);
-            console.log(response.result.files.file[0].name);
-            this.user.profileImage =
-                getUrl() + "/Containers/imags/download/" +
-                response.result.files.file[0].name;
+            console.log(response.url);
+            this.user.profileImage = response.url
+
         },
 
     },

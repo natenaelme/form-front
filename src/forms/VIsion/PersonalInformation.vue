@@ -62,7 +62,7 @@
                 </div>
             </div><br>
             <div class="text-center">
-                <b-button to="/question/how_to_build" variant="outline-success">
+                <b-button to="/question/how_to_search" variant="outline-success">
                     <b-icon icon="arrow-left"></b-icon> back
                 </b-button>
                 <b-button :disabled="!submited" to="/question/my_life" variant="outline-success">
