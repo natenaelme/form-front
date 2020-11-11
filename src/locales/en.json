@@ -14,6 +14,7 @@
     "Health": "Health",
     "Food": "Food",
     
+    
     "Shelter": "Shelter",
     "Cloth": "Cloth",
     "Income": "Income",
@@ -50,7 +51,7 @@
     "Place": "Place",
     "Fund": "Fund",
     "LastFive":"Last Five Days Report",
-    "Progress":"Progress",
+    "Progress":"Daily Tasks",
     "Habit":"Workbook Alpha Habit Building",
     "Status":"status",
     "CreateAccount":"Create an Account!",
@@ -759,6 +760,12 @@
   "Action_Plan":{
     "ActionPlan":"Action Plan",
     "LifeArea":"life area",
+    "LTG":"Long Term Goal One Detail",
+    "MTG":"Mid Term Goal One Detail",
+    "STG":"Short Term Goal One Detail",
+    "LTGT":"Long Term Goal Two Detail",
+    "MTGT":"Mid Term Goal Two Detail",
+    "STGT":"Short Term Goal Two Detail",
     "Repetition":"Repetition",
     "Goal":"Goal",
     "EssentialActivity":"Essential Activity",

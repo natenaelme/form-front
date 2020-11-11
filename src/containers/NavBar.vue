@@ -30,10 +30,10 @@
                 <template v-slot:button-content>
                     <em><img class="border rounded-circle img-profile" thumbnail fluid :src="profileImage" width="40em" height="40em"><span class="d-none d-lg-inline mr-2 text-gray-600 small">{{fullName}}</span></em>
                 </template>
-                <b-dropdown-item>
+                <b-dropdown-item style="margin:0 !important;width:100%">
                     <router-link to='profile'> Profile</router-link>
                 </b-dropdown-item>
-                <b-dropdown-item @click="logOut()">Sign Out</b-dropdown-item>
+                <b-dropdown-item @click="logOut()" style="margin:0 !important;width:100%">Sign Out</b-dropdown-item>
             </b-nav-item-dropdown>
 
             <!--<b-button @click="logOut()" variant="outline" class="mb-2">
@@ -88,7 +88,10 @@ export default {
                             this.$router.replace('/login');
                         },
                         err => {
-                            this.makeToast("danger", "Some Error has Happened");
+                            localStorage.clear();
+
+                            this.$router.replace('/login');
+
                         }
                     );
             }

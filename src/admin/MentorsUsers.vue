@@ -10,6 +10,7 @@
                     <th scope="col">Full Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Profile</th>
+                    <th scope="col">User Name</th>
                     <th scope="col">Approval</th>
                     <th scope="col">Progress</th>
 
@@ -21,6 +22,7 @@
                     <th>{{user.firstName + " " + user.lastName}}</th>
                     <th>{{user.email}}</th>
                     <th><img :src="user.profileImage" class="rounded-circle" width="50em" height="50em" alt=""></th>
+                    <th>{{user.username}}</th>
                     <th>
                         <p v-if="user.Approved" style="color:green">Approved</p>
                         <p v-if="!user.Approved" style="color:red">Not Approved</p>

@@ -116,10 +116,6 @@ export default {
                 },
 
                 {
-                    value: "ensure_goal",
-                    text: this.$i18n.t("Ensure_The_Goal.EnsureTheGoal")
-                },
-                {
                     value: "action_plan",
                     text: this.$i18n.t("Action_Plan.ActionPlan")
                 },

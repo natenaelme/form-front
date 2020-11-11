@@ -11,7 +11,7 @@ const imgUrl="https://api.cloudinary.com/v1_1/dhvxgn9xz/image/upload?upload_pres
 const apiUrl="https://breakthrogh.herokuapp.com/api/";
 const Habit = [
 "/question/habit",
-"/question/how_to_build",
+"/question/how_to_build", 
 "/question/process_of_change",
 "/question/silence_time",
 "/question/alpha_displine",
@@ -59,7 +59,6 @@ const Vision=[
     '/question/spritual_goal',
     '/question/vision_goal',
     '/question/mental_goal',
-    '/question/ensure_goal',
     '/question/action_plan',
     '/question/my_new_mental',
     '/question/mental_bank',

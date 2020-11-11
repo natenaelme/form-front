@@ -920,7 +920,7 @@
                     </div>
                 </div><br>
                 <div class="text-center">
-                    <b-button to="/question/ensure_goal" variant="outline-success">
+                    <b-button to="/question/mental_goal" variant="outline-success">
                         <b-icon icon="arrow-left"></b-icon> back
                     </b-button>
                     <b-button :disabled="!submited" to="/question/my_new_mental" variant="outline-success">

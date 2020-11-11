@@ -12,7 +12,35 @@ import Vuelidate from 'vuelidate'
 Vue.config.performance = true
 Vue.use(Vuelidate)
 
-Vue.prototype.$log = console.log.bind(console)
+Vue.prototype.$log = console.log.bind(console);
+
+router.beforeEach((to, from, next) => {
+  console.log(to.name);
+  if(to.name == "login"){
+    console.log("test")
+    next();
+  }
+  else if(to.name =='signup'){
+    next();
+  }
+  else if(to.name != "login"){
+    console.log("exit")
+    if (!localStorage.getItem("token")) {
+      next("/login");
+    }
+  
+     else {
+      next();
+    }
+  }
+  
+});
+
+const auth = window.localStorage.getItem("auth");
+
+if (auth) {
+  store.commit("setAuth", JSON.parse(auth));
+}
 
 new Vue({
   el: '#app',

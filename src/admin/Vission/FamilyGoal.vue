@@ -88,7 +88,10 @@
                                 {{form.LongTermOne.Visualization}}
                             </td>
                             <td style="background-color:white">
-                                {{form.LongTermOne.Check}}
+                                <ul v-if="form.LongTermOne.Check" style="overflow-y: scroll; height:150px">
+                                    <li v-for="file in form.LongTermOne.Check" :key='file'>{{file}}</li>
+
+                                </ul>
                             </td>
                             <td style="background-color:white">
                                 {{form.LongTermOne.WhoCold}}
@@ -230,7 +233,10 @@
                                 {{form.MidTermOne.Visualization}}
                             </td>
                             <td style="background-color:white">
-                                {{form.MidTermOne.Check}}
+                                <ul v-if="form.MidTermOne.Check" style="overflow-y: scroll; height:150px">
+                                    <li v-for="file in form.MidTermOne.Check" :key='file'>{{file}}</li>
+
+                                </ul>
                             </td>
                             <td style="background-color:white">
                                 {{form.MidTermOne.WhoCold}}
@@ -371,7 +377,10 @@
                                 {{form.ShortTermOne.Visualization}}
                             </td>
                             <td style="background-color:white">
-                                {{form.ShortTermOne.Check}}
+                                <ul v-if="form.ShortTermOne.Check" style="overflow-y: scroll; height:150px">
+                                    <li v-for="file in form.ShortTermOne.Check" :key='file'>{{file}}</li>
+
+                                </ul>
                             </td>
                             <td style="background-color:white">
                                 {{form.ShortTermOne.WhoCold}}

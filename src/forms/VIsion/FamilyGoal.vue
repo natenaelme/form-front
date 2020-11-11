@@ -5,11 +5,212 @@
         <b-list-group>
             <b-row>
 
-                <b-col lg=1>Date :</b-col>
+                <b-col lg=1>{{$t('Common.Date')}}:</b-col>
                 <b-col lg=2> <input type="date" v-model="form.Date" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" style="width:200px !important">
                     <br>
                 </b-col>
             </b-row>
+            <b-list-group-item>
+                <b-row>
+                    <b-col md="2">
+                        {{$t('Action_Plan.LongTermGoal')}}
+                    </b-col>
+                    <b-col md="10">
+                        <input type="text" :placeholder="$t('Action_Plan.LTG')" v-model="form.LongTermOne.FamilyGoal" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                        <br>
+                        <input type="text" :placeholder="$t('Action_Plan.LTGT')" v-model="form.LongTermTwo.FamilyGoal" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                    </b-col>
+                </b-row>
+            </b-list-group-item>
+            <b-list-group-item>
+                <b-row>
+                    <b-col md="2">
+                        {{$t('Action_Plan.MidTermGoal')}}
+                    </b-col>
+                    <b-col md="10">
+                        <input type="text" :placeholder="$t('Action_Plan.MTG')" v-model="form.MidTermOne.FamilyGoal" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                        <br>
+                        <input type="text" :placeholder="$t('Action_Plan.MTGT')" v-model="form.MidTermTwo.FamilyGoal" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                    </b-col>
+                </b-row>
+            </b-list-group-item>
+            <b-list-group-item>
+                <b-row>
+                    <b-col md="2">
+                        {{$t('Action_Plan.ShortTermGoal')}}
+                    </b-col>
+                    <b-col md="10">
+                        <input type="text" :placeholder="$t('Action_Plan.STG')" v-model="form.ShortTermOne.FamilyGoal" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                        <br>
+                        <input type="text" :placeholder="$t('Action_Plan.MTGT')" v-model="form.ShortTermTwo.FamilyGoal" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                    </b-col>
+                </b-row>
+            </b-list-group-item>
+            <br>
+            <b-list-group-item>
+                <table class="table table-bordered" v-if="nextView  != 11">
+                    <thead>
+                        <tr>
+                            <th colspan="2" width="40%" class="text-center">{{ $t("GoalCommon.Well") }}</th>
+                            <th colspan="1" width="60%" v-if="nextView<17" class="text-center">{{ $t("GoalCommon.Detail") }}</th>
+                            <th colspan="1" width="60%" v-if="nextView>=17" class="text-center">{{ $t("GoalCommon.Process") }}</th>
+
+                        </tr>
+
+                        <tr>
+                            <th scope="row" colspan="2" width="50%" class="align-middle text-center" style="background-color:black;color:white;">{{ $t("GoalCommon.FamilyGoal") }}</th>
+
+                            <th class="align-middle text-center" scope="col">{{ $t("GoalCommon."+tableHeader[nextView]) }}</th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th rowspan="2" width="10%">{{$t('Action_Plan.LongTermGoal')}}</th>
+                            <th width="30%">
+                                <p style="width:100%;display: inline-block;">{{$t('Action_Plan.Goal')}} 1 .{{form.LongTermOne.FamilyGoal}}</p>
+                            </th>
+                            <th>
+                                <b-form-textarea v-model="form.LongTermOne[tableHeader[nextView]]" rows="auto" max-rows="2">
+                                </b-form-textarea>
+                            </th>
+
+                        </tr>
+                        <tr>
+                            <th>
+                                <p>{{$t('Action_Plan.Goal')}} 2 .{{form.LongTermTwo.FamilyGoal}}</p>
+                            </th>
+                            <th>
+                                <b-form-textarea v-model="form.LongTermTwo[tableHeader[nextView]]" rows="auto" max-rows="2">
+                                </b-form-textarea>
+                            </th>
+                        </tr>
+
+                        <tr>
+                            <th rowspan="2" width="10%">{{$t('Action_Plan.MidTermGoal')}}</th>
+                            <th width="30%">
+                                <p style="width:100%;display: inline-block;">{{$t('Action_Plan.Goal')}} 1 .{{form.MidTermOne.FamilyGoal}}</p>
+                            </th>
+                            <th>
+                                <b-form-textarea v-model="form.MidTermOne[tableHeader[nextView]]" rows="auto" max-rows="2">
+                                </b-form-textarea>
+                            </th>
+
+                        </tr>
+                        <tr>
+                            <th>
+                                <p>{{$t('Action_Plan.Goal')}} 2 .{{form.MidTermTwo.FamilyGoal}}</p>
+                            </th>
+                            <th>
+                                <b-form-textarea v-model="form.MidTermTwo[tableHeader[nextView]]" rows="auto" max-rows="2">
+                                </b-form-textarea>
+                            </th>
+                        </tr>
+
+                        <tr>
+                            <th rowspan="2" width="10%">{{$t('Action_Plan.ShortTermGoal')}}</th>
+                            <th width="30%">
+                                <p style="width:100%;display: inline-block;">{{$t('Action_Plan.Goal')}} 1 .{{form.ShortTermOne.FamilyGoal}}</p>
+                            </th>
+                            <th>
+                                <b-form-textarea v-model="form.ShortTermOne[tableHeader[nextView]]" rows="auto" max-rows="2">
+                                </b-form-textarea>
+                            </th>
+
+                        </tr>
+                        <tr>
+                            <th>
+                                <p>{{$t('Action_Plan.Goal')}} 2 .{{form.ShortTermTwo.FamilyGoal}}</p>
+                            </th>
+                            <th>
+                                <b-form-textarea v-model="form.ShortTermTwo[tableHeader[nextView]]" rows="auto" max-rows="2">
+                                </b-form-textarea>
+                            </th>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <div v-if="nextView  == 11">
+                    <h3 class="text-center">{{$t("GoalCommon.Check") }}</h3>
+                    <b-list-group-item v-for="index in 9" :key="index">
+                        {{$t('Ensure_The_Goal.'+index)}}
+                    </b-list-group-item>
+                    <table class="table">
+
+                        <tbody>
+
+                            <tr>
+                                <th style="width:20%" class="align-middle">
+                                    {{$t('Ensure_The_Goal.MajorLong')}}
+                                </th>
+                                <th style="width:20%" class="align-middle">
+                                    <ul v-if="form.LongTermOne.Check" style="overflow-y: scroll; height:150px">
+                                        <li v-for="file in form.LongTermOne.Check" :key='file'>{{file}}</li>
+
+                                    </ul>
+                                </th>
+
+                                <th class="align-middle" v-for="index in 9" :key="index">
+                                    <b-form-checkbox-group id="checkbox-group-2" v-model="form.LongTermOne.Check" name="flavour-2">
+                                        <b-form-checkbox :value="$t('Ensure_The_Goal.'+index)">{{index}}</b-form-checkbox>
+                                    </b-form-checkbox-group>
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <th style="width:20%" class="align-middle">
+                                    {{$t('Ensure_The_Goal.MajorMid')}}
+                                </th>
+                                <th style="width:20%" class="align-middle">
+                                    <ul v-if="form.MidTermOne.Check" style="overflow-y: scroll; height:150px">
+                                        <li v-for="file in form.MidTermOne.Check" :key='file'>{{file}}</li>
+
+                                    </ul>
+                                </th>
+
+                                <th class="align-middle" v-for="index in 9" :key="index">
+                                    <b-form-checkbox-group id="checkbox-group-2" v-model="form.MidTermOne.Check" name="flavour-2">
+                                        <b-form-checkbox :value="$t('Ensure_The_Goal.'+index)">{{index}}</b-form-checkbox>
+                                    </b-form-checkbox-group>
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <th style="width:20%" class="align-middle">
+                                    {{$t('Ensure_The_Goal.MajorShort')}}
+                                </th>
+                                <th style="width:20%" class="align-middle">
+                                    <ul v-if="form.ShortTermOne.Check" style="overflow-y: scroll; height:150px">
+                                        <li v-for="file in form.ShortTermOne.Check" :key='file'>{{file}}</li>
+
+                                    </ul>
+                                </th>
+
+                                <th class="align-middle" v-for="index in 9" :key="index">
+                                    <b-form-checkbox-group id="checkbox-group-2" v-model="form.ShortTermOne.Check" name="flavour-2">
+                                        <b-form-checkbox :value="$t('Ensure_The_Goal.'+index)">{{index}}</b-form-checkbox>
+                                    </b-form-checkbox-group>
+                                </th>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <div colspan="3" class="text-center">
+                    <b-button @click="nextView--" :disabled="nextView<=0" variant="success">Back</b-button>
+                    <b-button @click="nextView++" :disabled="nextView>=20" variant="success">Next</b-button>
+                </div>
+
+            </b-list-group-item>
+
+            <b-list-group-item>
+
+            </b-list-group-item>
+
             <b-list-group-item class="table-responsive">
 
                 <table class="table table-bordered">
@@ -24,26 +225,26 @@
                             <th scope="row" colspan="2" class="align-middle col-6" style="background-color:black;color:white">{{ $t("GoalCommon.FamilyGoal") }}</th>
 
                             <th class="align-middle" scope="col">{{ $t("GoalCommon.FirstStep") }}</th>
-                            <th class="align-middle" scope="col">{{ $t("GoalCommon.DeadLine") }}</th>
-                            <th class="align-middle" scope="col">{{ $t("GoalCommon.Where") }}</th>
-                            <th class="align-middle" scope="col">{{ $t("GoalCommon.Required") }}</th>
-                            <th class="align-middle" scope="col">{{ $t("GoalCommon.Skills") }}</th>
-                            <th class="align-middle" scope="col">{{ $t("GoalCommon.DidI") }}</th>
-                            <th class="align-middle" scope="col">{{ $t("GoalCommon.AnyOne") }}</th>
-                            <th class="align-middle" scope="col">{{ $t("GoalCommon.Purpose") }}</th>
-                            <th class="align-middle" scope="col">{{ $t("GoalCommon.WhatWill") }}</th>
-                            <th class="align-middle" scope="col">{{ $t("GoalCommon.Impact") }}</th>
-                            <th class="align-middle" scope="col">{{ $t("GoalCommon.Visualization") }}</th>
-                            <th class="align-middle" scope="col">{{ $t("GoalCommon.Check") }}</th>
-                            <th class="align-middle" scope="col">{{ $t("GoalCommon.WhoCold") }}</th>
-                            <th class="align-middle" scope="col">{{ $t("GoalCommon.None") }}</th>
-                            <th class="align-middle" scope="col">{{ $t("GoalCommon.Useful") }}</th>
-                            <th class="align-middle" scope="col">{{ $t("GoalCommon.Hindering") }}</th>
-                            <th class="align-middle" scope="col">{{ $t("GoalCommon.Daily") }}</th>
-                            <th class="align-middle" scope="col">{{ $t("GoalCommon.Weekly") }}</th>
-                            <th class="align-middle" scope="col">{{ $t("GoalCommon.Monthly") }}</th>
-                            <th class="align-middle" scope="col">{{ $t("GoalCommon.Yearly") }}</th>
-                            <th class="align-middle" scope="col">{{ $t("GoalCommon.Calendar") }}</th>
+                            <th class="align-middle" v-if="nextView > 0" scope="col">{{ $t("GoalCommon.DeadLine") }}</th>
+                            <th class="align-middle" v-if="nextView > 1" scope="col">{{ $t("GoalCommon.Where") }}</th>
+                            <th class="align-middle" v-if="nextView > 2" scope="col">{{ $t("GoalCommon.Required") }}</th>
+                            <th class="align-middle" v-if="nextView > 3" scope="col">{{ $t("GoalCommon.Skills") }}</th>
+                            <th class="align-middle" v-if="nextView > 4" scope="col">{{ $t("GoalCommon.DidI") }}</th>
+                            <th class="align-middle" v-if="nextView > 5" scope="col">{{ $t("GoalCommon.AnyOne") }}</th>
+                            <th class="align-middle" v-if="nextView > 6" scope="col">{{ $t("GoalCommon.Purpose") }}</th>
+                            <th class="align-middle" v-if="nextView > 7" scope="col">{{ $t("GoalCommon.WhatWill") }}</th>
+                            <th class="align-middle" v-if="nextView > 8" scope="col">{{ $t("GoalCommon.Impact") }}</th>
+                            <th class="align-middle" v-if="nextView > 9" scope="col">{{ $t("GoalCommon.Visualization") }}</th>
+                            <th class="align-middle" v-if="nextView > 10" scope="col">{{ $t("GoalCommon.Check") }}</th>
+                            <th class="align-middle" v-if="nextView > 11" scope="col">{{ $t("GoalCommon.WhoCold") }}</th>
+                            <th class="align-middle" v-if="nextView > 12" scope="col">{{ $t("GoalCommon.None") }}</th>
+                            <th class="align-middle" v-if="nextView > 13" scope="col">{{ $t("GoalCommon.Useful") }}</th>
+                            <th class="align-middle" v-if="nextView > 14" scope="col">{{ $t("GoalCommon.Hindering") }}</th>
+                            <th class="align-middle" v-if="nextView > 16" scope="col">{{ $t("GoalCommon.Daily") }}</th>
+                            <th class="align-middle" v-if="nextView > 17" scope="col">{{ $t("GoalCommon.Weekly") }}</th>
+                            <th class="align-middle" v-if="nextView > 18" scope="col">{{ $t("GoalCommon.Monthly") }}</th>
+                            <th class="align-middle" v-if="nextView > 19" scope="col">{{ $t("GoalCommon.Yearly") }}</th>
+                            <th class="align-middle" v-if="nextView > 20" scope="col">{{ $t("GoalCommon.Calendar") }}</th>
 
                         </tr>
                     </thead>
@@ -52,70 +253,73 @@
                             <th rowspan="2" class="align-middle">{{ $t("GoalCommon.LongTerm") }}</th>
 
                             <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermOne.FamilyGoal" type="text" required></b-form-input>
+                                {{form.LongTermOne.FamilyGoal}}
                             </td>
                             <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermOne.FirstStep" type="text" required></b-form-input>
+                                {{form.LongTermOne.FirstStep}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermOne.DeadLine" type="text" required></b-form-input>
+                            <td v-if="nextView > 0">
+                                {{form.LongTermOne.DeadLine}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermOne.Where" type="text" required></b-form-input>
+                            <td v-if="nextView > 1">
+                                {{form.LongTermOne.Where}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermOne.Required" type="text" required></b-form-input>
+                            <td v-if="nextView > 2">
+                                {{form.LongTermOne.Required}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermOne.Skills" type="text" required></b-form-input>
+                            <td v-if="nextView > 3">
+                                {{form.LongTermOne.Skills}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermOne.DidI" type="text" required></b-form-input>
+                            <td v-if="nextView > 4">
+                                {{form.LongTermOne.DidI}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermOne.AnyOne" type="text" required></b-form-input>
+                            <td v-if="nextView > 5">
+                                {{form.LongTermOne.AnyOne}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermOne.Purpose" type="text" required></b-form-input>
+                            <td v-if="nextView > 6">
+                                {{form.LongTermOne.Purpose}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermOne.WhatWill" type="text" required></b-form-input>
+                            <td v-if="nextView > 7">
+                                {{form.LongTermOne.WhatWill}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermOne.Impact" type="text" required></b-form-input>
+                            <td v-if="nextView > 8">
+                                {{form.LongTermOne.Impact}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermOne.Visualization" type="text" required></b-form-input>
+                            <td v-if="nextView > 9">
+                                {{form.LongTermOne.Visualization}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermOne.Check" type="text" required></b-form-input>
+                            <td v-if="nextView > 10">
+                                <ul v-if="form.LongTermOne.Check" style="overflow-y: scroll; height:150px">
+                                    <li v-for="file in form.LongTermOne.Check" :key='file'>{{file}}</li>
+
+                                </ul>
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermOne.WhoCold" type="text" required></b-form-input>
+                            <td v-if="nextView > 11">
+                                {{form.LongTermOne.WhoCold}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermOne.None" type="text" required></b-form-input>
+                            <td v-if="nextView > 12">
+                                {{form.LongTermOne.None}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermOne.Useful" type="text" required></b-form-input>
+                            <td v-if="nextView > 13">
+                                {{form.LongTermOne.Useful}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermOne.Hindering" type="text" required></b-form-input>
+                            <td v-if="nextView > 14">
+                                {{form.LongTermOne.Hindering}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermOne.Daily" type="text" required></b-form-input>
+                            <td v-if="nextView > 16">
+                                {{form.LongTermOne.Daily}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermOne.Weekly" type="text" required></b-form-input>
+                            <td v-if="nextView > 17">
+                                {{form.LongTermOne.Weekly}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermOne.Monthly" type="text" required></b-form-input>
+                            <td v-if="nextView > 18">
+                                {{form.LongTermOne.Monthly}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermOne.Yearly" type="text" required></b-form-input>
+                            <td v-if="nextView > 19">
+                                {{form.LongTermOne.Yearly}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermOne.Calendar" type="text" required></b-form-input>
+                            <td v-if="nextView > 20">
+                                {{form.LongTermOne.Calendar}}
                             </td>
 
                         </tr>
@@ -123,70 +327,70 @@
                         <tr>
 
                             <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermTwo.FamilyGoal" type="text" required></b-form-input>
+                                {{form.LongTermTwo.FamilyGoal}}
                             </td>
                             <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermTwo.FirstStep" type="text" required></b-form-input>
+                                {{form.LongTermTwo.FirstStep}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermTwo.DeadLine" type="text" required></b-form-input>
+                            <td v-if="nextView > 0">
+                                {{form.LongTermTwo.DeadLine}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermTwo.Where" type="text" required></b-form-input>
+                            <td v-if="nextView > 1">
+                                {{form.LongTermTwo.Where}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermTwo.Required" type="text" required></b-form-input>
+                            <td v-if="nextView > 2">
+                                {{form.LongTermTwo.Required}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermTwo.Skills" type="text" required></b-form-input>
+                            <td v-if="nextView > 3">
+                                {{form.LongTermTwo.Skills}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermTwo.DidI" type="text" required></b-form-input>
+                            <td v-if="nextView > 4">
+                                {{form.LongTermTwo.DidI}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermTwo.AnyOne" type="text" required></b-form-input>
+                            <td v-if="nextView > 5">
+                                {{form.LongTermTwo.AnyOne}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermTwo.Purpose" type="text" required></b-form-input>
+                            <td v-if="nextView > 6">
+                                {{form.LongTermTwo.Purpose}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermTwo.WhatWill" type="text" required></b-form-input>
+                            <td v-if="nextView > 7">
+                                {{form.LongTermTwo.WhatWill}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermTwo.Impact" type="text" required></b-form-input>
+                            <td v-if="nextView > 8">
+                                {{form.LongTermTwo.Impact}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermTwo.Visualization" type="text" required></b-form-input>
+                            <td v-if="nextView > 9">
+                                {{form.LongTermTwo.Visualization}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermTwo.Check" type="text" required></b-form-input>
+                            <td v-if="nextView > 10">
+                                {{form.LongTermTwo.Check}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermTwo.WhoCold" type="text" required></b-form-input>
+                            <td v-if="nextView > 11">
+                                {{form.LongTermTwo.WhoCold}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermTwo.None" type="text" required></b-form-input>
+                            <td v-if="nextView > 12">
+                                {{form.LongTermTwo.None}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermTwo.Useful" type="text" required></b-form-input>
+                            <td v-if="nextView > 13">
+                                {{form.LongTermTwo.Useful}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermTwo.Hindering" type="text" required></b-form-input>
+                            <td v-if="nextView > 14">
+                                {{form.LongTermTwo.Hindering}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermTwo.Daily" type="text" required></b-form-input>
+                            <td v-if="nextView > 16">
+                                {{form.LongTermTwo.Daily}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermTwo.Weekly" type="text" required></b-form-input>
+                            <td v-if="nextView > 17">
+                                {{form.LongTermTwo.Weekly}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermTwo.Monthly" type="text" required></b-form-input>
+                            <td v-if="nextView > 18">
+                                {{form.LongTermTwo.Monthly}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermTwo.Yearly" type="text" required></b-form-input>
+                            <td v-if="nextView > 19">
+                                {{form.LongTermTwo.Yearly}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.LongTermTwo.Calendar" type="text" required></b-form-input>
+                            <td v-if="nextView > 20">
+                                {{form.LongTermTwo.Calendar}}
                             </td>
 
                         </tr>
@@ -194,140 +398,143 @@
                             <th rowspan="2" class="align-middle">{{ $t("GoalCommon.MidTerm") }}</th>
 
                             <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermOne.FamilyGoal" type="text" required></b-form-input>
+                                {{form.MidTermOne.FamilyGoal}}
                             </td>
                             <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermOne.FirstStep" type="text" required></b-form-input>
+                                {{form.MidTermOne.FirstStep}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermOne.DeadLine" type="text" required></b-form-input>
+                            <td v-if="nextView > 0">
+                                {{form.MidTermOne.DeadLine}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermOne.Where" type="text" required></b-form-input>
+                            <td v-if="nextView > 1">
+                                {{form.MidTermOne.Where}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermOne.Required" type="text" required></b-form-input>
+                            <td v-if="nextView > 2">
+                                {{form.MidTermOne.Required}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermOne.Skills" type="text" required></b-form-input>
+                            <td v-if="nextView > 3">
+                                {{form.MidTermOne.Skills}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermOne.DidI" type="text" required></b-form-input>
+                            <td v-if="nextView > 4">
+                                {{form.MidTermOne.DidI}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermOne.AnyOne" type="text" required></b-form-input>
+                            <td v-if="nextView > 5">
+                                {{form.MidTermOne.AnyOne}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermOne.Purpose" type="text" required></b-form-input>
+                            <td v-if="nextView > 6">
+                                {{form.MidTermOne.Purpose}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermOne.WhatWill" type="text" required></b-form-input>
+                            <td v-if="nextView > 7">
+                                {{form.MidTermOne.WhatWill}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermOne.Impact" type="text" required></b-form-input>
+                            <td v-if="nextView > 8">
+                                {{form.MidTermOne.Impact}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermOne.Visualization" type="text" required></b-form-input>
+                            <td v-if="nextView > 9">
+                                {{form.MidTermOne.Visualization}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermOne.Check" type="text" required></b-form-input>
+                            <td v-if="nextView > 10">
+                                <ul v-if="form.MidTermOne.Check" style="overflow-y: scroll; height:150px">
+                                    <li v-for="file in form.MidTermOne.Check" :key='file'>{{file}}</li>
+
+                                </ul>
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermOne.WhoCold" type="text" required></b-form-input>
+                            <td v-if="nextView > 11">
+                                {{form.MidTermOne.WhoCold}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermOne.None" type="text" required></b-form-input>
+                            <td v-if="nextView > 12">
+                                {{form.MidTermOne.None}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermOne.Useful" type="text" required></b-form-input>
+                            <td v-if="nextView > 13">
+                                {{form.MidTermOne.Useful}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermOne.Hindering" type="text" required></b-form-input>
+                            <td v-if="nextView > 14">
+                                {{form.MidTermOne.Hindering}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermOne.Daily" type="text" required></b-form-input>
+                            <td v-if="nextView > 16">
+                                {{form.MidTermOne.Daily}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermOne.Weekly" type="text" required></b-form-input>
+                            <td v-if="nextView > 17">
+                                {{form.MidTermOne.Weekly}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermOne.Monthly" type="text" required></b-form-input>
+                            <td v-if="nextView > 18">
+                                {{form.MidTermOne.Monthly}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermOne.Yearly" type="text" required></b-form-input>
+                            <td v-if="nextView > 19">
+                                {{form.MidTermOne.Yearly}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermOne.Calendar" type="text" required></b-form-input>
+                            <td v-if="nextView > 20">
+                                {{form.MidTermOne.Calendar}}
                             </td>
 
                         </tr>
                         <tr>
 
                             <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermTwo.FamilyGoal" type="text" required></b-form-input>
+                                {{form.MidTermTwo.FamilyGoal}}
                             </td>
                             <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermTwo.FirstStep" type="text" required></b-form-input>
+                                {{form.MidTermTwo.FirstStep}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermTwo.DeadLine" type="text" required></b-form-input>
+                            <td v-if="nextView > 0">
+                                {{form.MidTermTwo.DeadLine}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermTwo.Where" type="text" required></b-form-input>
+                            <td v-if="nextView > 1">
+                                {{form.MidTermTwo.Where}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermTwo.Required" type="text" required></b-form-input>
+                            <td v-if="nextView > 2">
+                                {{form.MidTermTwo.Required}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermTwo.Skills" type="text" required></b-form-input>
+                            <td v-if="nextView > 3">
+                                {{form.MidTermTwo.Skills}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermTwo.DidI" type="text" required></b-form-input>
+                            <td v-if="nextView > 4">
+                                {{form.MidTermTwo.DidI}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermTwo.AnyOne" type="text" required></b-form-input>
+                            <td v-if="nextView > 5">
+                                {{form.MidTermTwo.AnyOne}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermTwo.Purpose" type="text" required></b-form-input>
+                            <td v-if="nextView > 6">
+                                {{form.MidTermTwo.Purpose}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermTwo.WhatWill" type="text" required></b-form-input>
+                            <td v-if="nextView > 7">
+                                {{form.MidTermTwo.WhatWill}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermTwo.Impact" type="text" required></b-form-input>
+                            <td v-if="nextView > 8">
+                                {{form.MidTermTwo.Impact}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermTwo.Visualization" type="text" required></b-form-input>
+                            <td v-if="nextView > 9">
+                                {{form.MidTermTwo.Visualization}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermTwo.Check" type="text" required></b-form-input>
+                            <td v-if="nextView > 10">
+                                {{form.MidTermTwo.Check}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermTwo.WhoCold" type="text" required></b-form-input>
+                            <td v-if="nextView > 11">
+                                {{form.MidTermTwo.WhoCold}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermTwo.None" type="text" required></b-form-input>
+                            <td v-if="nextView > 12">
+                                {{form.MidTermTwo.None}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermTwo.Useful" type="text" required></b-form-input>
+                            <td v-if="nextView > 13">
+                                {{form.MidTermTwo.Useful}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermTwo.Hindering" type="text" required></b-form-input>
+                            <td v-if="nextView > 14">
+                                {{form.MidTermTwo.Hindering}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermTwo.Daily" type="text" required></b-form-input>
+                            <td v-if="nextView > 16">
+                                {{form.MidTermTwo.Daily}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermTwo.Weekly" type="text" required></b-form-input>
+                            <td v-if="nextView > 17">
+                                {{form.MidTermTwo.Weekly}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermTwo.Monthly" type="text" required></b-form-input>
+                            <td v-if="nextView > 18">
+                                {{form.MidTermTwo.Monthly}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermTwo.Yearly" type="text" required></b-form-input>
+                            <td v-if="nextView > 19">
+                                {{form.MidTermTwo.Yearly}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.MidTermTwo.Calendar" type="text" required></b-form-input>
+                            <td v-if="nextView > 20">
+                                {{form.MidTermTwo.Calendar}}
                             </td>
 
                         </tr>
@@ -335,146 +542,151 @@
                             <th rowspan="2" class="align-middle">{{ $t("GoalCommon.ShortTerm") }}</th>
 
                             <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermOne.FamilyGoal" type="text" required></b-form-input>
+                                {{form.ShortTermOne.FamilyGoal}}
                             </td>
                             <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermOne.FirstStep" type="text" required></b-form-input>
+                                {{form.ShortTermOne.FirstStep}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermOne.DeadLine" type="text" required></b-form-input>
+                            <td v-if="nextView > 0">
+                                {{form.ShortTermOne.DeadLine}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermOne.Where" type="text" required></b-form-input>
+                            <td v-if="nextView > 1">
+                                {{form.ShortTermOne.Where}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermOne.Required" type="text" required></b-form-input>
+                            <td v-if="nextView > 2">
+                                {{form.ShortTermOne.Required}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermOne.Skills" type="text" required></b-form-input>
+                            <td v-if="nextView > 3">
+                                {{form.ShortTermOne.Skills}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermOne.DidI" type="text" required></b-form-input>
+                            <td v-if="nextView > 4">
+                                {{form.ShortTermOne.DidI}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermOne.AnyOne" type="text" required></b-form-input>
+                            <td v-if="nextView > 5">
+                                {{form.ShortTermOne.AnyOne}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermOne.Purpose" type="text" required></b-form-input>
+                            <td v-if="nextView > 6">
+                                {{form.ShortTermOne.Purpose}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermOne.WhatWill" type="text" required></b-form-input>
+                            <td v-if="nextView > 7">
+                                {{form.ShortTermOne.WhatWill}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermOne.Impact" type="text" required></b-form-input>
+                            <td v-if="nextView > 8">
+                                {{form.ShortTermOne.Impact}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermOne.Visualization" type="text" required></b-form-input>
+                            <td v-if="nextView > 9">
+                                {{form.ShortTermOne.Visualization}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermOne.Check" type="text" required></b-form-input>
+                            <td v-if="nextView > 10">
+                                <ul v-if="form.ShortTermOne.Check" style="overflow-y: scroll; height:150px">
+                                    <li v-for="file in form.ShortTermOne.Check" :key='file'>{{file}}</li>
+
+                                </ul>
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermOne.WhoCold" type="text" required></b-form-input>
+                            <td v-if="nextView > 11">
+                                {{form.ShortTermOne.WhoCold}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermOne.None" type="text" required></b-form-input>
+                            <td v-if="nextView > 12">
+                                {{form.ShortTermOne.None}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermOne.Useful" type="text" required></b-form-input>
+                            <td v-if="nextView > 13">
+                                {{form.ShortTermOne.Useful}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermOne.Hindering" type="text" required></b-form-input>
+                            <td v-if="nextView > 14">
+                                {{form.ShortTermOne.Hindering}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermOne.Daily" type="text" required></b-form-input>
+                            <td v-if="nextView > 16">
+                                {{form.ShortTermOne.Daily}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermOne.Weekly" type="text" required></b-form-input>
+                            <td v-if="nextView > 17">
+                                {{form.ShortTermOne.Weekly}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermOne.Monthly" type="text" required></b-form-input>
+                            <td v-if="nextView > 18">
+                                {{form.ShortTermOne.Monthly}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermOne.Yearly" type="text" required></b-form-input>
+                            <td v-if="nextView > 19">
+                                {{form.ShortTermOne.Yearly}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermOne.Calendar" type="text" required></b-form-input>
+                            <td v-if="nextView > 20">
+                                {{form.ShortTermOne.Calendar}}
                             </td>
 
                         </tr>
                         <tr>
 
                             <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermTwo.FamilyGoal" type="text" required></b-form-input>
+                                {{form.ShortTermTwo.FamilyGoal}}
                             </td>
                             <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermTwo.FirstStep" type="text" required></b-form-input>
+                                {{form.ShortTermTwo.FirstStep}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermTwo.DeadLine" type="text" required></b-form-input>
+                            <td v-if="nextView > 0">
+                                {{form.ShortTermTwo.DeadLine}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermTwo.Where" type="text" required></b-form-input>
+                            <td v-if="nextView > 1">
+                                {{form.ShortTermTwo.Where}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermTwo.Required" type="text" required></b-form-input>
+                            <td v-if="nextView > 2">
+                                {{form.ShortTermTwo.Required}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermTwo.Skills" type="text" required></b-form-input>
+                            <td v-if="nextView > 3">
+                                {{form.ShortTermTwo.Skills}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermTwo.DidI" type="text" required></b-form-input>
+                            <td v-if="nextView > 4">
+                                {{form.ShortTermTwo.DidI}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermTwo.AnyOne" type="text" required></b-form-input>
+                            <td v-if="nextView > 5">
+                                {{form.ShortTermTwo.AnyOne}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermTwo.Purpose" type="text" required></b-form-input>
+                            <td v-if="nextView > 6">
+                                {{form.ShortTermTwo.Purpose}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermTwo.WhatWill" type="text" required></b-form-input>
+                            <td v-if="nextView > 7">
+                                {{form.ShortTermTwo.WhatWill}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermTwo.Impact" type="text" required></b-form-input>
+                            <td v-if="nextView > 8">
+                                {{form.ShortTermTwo.Impact}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermTwo.Visualization" type="text" required></b-form-input>
+                            <td v-if="nextView > 9">
+                                {{form.ShortTermTwo.Visualization}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermTwo.Check" type="text" required></b-form-input>
+                            <td v-if="nextView > 10">
+                                {{form.ShortTermTwo.Check}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermTwo.WhoCold" type="text" required></b-form-input>
+                            <td v-if="nextView > 11">
+                                {{form.ShortTermTwo.WhoCold}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermTwo.None" type="text" required></b-form-input>
+                            <td v-if="nextView > 12">
+                                {{form.ShortTermTwo.None}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermTwo.Useful" type="text" required></b-form-input>
+                            <td v-if="nextView > 13">
+                                {{form.ShortTermTwo.Useful}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermTwo.Hindering" type="text" required></b-form-input>
+                            <td v-if="nextView > 14">
+                                {{form.ShortTermTwo.Hindering}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermTwo.Daily" type="text" required></b-form-input>
+                            <td v-if="nextView > 16">
+                                {{form.ShortTermTwo.Daily}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermTwo.Weekly" type="text" required></b-form-input>
+                            <td v-if="nextView > 17">
+                                {{form.ShortTermTwo.Weekly}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermTwo.Monthly" type="text" required></b-form-input>
+                            <td v-if="nextView > 18">
+                                {{form.ShortTermTwo.Monthly}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermTwo.Yearly" type="text" required></b-form-input>
+                            <td v-if="nextView > 19">
+                                {{form.ShortTermTwo.Yearly}}
                             </td>
-                            <td>
-                                <b-form-input style="font-size:12px" v-model="form.ShortTermTwo.Calendar" type="text" required></b-form-input>
+                            <td v-if="nextView > 20">
+                                {{form.ShortTermTwo.Calendar}}
                             </td>
 
                         </tr>
                     </tbody>
                 </table>
+
             </b-list-group-item>
+
         </b-list-group>
         <div class="position-relative row form-check">
             <div class="text-center">
@@ -517,6 +729,7 @@ export default {
 
         let dataBase = '/familyGoals';
         getUserData(dataBase, this.id, this.token).then(resp => {
+                this.nextView = 20;
                 console.log(resp);
                 this.form = resp.data;
                 this.edit = true;
@@ -535,7 +748,33 @@ export default {
     },
 
     data() {
+
         return {
+            nextView: 0,
+            tableHeader: [
+                'FirstStep',
+                'DeadLine',
+                'Where',
+                'Required',
+                'Skills',
+                'DidI',
+                'AnyOne',
+                'Purpose',
+                'WhatWill',
+                'Impact',
+                'Visualization',
+                'Check',
+                'WhoCold',
+                'None',
+                'Useful',
+                'Hindering',
+                'Daily',
+                'Weekly',
+                'Monthly',
+                'Yearly',
+                'Calendar',
+            ],
+
             form: {
                 Date: '',
                 LongTermOne: {
@@ -551,7 +790,7 @@ export default {
                     WhatWill: '',
                     Impact: '',
                     Visualization: '',
-                    Check: '',
+                    Check: [],
                     WhoCold: '',
                     None: '',
                     Useful: '',
@@ -601,7 +840,7 @@ export default {
                     WhatWill: '',
                     Impact: '',
                     Visualization: '',
-                    Check: '',
+                    Check: [],
                     WhoCold: '',
                     None: '',
                     Useful: '',
@@ -649,7 +888,7 @@ export default {
                     WhatWill: '',
                     Impact: '',
                     Visualization: '',
-                    Check: '',
+                    Check: [],
                     WhoCold: '',
                     None: '',
                     Useful: '',

@@ -48,6 +48,13 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="userName">User Name</label>
+                                    <input type="text" v-model="user.username" id="userName" name="userName" class="form-control" :class="{ 'is-invalid': submitted && $v.user.username.$error }" />
+                                    <div v-if="submitted && !$v.user.username.required" class="invalid-feedback">User Name is required</div>
+                                </div>
+
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <div class="form-group">
@@ -142,6 +149,7 @@ export default {
                 lastName: "",
                 email: "",
                 password: "",
+                username: "",
                 confirmPassword: "",
                 progress: 0,
                 profileImage: "",
@@ -177,6 +185,9 @@ export default {
                 required
             },
             lastName: {
+                required
+            },
+            username: {
                 required
             },
             email: {
@@ -231,7 +242,7 @@ export default {
                         if (err.response) {
                             // client received an error response (5xx, 4xx)
 
-                            this.makeToast("danger", "the Information that you entered is not correct.or the email allrady existed");
+                            this.makeToast("danger", "the Information that you entered is not correct.or the email or user name allrady existed");
                             this.show = true;
                             console.log(err);
                         } else if (err.request) {

@@ -238,7 +238,7 @@
                 <b-button to="/question/my_dream" variant="outline-success">
                     <b-icon icon="arrow-left"></b-icon> back
                 </b-button>
-                <b-button :disabled="!submited" to="/question/my_dream" variant="outline-success">
+                <b-button :disabled="!submited" to="/question/my_house" variant="outline-success">
                     Next<b-icon icon="arrow-right"></b-icon>
                 </b-button>
 

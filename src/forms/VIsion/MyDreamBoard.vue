@@ -9,7 +9,7 @@
             <img style="margin-left: -22%;margin-top: 21px;" @click="route('spirtual')" class="image" src="../../assets/img/spri.png" width='40%'>
             <img style="margin-left: -7%; margin-top: 24px;" @click="route('service')" class="image" src="../../assets/img/vission.png" width='40%'>
             <img style="margin-top: 61%;margin-left: -59%;" class="image" src="../../assets/img/circle.png" width='40%'>
-            <img style="margin-top: -50%;margin-left: 65%;" @click="route('my_house') " class="image" src="../../assets/img/finacal.png" width='40%'>
+            <img style="margin-top: -50%;margin-left: 65%;" @click="route('financial') " class="image" src="../../assets/img/finacal.png" width='40%'>
             <img style="margin-top: -19%;margin-left: 59%;" @click="route('family')" class="image" src="../../assets/img/family.png" width='40%'>
             <img style="margin-top: -27%;margin-left: 31%;" @click="route('socal_dream')" class="image" src="../../assets/img/socal.png" width='40%'>
             <img style="margin-top: -62%;margin-left: 3%;" @click="route('my_mental')" class="image" src="../../assets/img/Knowlage.png" width='40%'>

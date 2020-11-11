@@ -10,7 +10,7 @@
                     <th scope="col">Full Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Profile</th>
-                    <th scope="col">WorkBook</th>
+                    <th scope="col">User Name</th>
                     <th scope="col">View</th>
                 </tr>
             </thead>
@@ -21,7 +21,7 @@
                     <th>{{user.email}}</th>
                     <th><img :src="user.profileImage" class="rounded-circle" width="50em" height="50em" alt=""></th>
                     <th>
-
+                        {{user.username}}
                     </th>
                     <th>
                         <div class="mb-2">
@@ -48,7 +48,7 @@
             </tbody>
 
             <tbody class="text-center" v-if="usersData.length == 0">
-                <th colspan="6"> <strong>There Is no AnApproved User</strong></th>
+                <th colspan="6"> <strong>There Is no An Approved User</strong></th>
 
             </tbody>
         </table>

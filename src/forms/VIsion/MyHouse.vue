@@ -210,10 +210,10 @@
                 </div>
             </div><br>
             <div class="text-center">
-                <b-button to="/question/my_dream" variant="outline-success">
+                <b-button to="/question/family" variant="outline-success">
                     <b-icon icon="arrow-left"></b-icon> back
                 </b-button>
-                <b-button :disabled="!submited" to="/question/financial" variant="outline-success">
+                <b-button :disabled="!submited" to="/question/car" variant="outline-success">
                     Next<b-icon icon="arrow-right"></b-icon>
                 </b-button>
 

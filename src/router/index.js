@@ -176,10 +176,12 @@ function configRoutes() {
     {
       path: "/login",
       component: SignIn,
+      name: 'login'
     },
     {
       path: "/signup",
-      component: SignUp, 
+      component: SignUp,
+      name: 'signup' 
     },
 
     

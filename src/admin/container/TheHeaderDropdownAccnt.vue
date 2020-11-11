@@ -66,7 +66,9 @@ export default {
                             this.$router.replace('/login');
                         },
                         err => {
-                            this.makeToast("danger", "Some Error has Happened");
+                            localStorage.clear();
+
+                            this.$router.replace('/login');
                         }
                     );
             }
