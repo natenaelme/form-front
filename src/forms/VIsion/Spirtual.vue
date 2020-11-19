@@ -10,7 +10,7 @@
                 <b-row>
                     <b-col md=3>
                         {{ $t("Spirtual.People") }}
-                    </b-col>
+                    </b-col> 
                     <b-col md=9>
                         <b-form-input id="input-1" style="font-size:12px" v-model="form.People" type="text" required placeholder=""></b-form-input>
 
@@ -392,6 +392,7 @@ export default {
                 if (this.form.PictureOfSpirtual) {
                     posts(dataBase, this.form).then((resp) => {
                             console.log(resp.data);
+                            
                             this.edit = true;
                             this.form.People = '';
                             this.form.Place = '';

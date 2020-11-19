@@ -8,7 +8,8 @@ Vue.use(BVToastPlugin);
 
 Vue.use(VueAxios, axios) 
 const imgUrl="https://api.cloudinary.com/v1_1/dhvxgn9xz/image/upload?upload_preset=sravrhin";
-const apiUrl="https://breakthrogh.herokuapp.com/api/";
+// const apiUrl="https://breakthrogh.herokuapp.com/api/";
+const apiUrl="http://192.168.1.9:3000/api/";
 const Habit = [
 "/question/habit",
 "/question/how_to_build", 
@@ -102,7 +103,11 @@ export function getterUnApproUsers(token,userType){
     return(Vue.axios.get(apiUrl+'/users'+`?filter={"where":{"userType":"` + userType +`",`+`"canAccess":`+ false + `}}`+'&access_token=' + token))
 }
 export function getterId(dataBase,id,token){
+    console.log(apiUrl+dataBase+id+'?'+'access_token=' + token);
     return(Vue.axios.get(apiUrl+dataBase+id+'?'+'access_token=' + token))
+}
+export function getterIdForImage(dataBase,id,token){
+    return(Vue.axios.get(apiUrl+dataBase+'?id='+id+'&access_token=' + token))
 }
 export function getterToken(dataBase,token){
     return(Vue.axios.get(apiUrl+dataBase+'?'+'access_token=' + token))

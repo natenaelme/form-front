@@ -3,7 +3,6 @@
     <NavBar />
     <router-view style="margin-top:80px" v-on:changeTitle="tests($event)"></router-view>
     <br>
-    <h1>{{value}}</h1>
     <b-container>
         <b-progress :max="max" col='8'>
             <b-progress-bar :value="value" style="color:black" v-if="value != 0" :label="'Congratulation You Have Finshed'+`${((value / max) * 100).toFixed(2)}%`"></b-progress-bar>
