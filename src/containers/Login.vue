@@ -88,7 +88,7 @@ export default {
     login() {
       this.show = false;
 
-      posts("/users/login", this.form)
+      posts("users/login", this.form)
         .then((resp) => {
           console.log(resp);
 

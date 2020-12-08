@@ -9,7 +9,7 @@ Vue.use(BVToastPlugin);
 Vue.use(VueAxios, axios) 
 const imgUrl="https://api.cloudinary.com/v1_1/dhvxgn9xz/image/upload?upload_preset=sravrhin";
 // const apiUrl="https://breakthrogh.herokuapp.com/api/";
-const apiUrl="http://142.93.62.246/api/";
+const apiUrl="https://alphaworkbook.com/api/";
 // const apiUrl="http://localhost:3000/api/";
 const Habit = [
 "/question/habit",
