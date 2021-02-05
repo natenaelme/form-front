@@ -78,6 +78,7 @@ const View = () => import("@/admin/View");
 const MainView = () => import("@/admin/mainView");
 const HabitView = () => import("@/admin/HabitView");
 const ViewUnApproved = () => import("@/admin/ViewUnApproved");
+const VerificationKey = () => import("@/admin/VerificationKey");
 // const MentorProfile = () => import("@/admin/container/MentorProfile");
 
 
@@ -236,6 +237,10 @@ function configRoutes() {
               component:TeamMeetingViewPage
             },
           ]
+        },
+        {
+          path:'verification',
+          component: VerificationKey,
         },
 
         {
