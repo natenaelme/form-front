@@ -41,7 +41,7 @@
 
             </tbody>
             <tbody class="text-center" v-if="usersData.length == 0">
-                <th colspan="6"> <strong>There Is no AnApproved User</strong></th>
+                <th colspan="12"> <strong>There Is no Approved User</strong></th>
 
             </tbody>
 
