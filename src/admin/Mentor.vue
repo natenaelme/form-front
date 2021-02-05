@@ -32,7 +32,7 @@
 
             </tbody>
             <tbody class="text-center" v-if="usersData.length == 0">
-                <th colspan="6"> <strong>There Is no AnApproved User</strong></th>
+                <th colspan="6"> <strong>There Is no Mentor User</strong></th>
 
             </tbody>
         </table>
