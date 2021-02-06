@@ -89,11 +89,17 @@ export default {
               user: "admin",
             },
             {
+                    _name: 'CSidebarNavDropdown',
+                    name: 'Verification',
+                    route: '/base',
+                    icon: 'cil-check',
+                    items: [{
               _name: "CSidebarNavItem",
-              name: "Verification",
+              name: "Generate Verification",
               to: "/admin/verification",
-              icon: "cil-check",
+              icon: "",
               user: "admin",
+                    }]
             },
           ],
         },
