@@ -71,7 +71,11 @@
     "YouCompleted":"You Have Completed",
     "123":"You have to Finsh Work Book One, Two And Three First",
     "12":"You have to Finsh Work Book One And Two First",
-    "1":"You have to Finsh Work Book One First"
+    "1":"You have to Finsh Work Book One First",
+    "ver":"Verification",
+    "verification":"Verification Code",
+    "BackLogin":"Back To Login",
+    "verify":"Verify"
   },
   "Habit": {
     "HabitControl": "Habit Control",
@@ -151,6 +155,7 @@
     "2ndQuestion": "Paragraph to be visualized and rewritten:",
     "3ndQuestion": "Goal in picture form",
     "Header": "Check List to be marked till its achieved!"
+
   },
   "Alpha_Discipline": {
     "AlphaDiscipline": "Alpha Discipline Work Book",
