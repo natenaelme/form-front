@@ -22,6 +22,10 @@
       Number Of Verification Code Can't Be Empity
     </p>
 
+    <p style="color: red" v-if="noNotNegative">
+      Number Of Verification Code Can't Be Negative number
+    </p>
+
     <b-button style="float: right" variant="success" @click="submit()"
       >submit</b-button
     >
@@ -41,7 +45,7 @@
               <th>
                 <p v-if="verification.workbook == 1">workbook 1</p>
                 <p v-if="verification.workbook == 2">workbook 1&2</p>
-                <p v-if="verification.workbook == 3"> workbook 1,2&3</p>
+                <p v-if="verification.workbook == 3">workbook 1,2&3</p>
                 <p v-if="verification.workbook == 4">All 4 workbooks</p>
               </th>
               <th style="font-size: 2">{{ verification.key }}</th>
@@ -78,6 +82,7 @@ export default {
       verification: [],
       notSelected: false,
       noNotSelected: false,
+      noNotNegative: false,
       numberOfCodes: null,
       selected: null,
       options: [
@@ -91,13 +96,13 @@ export default {
   },
 
   methods: {
-        makeToast(variant, message) {
-            this.$bvToast.toast(message, {
-                title: variant,
-                variant: variant,
-                solid: true
-            })
-        },
+    makeToast(variant, message) {
+      this.$bvToast.toast(message, {
+        title: variant,
+        variant: variant,
+        solid: true,
+      });
+    },
     submit() {
       if (!this.selected) {
         this.notSelected = true;
@@ -105,9 +110,11 @@ export default {
       if (!this.numberOfCodes) {
         this.noNotSelected = true;
       }
-      if (this.selected && this.numberOfCodes) {
+      if (this.numberOfCodes < 0) {
+        this.noNotNegative = true;
+      }
+      if (this.selected && this.numberOfCodes && this.numberOfCodes > 0) {
         console.log("tests");
-
 
         for (var i = 0; i < this.numberOfCodes; i++) {
           const today = new Date();
@@ -117,33 +124,32 @@ export default {
           console.log(rand);
           var key = timestamp + rand;
 
-          this.verification.push({ workbook: this.selected, key: key});
-}
-          var database = "verifications";
-          posts(database, this.verification)
-            .then((resp) => {
-                        this.notSelected = false;
-        this.noNotSelected = false;
+          this.verification.push({ workbook: this.selected, key: key });
+        }
+        var database = "verifications";
+        posts(database, this.verification)
+          .then((resp) => {
+            this.notSelected = false;
+            this.noNotSelected = false;
+            this.noNotNegative = false;
+            this.makeToast(
+              "success",
+              "You have successfully Generate Verfication Key"
+            );
+          })
+          .catch((err) => {
+            if (err.response) {
+              // client received an error response (5xx, 4xx)
               this.makeToast(
-                "success",
-                "You have successfully Generate Verfication Key"
+                "danger",
+                "There is Some Error.Please Check your Form"
               );
-              
-            })
-            .catch((err) => {
-              if (err.response) {
-                // client received an error response (5xx, 4xx)
-                this.makeToast(
-                  "danger",
-                  "There is Some Error.Please Check your Form"
-                );
-              } else if (err.request) {
-                this.makeToast("danger", "Connection Problem");
-              } else {
-                this.makeToast("danger", "Some Error has Happened");
-              }
-            });
-        
+            } else if (err.request) {
+              this.makeToast("danger", "Connection Problem");
+            } else {
+              this.makeToast("danger", "Some Error has Happened");
+            }
+          });
       }
     },
     print() {
