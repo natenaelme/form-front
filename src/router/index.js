@@ -79,6 +79,7 @@ const MainView = () => import("@/admin/mainView");
 const HabitView = () => import("@/admin/HabitView");
 const ViewUnApproved = () => import("@/admin/ViewUnApproved");
 const VerificationKey = () => import("@/admin/VerificationKey");
+const ViewVerification = () => import("@/admin/ViewVer");
 // const MentorProfile = () => import("@/admin/container/MentorProfile");
 
 
@@ -242,7 +243,10 @@ function configRoutes() {
           path:'verification',
           component: VerificationKey,
         },
-
+        {
+          path:'view_verification',
+          component: ViewVerification,
+        },
         {
           path: "main_view",
           component: MainView,
