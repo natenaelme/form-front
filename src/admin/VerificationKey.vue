@@ -39,10 +39,10 @@
             <tr v-for="(verification, index) in verification" :key="index">
               <th>{{ index + 1 }}</th>
               <th>
-                <p v-if="verification.workbook == 1">1</p>
-                <p v-if="verification.workbook == 2">1&2</p>
-                <p v-if="verification.workbook == 3">1,2&3</p>
-                <p v-if="verification.workbook == 4">All 4</p>
+                <p v-if="verification.workbook == 1">workbook 1</p>
+                <p v-if="verification.workbook == 2">workbook 1&2</p>
+                <p v-if="verification.workbook == 3"> workbook 1,2&3</p>
+                <p v-if="verification.workbook == 4">All 4 workbooks</p>
               </th>
               <th style="font-size: 2">{{ verification.key }}</th>
               `
