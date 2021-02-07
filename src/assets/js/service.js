@@ -10,7 +10,7 @@ Vue.use(VueAxios, axios)
 const imgUrl="https://api.cloudinary.com/v1_1/dhvxgn9xz/image/upload?upload_preset=sravrhin";
 // const apiUrl="https://breakthrogh.herokuapp.com/api/";
 const apiUrl="https://alphaworkbook.com/api/";
-// const apiUrl="http://localhost:3003/api/";
+// const apiUrl="http://localhost:3000/api/";
 const Habit = [
 "/question/habit", 
 "/question/how_to_build", 
@@ -93,6 +93,9 @@ export function TeamBuildingPages(){
 }
 export function logout(token){
     return (Vue.axios.post(apiUrl + '/users/logout'+'?'+'access_token=' + token ))
+}
+export function getterVerKey(type,workbook){
+    return(Vue.axios.get(apiUrl+'/verifications'+`?filter={"where":{"`+type+`":"` + workbook +`"}}`));
 }
 export function getterUsers(token,userType){
     return(Vue.axios.get(apiUrl+'/users'+`?filter={"where":{"userType":"` + userType +`",`+`"canAccess":`+ true + `}}`+'&access_token=' + token))
