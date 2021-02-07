@@ -9,6 +9,7 @@ import store from './store'
 import i18n from './i18n'
 import Vuelidate from 'vuelidate'
 
+
 Vue.config.performance = true
 Vue.use(Vuelidate)
 
@@ -21,6 +22,9 @@ router.beforeEach((to, from, next) => {
     next();
   }
   else if(to.name =='signup'){
+    next();
+  }
+  else if(to.name =='verify'){
     next();
   }
   else if(to.name != "login"){
