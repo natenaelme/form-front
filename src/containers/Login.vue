@@ -60,7 +60,10 @@ import Vue from "vue";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
+
+
 Vue.use(BootstrapVue);
+
 Vue.use(IconsPlugin);
 export default {
   data() {
@@ -113,7 +116,9 @@ export default {
                 console.log("user");
                 this.$router.replace("/question/main");
               } else if (!resps.data.canAccess) {
-                this.makeToast("danger", "Your Account has not been approved by admin");
+                this.$store.commit('set', ['user', resps.data]);
+                this.$store.commit('set', ['token', resp.data.id]);
+                this.$router.replace("/verify");
                 this.show = true;
               }
             } else if (resps.data.userType == "admin") {
@@ -162,6 +167,7 @@ export default {
     },
   },
   mounted() {
+    
     if (this.token) {
       getDataOfUsers("users/", this.id, this.token).then((resp) => {
         console.log(resp);
