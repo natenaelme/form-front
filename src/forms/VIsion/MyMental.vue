@@ -272,7 +272,9 @@ export default {
     },
     data() {
         return {
+            imageuploaded:true,
             form: {
+                
                 Education: '',
                 Knowlage: '',
                 Subject: '',
