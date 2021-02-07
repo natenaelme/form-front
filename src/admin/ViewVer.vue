@@ -13,11 +13,21 @@
       >submit</b-button
     >
     <div v-if="verification.length">
+      <br>
+      <br>
       <b-row>
         <b-col>
-          <b-button variant="success" @click="filter(true)">filter only used key</b-button>
-          <b-button variant="success" @click="filter(false)">filter never used key</b-button>
+          <b-button variant="primary" @click="filter(true)">filter only used key</b-button>
         </b-col>
+        <b-col>
+          <b-button variant="primary" @click="filter(false)">filter never used key</b-button>
+
+        </b-col>
+                <b-col>
+          <b-button variant="primary" @click="filter('all')">show all</b-button>
+
+        </b-col>
+        <br>
       </b-row>
       <div id="printMe">
         <table class="table">
@@ -33,10 +43,10 @@
             <tr v-for="(verification, index) in verification" :key="index">
               <th>{{ index + 1 }}</th>
               <th>
-                <p v-if="verification.workbook == 1">1</p>
-                <p v-if="verification.workbook == 2">1&2</p>
-                <p v-if="verification.workbook == 3">1,2&3</p>
-                <p v-if="verification.workbook == 4">All 4</p>
+                <p v-if="verification.workbook == 1">workbook 1</p>
+                <p v-if="verification.workbook == 2">workbook 1&2</p>
+                <p v-if="verification.workbook == 3">workbook 1,2&3</p>
+                <p v-if="verification.workbook == 4">All 4 workbooks</p>
               </th>
               <th>{{ verification.key }}</th>
               <th>
@@ -90,7 +100,8 @@ export default {
         this.notSelected = true;
       }
       if (this.selected) {
-        getterVerKey(this.selected).then((resp) => {
+        this.notSelected = false;
+        getterVerKey("workbook",this.selected).then((resp) => {
           console.log(resp.data);
           this.verification = resp.data;
           this.allverfi=resp.data;
@@ -116,7 +127,12 @@ export default {
     },
     filter(type){
       this.verification =this.allverfi;
-      this.verification = this.verification.filter(ver=>ver.used==type);
+      if (type != "all"){
+this.verification = this.verification.filter(ver=>ver.used==type);
+      }else{
+        this.verification =this.allverfi;
+      }
+      
     }
   },
 };
