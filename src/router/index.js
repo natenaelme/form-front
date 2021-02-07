@@ -37,6 +37,7 @@ const ActionPlan =() => import("@/forms/VIsion/ActionPlan");
 const home = () => import("@/forms/question");
 const HowToBuild = () => import("@/forms/HowToBuild");
 const SignIn = () => import("@/containers/Login");
+const Verify = () => import("@/containers/Verification");
 const SignUp = () => import("@/containers/SignUp");
 const Main = () => import("@/forms/Selector");
 const ProcessOfChange = () => import("@/forms/ProcessOfChange");
@@ -181,10 +182,16 @@ function configRoutes() {
       name: 'login'
     },
     {
+      path:"/verify",
+      component: Verify,
+      name : "verify"
+    },
+    {
       path: "/signup",
       component: SignUp,
       name: 'signup' 
     },
+
 
     
 
