@@ -5,14 +5,24 @@
       <b-col md="3"></b-col>
       <b-col md="6" v-if="next" class="view overlay">
         <img
+          v-if="!images.Health"
           style="margin-top: 46%; margin-left: -2%"
           @click="route('physical')"
           class="img-fluid image"
           src="../../assets/img/health.png"
           width="40%"
         />
+                <img
+          v-if="images.Health"
+          style="margin-top: 46%; margin-left: -2%"
+          @click="route('physical')"
+          class="img-fluid image"
+          src="../../assets/img/healthb.png"
+          width="40%"
+        />
 
         <img
+          v-if="!images.Spirtual"
           style="margin-left: -22%; margin-top: 21px"
           @click="route('spirtual')"
           class="image"
@@ -20,6 +30,15 @@
           width="40%"
         />
         <img
+          v-if="images.Spirtual"
+          style="margin-left: -22%; margin-top: 21px"
+          @click="route('spirtual')"
+          class="image"
+          src="../../assets/img/sprib.png"
+          width="40%"
+        />
+        <img
+          v-if="!images.Vision"
           style="margin-left: -7%; margin-top: 24px"
           @click="route('service')"
           class="image"
@@ -27,12 +46,22 @@
           width="40%"
         />
         <img
+          v-if="images.Vision"
+          style="margin-left: -7%; margin-top: 24px"
+          @click="route('service')"
+          class="image"
+          src="../../assets/img/vissionb.png"
+          width="40%"
+        />
+        <img
+
           style="margin-top: 61%; margin-left: -59%"
           class="image"
           src="../../assets/img/circle.png"
           width="40%"
         />
         <img
+          v-if="!images.Finance"
           style="margin-top: -50%; margin-left: 65%"
           @click="route('financial')"
           class="image"
@@ -40,6 +69,15 @@
           width="40%"
         />
         <img
+          v-if="images.Finance"
+          style="margin-top: -50%; margin-left: 65%"
+          @click="route('financial')"
+          class="image"
+          src="../../assets/img/finacalb.png"
+          width="40%"
+        />
+        <img
+          v-if="!images.Family || !images.Car || !images.House"
           style="margin-top: -19%; margin-left: 59%"
           @click="route('family')"
           class="image"
@@ -47,17 +85,43 @@
           width="40%"
         />
         <img
+          v-if="images.Family && images.Car && images.House"
+          style="margin-top: -19%; margin-left: 59%"
+          @click="route('family')"
+          class="image"
+          src="../../assets/img/familyb.png"
+          width="40%"
+        />
+        <img
+          v-if="!images.Socal"
           style="margin-top: -27%; margin-left: 31%"
           @click="route('socal_dream')"
           class="image"
           src="../../assets/img/socal.png"
           width="40%"
         />
+                <img
+          v-if="images.Socal"
+          style="margin-top: -27%; margin-left: 31%"
+          @click="route('socal_dream')"
+          class="image"
+          src="../../assets/img/socalb.png"
+          width="40%"
+        />
         <img
+          v-if="!images.Knowledge"          
           style="margin-top: -62%; margin-left: 3%"
           @click="route('my_mental')"
           class="image"
           src="../../assets/img/Knowlage.png"
+          width="40%"
+        />
+        <img
+          v-if="images.Knowledge"          
+          style="margin-top: -62%; margin-left: 3%"
+          @click="route('my_mental')"
+          class="image"
+          src="../../assets/img/Knowlageb.png"
           width="40%"
         />
       </b-col>
@@ -186,14 +250,15 @@ export default {
   mounted() {
     let pages = this.pages.split(",");
     console.log(pages[0]);
-
-    if (pages[0] >= 12) {
-      this.next = false;
-      let dataBase = "/users/getImages/";
+let dataBase = "/users/getImages/";
       getterIdForImage(dataBase, this.id, this.token).then((resp) => {
         this.images = resp.data.images;
+      
         console.log(this.images);
       });
+    if (pages[0] >= 12) {
+      this.next = false;
+      
     }
   },
   methods: {
