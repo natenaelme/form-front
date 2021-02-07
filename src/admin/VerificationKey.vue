@@ -50,7 +50,7 @@
           </tbody>
         </table>
       </div>
-      <p style="text-alignment: center">
+      <p style="text-align: center">
         <b-button name @click="print" variant="success">print</b-button>
       </p>
     </div>
