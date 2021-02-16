@@ -112,6 +112,7 @@ const ActionPlanView=()=> import("@/admin/Vission/ActionPlan");
 const MyNewMentalView=()=> import("@/admin/Vission/MyNewMental");
 const MentalBankView=()=> import("@/admin/Vission/Mentalbank");
 
+
 // Habit
 const HabitViewPage =() => import("@/admin/Habit/habit");
 const HowToBuildViewPage=() => import("@/admin/Habit/HowToBuild");
@@ -508,6 +509,8 @@ function configRoutes() {
         }
       },
       children: [
+        
+
         {
           path:'how_to_search',
           component: HowToSearch
