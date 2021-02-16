@@ -2,6 +2,8 @@
   "Common": {
     "Day": "Day",
     "Date": "Date",
+    "PowerFullProcess":"Powerful Process",
+    "HabitBuilding":"Habit Building",
     "Action": "Action :",
     "Visual": "Visual",
     "Gratitude": "Gratitude",
@@ -60,7 +62,7 @@
     "areNotSame":"The passwords are not the same",
     "Welcome":"Welcome Back!",
     "Vision":"Vision Workbook",
-    "MindProgramming":"Workbook Alpha Mind Programming",
+    "MindProgramming":"Alpha Mind Programming",
     "TeamBuilding":"Workbook Alpha Team Building And Leadership",
     "Home":"Home",
     "Selectpage":"Select Page To View User Answer",
