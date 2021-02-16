@@ -5,7 +5,7 @@
       <b-row>
         <a class="col-md-6 col-xl-3 mb-4" @click="routTo('Vision')">
           <div class="card">
-            <img src="@/assets/img/Vision.png" height="150em" />
+            <img src="@/assets/img/1 Cover page.jpg" height="150em" />
             <div class="shadow border-left-primary py-2">
               <div class="card-header" style="padding: 3px">
                 <h1
@@ -17,7 +17,7 @@
                     width: 100%;
                   "
                 >
-                  <br />{{ $t("Common.Vision") }}<br /><br />
+                  <br />{{ $t("Common.PowerFullProcess") }}<br /><br />
                 </h1>
               </div>
               <div class="card-body">
@@ -36,7 +36,7 @@
         </a>
         <a v-if="workBook > 1" class="col-md-6 col-xl-3 mb-4" @click="routTo('Habit')">
           <div class="card">
-            <img src="@/assets/img/habit.jpg" style="width: 100%" height="150em" />
+            <img src="@/assets/img/ZHABIT.jpg" style="width: 100%" height="150em" />
             <div class="shadow border-left-primary py-2">
               <div class="card-header" style="padding: 3px">
                 <h1
@@ -48,7 +48,7 @@
                     width: 100%;
                   "
                 >
-                  <br />{{ $t("Common.Habit") }}<br /><br />
+                  <br />{{ $t("Common.HabitBuilding") }}<br /><br />
                 </h1>
               </div>
               <div class="card-body">
@@ -78,7 +78,7 @@
         >
           <div class="card">
             <img
-              src="@/assets/img/reprogram-subconscious-mind.jpg"
+              src="@/assets/img/ZMENTAL.jpg"
               style="width: 100%"
               height="150em"
             />
