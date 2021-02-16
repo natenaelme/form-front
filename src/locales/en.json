@@ -52,6 +52,7 @@
     "Fund": "Fund",
     "LastFive":"Last Five Days Report",
     "Progress":"Daily Tasks",
+    "LastTask":"Your last daily task report",
     "Habit":"Workbook Alpha Habit Building",
     "Status":"status",
     "CreateAccount":"Create an Account!",
@@ -85,10 +86,10 @@
     "2ndQuestion": {
       "main": "2. Write a description of the person that you would like to be in the area that needs improvement.",
       "subQuestion1": "What are the traits, characteristics and benefits?",
-      "subQuestion2": "How would it feel to achieve that?",
+      "subQuestion2": "What did you feel when you achive it?",
       "subQuestion3": "How would your life improve? "
     },
-    "3rdQuestion": "3. Daily concentrate on the mental image of the person you want to be. Use imagery to help yourself create “knowns” of how it looks and feels to be that person.",
+    "3rdQuestion": "3. Daily concentrate on the mental image of the person you want to be. Use imaginary to help yourself create “knowns” of how it looks and feels to be that person.",
     "f,v,a": "Feeling, visualization, affirmation"
   },
   "How_To_Build": {
@@ -101,7 +102,7 @@
       "subQuestion2": "What I see",
       "subQuestion3": "What I feel and experience",
       "subQuestion4": "What I hear",
-      "subQuestion5": "Path of List Resistance"
+      "subQuestion5": "Path of Lest Resistance"
     },
     "MainHeader2": "2nd - Create Habit",
     "Header2": "The 3Rs of Habit Formation",
@@ -128,7 +129,7 @@
       "subQuestion4": "What will be your new feeling",
       "subQuestion5": "Required Resource"
     },
-    "MainHeader2": "How to Step from Concisous wrong to conscious wright",
+    "MainHeader2": "How to Step from Concisous wrong to conscious right",
     "Header2": "State what you do conscious wrong:",
     "Action2": " Believe, Keep on the imagination Process, Positive mental attitude habit.",
     "2ndQuestion": {
@@ -136,7 +137,7 @@
       "subQuestion2": "List down what you should do instead",
       "subQuestion3": "Expected challenges and how to overcome them"
     },
-    "MainHeader3": "How to Step from Conscious wright to unconcious wright", 
+    "MainHeader3": "How to Step from Conscious right to unconcious right", 
     "Header3": "State what you do conscious right:.",
     "Action3": " Keep on the imagination and action build goal setting habit :",
     "3rdQuestion": {
@@ -168,7 +169,7 @@
     "AlphaResponsibility": "Alpha Responsibility Work Book",
     "Detail": "Alpha Number One Wealth Health Gratitude Persistence Consistency Progress Billion USD Recruitment Prospecting Invitation Success Wealth Daily Opp Homparty Persistence Consistency Action  Believe Trust Love Peace Joy Success Wealth Health Gratitude Persistence",
     "1stQuestion": {
-      "main": "Measure what responsibility do shoulder today!",
+      "main": "Measure what responsibility you have on your shoulder!",
       "subQuestion1": "If I don’t give time?",
       "subQuestion2": "If I don’t give money?",
       "subQuestion3": "If I don’t give effort?",
@@ -180,7 +181,7 @@
       "subQuestion2": "Time to accomplish 100%",
       "subQuestion3": "Activities required to achieve it"
     },
-    "3rdQuestion": "Take 15 minutes in the morning 5 minutes mid day and 5 minutes at night and plan on that specific discipline and evaluate your activity. The discipline required"
+    "3rdQuestion": "Take 15 minutes ! In the morning 5 minutes, Mid day 5 minutes and 5 minutes at night and plan on that specific discipline and evaluate your activity. The discipline required"
   },
   "Gratitude_Journal": {
     "GratitudeJournal": "Gratitude Journal",
@@ -397,7 +398,7 @@
     "Header": "Which area of your life do you want to build belief? Remember what you have worked for but didn’t get the result is because of your belief system.",
     "1stQuestion": {
       "main": "STEP 1: Know what you want clearly: Knock it shall be open",
-      "subQuestion1": "Write is simple presnet and positive sentence:",
+      "subQuestion1": "Write in simple presnet and positive sentence:",
       "subQuestion2": "Put the picture equivalent to your desired result."
     },
     "2ndQuestion": "STEP 2: Focus on what you want consistently: As a man thinks in his heart so is he.",
@@ -427,7 +428,7 @@
       "subQuestion2": "Associate Massive pain if you don’t change",
       "subQuestion3": "Associate massive pleasure changing now"
     },
-    "3rdQuestion": "3. Stop the old limiting pattern. (madness is…)",
+    "3rdQuestion": "3. Stop the old limiting pattern. (madness is doing the same thing and expecting diffrent result)",
     "4thQuestion": "Create a new, Empowering alternative. (focus on pleasure not pain)",
     "5thQuestion": "1.Condition the new pattern until it is consistent.",
     "6thQuestion": {
@@ -607,7 +608,7 @@
     "Place":"Place",
     "Country":"Country And Area",
     "SocalLife":"Size Of Socal Life",
-    "PicterOfSocal":"Picter Of The Socal Activities",
+    "PicterOfSocal":"Picture Of The Socal Activities",
     "HowOften":"How Often",
     "Kinds":"Kinds Of Socal Events", 
     "InEvent":"In The Event"
@@ -617,7 +618,7 @@
     "Header":"1. My Mental Life Style Theme :",
     "Education":"Education Level",
     "Knowlage":"Knowlage Activities",
-    "Subject":"Subject And Arear",
+    "Subject":"Subject And Area",
     "Content":"Content Of Knowlage",
     "MentalEvent":"Kind Of Mental Events",
     "Picther":"Picther Of Mental Activitys"
@@ -685,7 +686,7 @@
   "GoalCommon":{
     "Goal":"My Goal",
     "Well":"Well Formed Goal",
-    "Detail":"Detail",
+    "Detail":"Goal Clearing Steps",
     "Process":"Process Target Activity",
     "FirstStep":"1st Step Action",
     "DeadLine":"Dead Line for 1st Action",
@@ -715,10 +716,10 @@
 
   "FinancialGoal":"Financial",
   "FamilyGoal":"Family",
-  "SocalGoal":"Socal",
+  "SocalGoal":"Social",
   "PhysicalGoal":"Physical",
   "SpritualGoal":"Spritual",
-  "VitionGoal":"Vition",
+  "VitionGoal":"Vision",
   "MentalGoal":"Mental"
   },
   "Ensure_The_Goal":{
@@ -746,13 +747,16 @@
     "PerHour":"per hour for “value events”listed below.with varying amounts for special activities listed.",
     "Value":"Value  events",
     "Hourly":"Hourly rate",
+    "Hours":"Hours",
+    "Deposit":"Deposit",
     "Flat":"Flat rate",
     "Example":"Example of value events:",
     "Present":"present job or business, reading and accumulating information, working on your mental bank. Searching for added income, mental and physical improvement time (exercise, classes, church meeting, etc.),any time used productively."
   },
   "Mental_Bank_Ledger":{
     "MentalBankLedger":"My new mental bank ledger",
-    "goal":"mental bank goal:",
+    "goal":"mental bank goal",
+    "Hours":"Hours",
    "Bank":"My mental bank",
    "Rate":"Rate",
    "Deposite":"Today’s deposite",
