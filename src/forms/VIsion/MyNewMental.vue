@@ -35,11 +35,12 @@
                         <th>
                             <b-form-input id="input-1" class="normalInput" style="font-size:12px" v-model="form.answer1[index].ValueEvents" type="text" required placeholder=""></b-form-input>
                         </th>
+                        
                         <th>
-                            <b-form-input id="input-1" class="normalInput" style="font-size:12px" v-model="form.answer1[index].HourlyRate" type="number" required placeholder=""></b-form-input>
+                            <b-form-input id="input-1" :disabled="form.answer1[index].FlatRate != ''" class="normalInput" style="font-size:12px" v-model="form.answer1[index].HourlyRate" type="number" required placeholder=""></b-form-input>
                         </th>
                         <th>
-                            <b-form-input id="input-1" class="normalInput" style="font-size:12px" v-model="form.answer1[index].FlatRate" type="number" required placeholder=""></b-form-input>
+                            <b-form-input id="input-1" :disabled="form.answer1[index].HourlyRate != ''" class="normalInput" style="font-size:12px" v-model="form.answer1[index].FlatRate" type="number" required placeholder=""></b-form-input>
                         </th>
 
                     </tr>
@@ -56,41 +57,7 @@
 
         <strong>{{ $t("My_New_Mental.Example") }}</strong>
         <p>{{$t("My_New_Mental.Present")}}</p>
-        <b-form-textarea id="textarea1" v-model="form.answer2" class="normalInput" placeholder="" rows="6" max-rows="6"></b-form-textarea>
-        <br>
-        <b-list-group-item class="tabel-responsive">
-
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th class="col-4" style="width: 50%;">{{ $t("My_New_Mental.Value") }}</th>
-                        <th scope="col">{{ $t("My_New_Mental.Hourly") }}</th>
-                        <th scope="col">{{ $t("My_New_Mental.Flat") }}</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="(item,index) in form.answer3" :key="index">
-                        <th>
-                            <b-form-input id="input-1" class="normalInput" style="font-size:12px" v-model="form.answer3[index].ValueEvents" type="text" required placeholder=""></b-form-input>
-                        </th>
-                        <th>
-                            <b-form-input id="input-1" class="normalInput" style="font-size:12px" v-model="form.answer3[index].HourlyRate" type="number" required placeholder=""></b-form-input>
-                        </th>
-                        <th>
-                            <b-form-input id="input-1" class="normalInput" style="font-size:12px" v-model="form.answer3[index].FlatRate" type="number" required placeholder=""></b-form-input>
-                        </th>
-
-                    </tr>
-                </tbody>
-            </table>
-            <b-col style="text-align:right;padding:0 !important">
-                <b-button variant="danger" v-on:click="form.answer3.push({                                        
-                    ValueEvents: '',
-                    HourlyRate: '',
-                    FlatRate: ''})">+</b-button>
-            </b-col>
-        </b-list-group-item>
+       
         <div class="position-relative row form-check">
             <div class="text-center">
                 <button class="btn btn-primary" @click="saveForm()">Save </button><br>
