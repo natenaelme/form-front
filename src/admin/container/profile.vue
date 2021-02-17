@@ -90,6 +90,12 @@
                                 <p style="color:red" v-if="!user.Approved">Your Answers Has not been Approved By Your Mentor</p>
                                 <p style="color:green" v-if="user.Approved">Your Answers Has been Approved By Your Mentor</p>
                             </div>
+                            <div class="card-body py-3" v-if="user.mentorMessage">
+                                <div class="card-body text-center shadow">
+Your Mentor Message : {{user.mentorMessage}}
+                                </div>
+                                
+                            </div>
                         </div>
                         <div class="card-body py-3" v-if="!user.mentors">
 
