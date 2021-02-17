@@ -1,5 +1,5 @@
 <template>
-<div>
+<div id="printMe">
     <h3 class="text-center">List of {{mentorName}} users</h3>
     <div class="table-responsive-lg">
         <table class="table">
@@ -41,11 +41,26 @@
 
             </tbody>
         </table>
+        <p style="text-align: center;">
+            <b-button @click="print()" variant="success">print</b-button>
+        </p>
     </div>
 </div>
 </template>
 
 <script>
+import Vue from "vue";
+import VueHtmlToPaper from "vue-html-to-paper";
+const options = {
+  name: "_blank",
+  specs: ["fullscreen=yes", "titlebar=yes", "scrollbars=yes"],
+
+  styles: [
+    "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css",
+  ],
+};
+Vue.use(VueHtmlToPaper, options);
+import "bootstrap-vue/dist/bootstrap-vue.css";
 import {
     getMentorsData,
     getVisionPages,
@@ -73,6 +88,10 @@ export default {
         })
     },
     methods: {
+            print() {
+      // Pass the element id here
+      this.$htmlToPaper("printMe");
+    },
         maxValue(WorkBook) {
             let max;
             if (WorkBook) {
