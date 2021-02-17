@@ -64,9 +64,16 @@
         </b-row>
         <b-row>
             Messge for Applicant
-              <b-form-textarea v-model="mentorMessage"></b-form-textarea>
+            
+              <b-form-textarea v-model="mentorMessage">
+                  
+              </b-form-textarea>
               
-              <b-button variant="success" @click="sendMessage()" style="float:right">send</b-button>
+              <b-button variant="success" @click="sendMessage()" style="float:right">send 
+                  <div v-if="messageSending" class="spinner-grow spinner-grow-sm" role="status">
+                    <span class="sr-only">Loading...</span>
+                    </div>
+                </b-button>
         </b-row>
 
     </b-list-group-item>
@@ -98,6 +105,7 @@ import {
     getMentors,
     getterMentors
 } from '../assets/js/service'
+import "bootstrap-vue/dist/bootstrap-vue.css";
 export default {
     components: {
         Habit,
@@ -105,6 +113,7 @@ export default {
     },
     data() {
         return {
+            messageSending:false,
             mentorMessage:null,
             value: 2,
             title: '',
@@ -172,25 +181,27 @@ export default {
         sendMessage(){
             let dataBase = "users/";
             let token = localStorage.getItem("token");
+            this.messageSending = true;
             this.user.data.mentorMessage = this.mentorMessage;
             console.log(this.mentorMessage);
             console.log(this.user.data);
                         patchDataId(this.user.data.id, dataBase, token, this.user.data).then((resp => {
                     this.user = resp;
 
-                    console.log("message");
-                    console.log(resp);
-                    this.makeToast("success", "You have successfully send your comment");
+                    this.messageSending = false;
+                    this.makeToast("success", "You have successfuly send the message");
 
                 }))
                 .catch(err => {
                     if (err.response) {
-                        // client received an error response (5xx, 4xx)
+                        this.messageSending = false;
                         this.makeToast("danger", "There is Some Error.Please Check your Form")
 
                     } else if (err.request) {
+                        this.messageSending = false;
                         this.makeToast("danger", "Connection Problem")
                     } else {
+                        this.messageSending = false;
                         this.makeToast("danger", "Some Error has Happened")
                     }
                 })
