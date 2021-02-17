@@ -62,6 +62,12 @@
             </b-col>
 
         </b-row>
+        <b-row>
+            Messge for Applicant
+              <b-form-textarea v-model="mentorMessage"></b-form-textarea>
+              
+              <b-button variant="success" @click="sendMessage()" style="float:right">send</b-button>
+        </b-row>
 
     </b-list-group-item>
     <b-list-group-item class="table-responsive">
@@ -99,6 +105,7 @@ export default {
     },
     data() {
         return {
+            mentorMessage:null,
             value: 2,
             title: '',
             selected: '',
@@ -118,7 +125,6 @@ export default {
         let id = localStorage.getItem('userToView');
         getterMentors(token, 'mentor').then(resp => {
             console.log('mentros');
-            console.log(resp)
 
             this.mentors = resp.data;
             console.log(this.mentors)
@@ -126,6 +132,7 @@ export default {
             getDataOfUsers('users/', id, token).then(
                 resp => {
                     this.user = resp;
+                    this.mentorMessage = resp.data.mentorMessage;
                     this.fullName = resp.data.firstName + ' ' + resp.data.lastName;
 
                     this.mentorId = resp.data.mentorId;
@@ -161,6 +168,33 @@ export default {
                 variant: variant,
                 solid: true
             })
+        },
+        sendMessage(){
+            let dataBase = "users/";
+            let token = localStorage.getItem("token");
+            this.user.data.mentorMessage = this.mentorMessage;
+            console.log(this.mentorMessage);
+            console.log(this.user.data);
+                        patchDataId(this.user.data.id, dataBase, token, this.user.data).then((resp => {
+                    this.user = resp;
+
+                    console.log("message");
+                    console.log(resp);
+                    this.makeToast("success", "You have successfully send your comment");
+
+                }))
+                .catch(err => {
+                    if (err.response) {
+                        // client received an error response (5xx, 4xx)
+                        this.makeToast("danger", "There is Some Error.Please Check your Form")
+
+                    } else if (err.request) {
+                        this.makeToast("danger", "Connection Problem")
+                    } else {
+                        this.makeToast("danger", "Some Error has Happened")
+                    }
+                })
+
         },
 
         approveUser() {
