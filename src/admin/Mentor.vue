@@ -16,6 +16,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Full Name</th>
                     <th scope="col">Email</th>
+                    <th scope="col">Level</th>
                     <th scope="col">Profile</th>
                     <th scope="col">View List Of Users</th>
                 </tr>
@@ -25,6 +26,7 @@
                     <th>{{index+1}}</th>
                     <th>{{user.firstName + " " + user.lastName}}</th>
                     <th>{{user.email}}</th>
+                    <th>{{"Level " +user.level}}</th>
                     <th><img :src="user.profileImage" class="rounded-circle" width="50em" height="50em" alt=""></th>
 
                     <th><button class="btn btn-outline-dark" @click="test(user)">View</button></th>
