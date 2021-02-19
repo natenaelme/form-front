@@ -4,9 +4,19 @@
     <b-container cols="5">
         <b-list-group>
             <b-list-group-item>
+                <b-col sm=3>
+                        {{ $t("My_House.MyHouse") }}
+
+                    </b-col>
+                                <b-col md=9 style="background-color:white">
+                        {{form.Title}}
+
+                    </b-col>
+                    <br>
                 <b-row>
                     <b-col sm=3>
                         {{ $t("My_House.Kind") }}
+
                     </b-col>
                     <b-col sm=9 style="background-color:white">
                         {{form.Kind}}

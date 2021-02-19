@@ -5,6 +5,11 @@
         <b-list-group>
             <b-list-group-item>
                 <strong>{{ $t("Socal_Dream.Header") }}</strong>
+              
+                                <b-col md=9 style="background-color:white">
+                        {{form.Title}}
+
+                    </b-col>
             </b-list-group-item>
             <b-list-group-item>
                 <b-row>

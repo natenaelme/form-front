@@ -283,8 +283,8 @@ export default {
     },
     data() {
         return {
+            fullName: localStorage.getItem("fullName"),
             form: {
-                fullName: localStorage.getItem("fullName"),
                 Title:'',
                 WhatService: '',
                 Where: '',

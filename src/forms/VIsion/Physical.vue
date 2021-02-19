@@ -236,7 +236,7 @@
                             </table>
                         </b-list-group-item>
                     </b-list-group-item>
-                </b-col>
+                </b-col>{{fullName + " : "+ new Date(Date.now())}}
             </b-list-group-item>
         </b-list-group>
         <div class="position-relative row form-check">
@@ -323,6 +323,8 @@ export default {
 
     data() {
         return {
+                            fullName: localStorage.getItem("fullName"),
+
             form: {
                 Title:'',
                 People: '',
