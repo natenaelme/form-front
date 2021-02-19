@@ -1,3 +1,92 @@
+<style>
+.small {
+
+    max-width: 600px;
+
+}
+
+.circle {
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+divs {
+    position: absolute;
+    left: 40px;
+    top: 40px;
+    width: 100px;
+    height: 100px;
+    background-color: lightgray;
+
+}
+
+.rotate {
+    background-color: transparent;
+
+    transform: rotate(45deg);
+}
+
+.rotates {
+    background-color: transparent;
+
+}
+
+.rotate45 {
+    background-color: transparent;
+
+    transform: rotate(-45deg);
+}
+
+.rotate90 {
+    background-color: transparent;
+
+    transform: rotate(90deg);
+}
+
+.rotate-90 {
+    background-color: transparent;
+
+    transform: rotate(-90deg);
+}
+
+.rotate-135 {
+    background-color: transparent;
+
+    transform: rotate(135deg);
+}
+
+.rotate-translate {
+    background-color: pink;
+    transform: rotate(45deg) translateX(180px);
+}
+
+.translate-rotate {
+    background-color: gold;
+    transform: translateX(180px) rotate(45deg);
+}
+
+#topDiv {
+    background-color: lightblue;
+    max-height: 50%;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+#insideDiv {
+    background-color: pink;
+    overflow-y: auto;
+}
+
+@media only screen and (max-width: 600px) {
+    width {
+        background-color: pink !important;
+    }
+}
+</style>
+
 <template>
 <div>
     <HeaderFile :FirstHeader="$t('Positive_Affirmation.PositiveAffirmation')" />
@@ -390,91 +479,3 @@ export default {
 };
 </script>
 
-<style>
-.small {
-
-    max-width: 600px;
-
-}
-
-.circle {
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-}
-
-divs {
-    position: absolute;
-    left: 40px;
-    top: 40px;
-    width: 100px;
-    height: 100px;
-    background-color: lightgray;
-
-}
-
-.rotate {
-    background-color: transparent;
-
-    transform: rotate(45deg);
-}
-
-.rotates {
-    background-color: transparent;
-
-}
-
-.rotate45 {
-    background-color: transparent;
-
-    transform: rotate(-45deg);
-}
-
-.rotate90 {
-    background-color: transparent;
-
-    transform: rotate(90deg);
-}
-
-.rotate-90 {
-    background-color: transparent;
-
-    transform: rotate(-90deg);
-}
-
-.rotate-135 {
-    background-color: transparent;
-
-    transform: rotate(135deg);
-}
-
-.rotate-translate {
-    background-color: pink;
-    transform: rotate(45deg) translateX(180px);
-}
-
-.translate-rotate {
-    background-color: gold;
-    transform: translateX(180px) rotate(45deg);
-}
-
-#topDiv {
-    background-color: lightblue;
-    max-height: 50%;
-    padding: 10px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-}
-
-#insideDiv {
-    background-color: pink;
-    overflow-y: auto;
-}
-
-@media only screen and (max-width: 600px) {
-    width {
-        background-color: pink !important;
-    }
-}
-</style>
