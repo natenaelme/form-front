@@ -27,7 +27,7 @@
     </p>
 
     <b-button style="float: right" variant="success" @click="submit()"
-      >submit</b-button
+      >Generate</b-button
     >
     <div v-if="verification.length">
       <div id="printMe">
@@ -66,7 +66,7 @@ import VueHtmlToPaper from "vue-html-to-paper";
 
 import "bootstrap-vue/dist/bootstrap-vue.css";
 
-const { posts } = require("../assets/js/service");
+const { postsVerification } = require("../assets/js/service");
 const options = {
   name: "_blank",
   specs: ["fullscreen=yes", "titlebar=yes", "scrollbars=yes"],
@@ -126,8 +126,8 @@ export default {
 
           this.verification.push({ workbook: this.selected, key: key });
         }
-        var database = "verifications";
-        posts(database, this.verification)
+        var database = "verifications/postVerifcation";
+        postsVerification(database, {"elements":this.verification})
           .then((resp) => {
             this.notSelected = false;
             this.noNotSelected = false;
