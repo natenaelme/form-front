@@ -28,8 +28,8 @@
                             <th scope="col">{{ $t("Common.Shelter") }}</th>
                             <th scope="col">{{ $t("Common.Cloth") }}</th>
                             <th scope="col">{{ $t("Common.Income") }}</th>
-                            <th scope="col">{{ $t("Common.Others") }}</th>
                             <th scope="col">{{ $t("Common.Family") }}</th>
+                            <th scope="col">{{ $t("Common.Others") }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -56,11 +56,12 @@
                                 <b-form-input id="input-1" style="font-size:12px" v-model="form.dontGiveTime.Income" type="text" required placeholder=""></b-form-input>
                             </td>
                             <td>
-                                <b-form-input id="input-1" style="font-size:12px" v-model="form.dontGiveTime.Others" type="text" required placeholder=""></b-form-input>
-                            </td>
-                            <td>
                                 <b-form-input id="input-1" style="font-size:12px" v-model="form.dontGiveTime.Family" type="text" required placeholder=""></b-form-input>
                             </td>
+                            <td>
+                                <b-form-input id="input-1" style="font-size:12px" v-model="form.dontGiveTime.Others" type="text" required placeholder=""></b-form-input>
+                            </td>
+                            
                         </tr>
                         <tr>
                             <th>{{ $t("Alpha_Responsibility.1stQuestion.subQuestion2") }}</th>
@@ -84,12 +85,13 @@
                             <td>
                                 <b-form-input id="input-1" style="font-size:12px" v-model="form.dontGiveMoney.Income" type="text" required placeholder=""></b-form-input>
                             </td>
+                                                        <td>
+                                <b-form-input id="input-1" style="font-size:12px" v-model="form.dontGiveMoney.Family" type="text" required placeholder=""></b-form-input>
+                            </td>
                             <td>
                                 <b-form-input id="input-1" style="font-size:12px" v-model="form.dontGiveMoney.Others" type="text" required placeholder=""></b-form-input>
                             </td>
-                            <td>
-                                <b-form-input id="input-1" style="font-size:12px" v-model="form.dontGiveMoney.Family" type="text" required placeholder=""></b-form-input>
-                            </td>
+
                         </tr>
                         <tr>
                             <th>{{ $t("Alpha_Responsibility.1stQuestion.subQuestion3") }}</th>
@@ -113,12 +115,13 @@
                             <td>
                                 <b-form-input id="input-1" style="font-size:12px" v-model="form.dontGiveEffort.Income" type="text" required placeholder=""></b-form-input>
                             </td>
+                             <td>
+                                <b-form-input id="input-1" style="font-size:12px" v-model="form.dontGiveEffort.Family" type="text" required placeholder=""></b-form-input>
+                            </td>
                             <td>
                                 <b-form-input id="input-1" style="font-size:12px" v-model="form.dontGiveEffort.Others" type="text" required placeholder=""></b-form-input>
                             </td>
-                            <td>
-                                <b-form-input id="input-1" style="font-size:12px" v-model="form.dontGiveEffort.Family" type="text" required placeholder=""></b-form-input>
-                            </td>
+                           
                         </tr>
                         <tr>
                             <th>{{ $t("Alpha_Responsibility.1stQuestion.subQuestion4") }}</th>
@@ -143,11 +146,12 @@
                                 <b-form-input id="input-1" style="font-size:12px" v-model="form.levelOfResponsibility.Income" type="text" required placeholder=""></b-form-input>
                             </td>
                             <td>
-                                <b-form-input id="input-1" style="font-size:12px" v-model="form.levelOfResponsibility.Others" type="text" required placeholder=""></b-form-input>
-                            </td>
-                            <td>
                                 <b-form-input id="input-1" style="font-size:12px" v-model="form.levelOfResponsibility.Family" type="text" required placeholder=""></b-form-input>
                             </td>
+                            <td>
+                                <b-form-input id="input-1" style="font-size:12px" v-model="form.levelOfResponsibility.Others" type="text" required placeholder=""></b-form-input>
+                            </td>
+                            
                         </tr>
 
                     </tbody>
