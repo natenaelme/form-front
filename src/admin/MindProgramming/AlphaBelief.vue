@@ -12,7 +12,7 @@
             </b-list-group-item>
             <b-list-group-item>
                 <strong>{{ $t("Alpha_Belief.1stQuestion.main") }}</strong>
-            </b-list-group-item>
+            </b-list-group-item> 
             <b-list-group-item>
                 <b-row>
                     <b-col md="6" style="background-color:white">
@@ -23,8 +23,9 @@
                     </b-col>
                     <b-col md="6">
                         {{ $t("Alpha_Belief.1stQuestion.subQuestion2") }}
-                        <div style="background-color:white">
-                            <label>{{form.answerForq1.subAnswer2}}</label>
+                        
+                        <div class="col-sm-12">
+                            <img :src="form.answerForq1.subAnswer2" width=100% class="tumbline" alt="">
                         </div>
                     </b-col>
                 </b-row>

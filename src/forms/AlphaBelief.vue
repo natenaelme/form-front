@@ -4,7 +4,7 @@
     <HeaderFile :FirstHeader="$t('Alpha_Belief.AlphaBelief')" />
     <b-container cols="5">
         <b-list-group>
-            <b-list-group-item>
+            <b-list-group-item> 
                 <small>{{ $t("Alpha_Belief.Detail") }}</small>
             </b-list-group-item>
             <b-list-group-item>
@@ -22,8 +22,11 @@
                     </b-col>
                     <b-col md="6">
                         {{ $t("Alpha_Belief.1stQuestion.subQuestion2") }}
-                        <b-form-textarea id="textarea3" v-model="form.answerForq1.subAnswer2" placeholder="Enter something..." rows="8" max-rows="10">
-                        </b-form-textarea>
+                                                    
+                            <vue-dropzone ref="myVueDropzone" id="dropzone" @vdropzone-success="vsuccess" :options="vdropzoneOptions"></vue-dropzone>
+                            <div v-if="imageNotUploaded" style="color:red" class="text-center">
+                                the image is not uploaded
+                            </div>
                     </b-col>
                 </b-row>
 
@@ -111,18 +114,22 @@
 
 <script>
 import HeaderFile from '../containers/HeaderFile'
+import vue2Dropzone from "vue2-dropzone";
+import "vue2-dropzone/dist/vue2Dropzone.min.css";
 const {
-
+getUrl,
     posts,
     getUserData,
     patchData
 } = require('../assets/js/service')
 export default {
     components: {
-        HeaderFile
+        HeaderFile,
+        vueDropzone: vue2Dropzone
     },
     data() {
         return {
+            imageNotUploaded : false,
             form: {
                 answerForq1: {
                     subAnswer1: '',
@@ -135,8 +142,19 @@ export default {
                 },
                 Daily_Rep: [],
                 userId: localStorage.getItem("userId"),
+                
             },
-
+vdropzoneOptions: {
+                url: getUrl(),
+                thumbnailWidth: 150,
+                maxFilesize: 3.5,
+                addRemoveLinks: true,
+                maxFiles: 1,
+                dictDefaultMessage: "<i class='fa fa-cloud-upload'></i> UPLOAD PICTURE",
+                headers: {
+                    "X-Requested-With": "XMLHttpRequest",
+                },
+            },
             show: true,
             submited: false,
             token: localStorage.getItem("token"),
@@ -164,6 +182,10 @@ export default {
             })
     },
     methods: {
+                vsuccess(file, response) {
+
+            this.form.answerForq1.subAnswer2 = response.url
+        },
         makeToast(variant, message) {
             this.$bvToast.toast(message, {
                 title: variant,
@@ -175,7 +197,9 @@ export default {
             let dataBase = "/AlphaBeliefs";
             this.show = false;
             console.log(this.show);
+            if(this.form.answerForq1.subAnswer2){
             if (this.edit) {
+                this.imageNotUploaded = false;
                 patchData(dataBase, this.token, this.form).then(resp => {
                         console.log(resp);
                         this.makeToast("success", "success fully edited your form");
@@ -228,6 +252,11 @@ export default {
                         }
                     })
             }
+            }else{
+                this.imageNotUploaded = true;
+                this.show = true;
+            }
+
         }
 
     },
