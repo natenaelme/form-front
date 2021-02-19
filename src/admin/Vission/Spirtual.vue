@@ -5,6 +5,10 @@
         <b-list-group>
             <b-list-group-item>
                 <strong>{{ $t("Spirtual.Header") }}</strong>
+                <b-col md=9 style="background-color:white">
+                        {{form.Title}}
+
+                    </b-col>
             </b-list-group-item>
             <b-list-group-item>
                 <b-row>
@@ -215,6 +219,7 @@
                     </b-list-group-item>
                 </b-col>
             </b-list-group-item>
+            
         </b-list-group>
 
     </b-container>

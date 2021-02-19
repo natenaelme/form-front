@@ -4,6 +4,21 @@
     <b-container cols="5">
       <b-list-group>
         <b-list-group-item>
+                    <b-row>
+            <b-col md="4">
+              <strong>{{ $t("My_House.MyHouse") }}</strong>
+            </b-col>
+            <b-col md="8">
+              <b-form-input
+                id="input-1"
+                style="font-size: 12px"
+                v-model="form.Title"
+                type="text"
+                required
+                placeholder=""
+              ></b-form-input>
+            </b-col>
+          </b-row><br>
           <b-row>
             <b-col md="3">
               {{ $t("My_House.Kind") }}
@@ -326,6 +341,7 @@
               </b-list-group-item>
             </b-list-group-item>
           </b-col>
+          {{fullName + " : "+ new Date(Date.now())}}
         </b-list-group-item>
       </b-list-group>
       <div class="position-relative row form-check">
@@ -364,6 +380,7 @@ export default {
   data() {
     return {
       form: {
+        fullName: localStorage.getItem("fullName"),Title:"",
         Kind: "",
         CompoundSize: "",
         SizeOfTheHouse: "",

@@ -4,7 +4,21 @@
     <b-container cols="5">
         <b-list-group>
             <b-list-group-item>
-                <strong>{{ $t("Physical.Header") }}</strong>
+                          <b-row>
+            <b-col md="4">
+              <strong>{{ $t("Physical.Header") }}</strong>
+            </b-col>
+            <b-col md="8">
+              <b-form-input
+                id="input-1"
+                style="font-size: 12px"
+                v-model="form.Title"
+                type="text"
+                required
+                placeholder=""
+              ></b-form-input>
+            </b-col>
+          </b-row>
             </b-list-group-item>
             <b-list-group-item>
                 <b-row>
@@ -310,6 +324,7 @@ export default {
     data() {
         return {
             form: {
+                Title:'',
                 People: '',
                 Place: '',
                 Country: '',

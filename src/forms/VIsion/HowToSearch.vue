@@ -35,7 +35,9 @@
           <strong>{{ $t("How_To_Search.3rdQuestion.Header") }}</strong>
         </b-list-group-item>
         <b-list-group-item>
-          {{ $t("How_To_Search.3rdQuestion.main") }}
+          {{ $t("How_To_Search.3rdQuestion.main") }}<br>
+                          <strong>{{ $t("How_To_Search.3rdQuestion.mainBoald") }}</strong> <br>
+          {{ $t("How_To_Search.3rdQuestion.mainQestion") }}
           <b-form-textarea
             id="textarea1"
             v-model="form.answerForq3"
