@@ -232,7 +232,7 @@ export default {
             TeamBuilding: '',
             workBook: localStorage.getItem('workBook'),
             vdropzoneOptions: {
-                url: getUrl() + "/containers/imags/upload",
+                url: getUrl(),
                 thumbnailWidth: 150,
                 maxFilesize: 3.5,
                 addRemoveLinks: true,
