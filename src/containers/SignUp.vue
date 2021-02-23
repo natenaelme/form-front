@@ -259,8 +259,8 @@ export default {
         },
         vsuccess(file, response) {
             console.log(response);
-            console.log(response.url);
-            this.user.profileImage = response.url
+            console.log(response.secure_url);
+            this.user.profileImage = response.secure_url
 
         },
 

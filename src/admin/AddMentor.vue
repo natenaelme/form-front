@@ -326,7 +326,7 @@ export default {
       console.log("file upload");
       console.log(response);
 
-      this.user.profileImage = response.url;
+      this.user.profileImage = response.secure_url;
       console.log(this.user.profileImage);
     },
   },

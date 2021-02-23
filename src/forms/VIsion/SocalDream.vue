@@ -521,7 +521,7 @@ export default {
   },
   methods: {
     vsuccess(file, response) {
-      this.form.PictureOfSocal = response.url;
+      this.form.PictureOfSocal = response.secure_url;
     },
     makeToast(variant, message) {
       this.$bvToast.toast(message, {

@@ -458,7 +458,7 @@ export default {
   },
   methods: {
     vsuccess(file, response) {
-      this.form.PictureOfTheHouse = response.url;
+      this.form.PictureOfTheHouse = response.secure_url
     },
 
     makeToast(variant, message) {

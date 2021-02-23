@@ -533,7 +533,7 @@ export default {
   },
   methods: {
     vsuccess(file, response) {
-      this.form.PictureOfSpirtual = response.url;
+      this.form.PictureOfSpirtual = response.secure_url;
     },
     makeToast(variant, message) {
       this.$bvToast.toast(message, {

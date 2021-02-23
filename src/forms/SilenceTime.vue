@@ -203,7 +203,7 @@ export default {
         vsuccess(file, response) {
             console.log(response);
 
-            this.form.goalImage = response.url
+            this.form.goalImage = response.secure_url
         },
         makeToast(variant, message) {
             this.$bvToast.toast(message, {

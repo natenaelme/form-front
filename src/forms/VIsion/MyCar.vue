@@ -314,7 +314,7 @@ export default {
     methods: {
         vsuccess(file, response) {
 
-            this.form.PictureOfCar = response.url
+            this.form.PictureOfCar = response.secure_url
         },
         makeToast(variant, message) {
             this.$bvToast.toast(message, {

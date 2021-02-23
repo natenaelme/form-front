@@ -369,7 +369,7 @@ export default {
     methods: {
         vsuccess(file, response) {
 
-            this.form.PictureOfFamily = response.url
+            this.form.PictureOfFamily = response.secure_url
         },
         makeToast(variant, message) {
             this.$bvToast.toast(message, {

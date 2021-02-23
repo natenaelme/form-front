@@ -357,9 +357,8 @@ export default {
                 })
         },
         vsuccess(file, response) {
-            console.log(response);
-            console.log(response.result.files.file[0].name);
-            this.user.profileImage = response.url;
+            console.log(response)
+            this.user.profileImage = response.secure_url;
             patchDataId(this.id, 'users/', this.token, this.user).then(resp => {
 
                     localStorage.setItem('profileImage', resp.data.profileImage);

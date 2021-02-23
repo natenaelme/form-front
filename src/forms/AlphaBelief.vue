@@ -184,7 +184,7 @@ vdropzoneOptions: {
     methods: {
                 vsuccess(file, response) {
 
-            this.form.answerForq1.subAnswer2 = response.url
+            this.form.answerForq1.subAnswer2 = response.secure_url
         },
         makeToast(variant, message) {
             this.$bvToast.toast(message, {

@@ -392,7 +392,7 @@ export default {
     methods: {
         vsuccess(file, response) {
 
-            this.form.PictureOfPhysical = response.url
+            this.form.PictureOfPhysical = response.secure_url
         },
         makeToast(variant, message) {
             this.$bvToast.toast(message, {
