@@ -10,7 +10,8 @@ Vue.use(VueAxios, axios)
 const imgUrl="https://api.cloudinary.com/v1_1/dhvxgn9xz/image/upload?upload_preset=sravrhin";
 // const apiUrl="https://breakthrogh.herokuapp.com/api/";
 // const apiUrl="https://alphaworkbook.com:/api/";
-const apiUrl="http://5.79.66.86:54141/api/";
+// const apiUrl = "http://localhost:3000/api/";
+const apiUrl="https://5.79.66.86:54141/api/";
 const Habit = [
 "/question/habit", 
 "/question/how_to_build", 
@@ -127,6 +128,10 @@ export function getUserDataInclude(include,id,token){
 }
 export function getUserDataMentor(dataBase,id,token){
     return(Vue.axios.get(apiUrl+"users/"+id+'?filter={"include":"mentors"}'+'&access_token=' + token))
+}
+export function Login(data){
+    console.log("test Login");
+    return(Vue.axios.post(apiUrl+"users/login"+'?include=User',data))
 }
 export function getUserDataSingleMentor(id,token){
     return(Vue.axios.get(apiUrl+"mentors/"+id+'?'+'access_token=' + token))
