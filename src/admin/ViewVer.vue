@@ -89,7 +89,7 @@
 </template>
 <script>
 import Vue from "vue";
-const { getterVerKey,getters,getterVerification} = require("../assets/js/service");
+const { getterVerKey,getters,PostVerification} = require("../assets/js/service");
 import VueHtmlToPaper from "vue-html-to-paper";
 const options = {
   name: "_blank",
@@ -164,7 +164,7 @@ export default {
       let database = "users/getVerBnDate";
       if(this.filterData.StartingDate && this.filterData.EndDate){
         this.incorectDate = false;
-      getterVerification(database,localStorage.getItem('token'),this.filterData).then(resp=>{
+      PostVerification(database,localStorage.getItem('token'),this.filterData).then(resp=>{
         console.log(resp);
         this.verification = resp.data.responce;
         this.allverfi=resp.data.responce;

@@ -115,11 +115,12 @@ export function filterverbyDate(dataBase,id,token){
     return(Vue.axios.get(apiUrl+dataBase+id+'?'+'access_token=' + token))
 }
 export function getterIdForImage(dataBase,id,token){
-    return(Vue.axios.get(apiUrl+dataBase+'?id='+id+'&access_token=' + token))
+    return(Vue.axios.get(apiUrl+dataBase+'?id='+id+'&access_token=' + token)) 
 }
-export function getterVerification(dataBase,token,data){
+export function PostVerification(dataBase,token,data){
     return(Vue.axios.post(apiUrl+dataBase+'?'+'access_token=' + token + '&Data='+JSON.stringify(data)))
 }
+
 export function getUserData(dataBase,id,token){
     return(Vue.axios.get(apiUrl+"users/"+id+dataBase+'?'+'access_token=' + token))
 }
