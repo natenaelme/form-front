@@ -54,7 +54,7 @@
 </template>
 
 <script>
-const { posts, getterId, setUserInfo, getUserInfo, getDataOfUsers } = require("../assets/js/service");
+const {Login, posts, getterId, setUserInfo, getUserInfo, getDataOfUsers } = require("../assets/js/service");
 
 import Vue from "vue";
 import "bootstrap/dist/css/bootstrap.css";
@@ -91,64 +91,65 @@ export default {
     login() {
       this.show = false;
 
-      posts("users/login", this.form)
+      Login(this.form)
         .then((resp) => {
-          console.log(resp);
+          console.log("loginInfor")
+          console.log(resp.data.user);
 
-          getterId("users/", resp.data.userId, resp.data.id).then((resps) => {
-            console.log(resps);
+          let resps = resp.data.user;
 
-            setUserInfo(resp.data.id, resps.data.userType, resps.data.firstName, resps.data.lastName);
+            setUserInfo(resp.data.id, resps.userType, resps.firstName, resps.lastName);
             console.log(getUserInfo());
 
-            if (resps.data.userType == "user") {
-              if (resps.data.canAccess) {
+            if (resps.userType == "user") {
+
+              if (resps.canAccess) {
                 localStorage.setItem("token", resp.data.id);
                 localStorage.setItem("userId", resp.data.userId);
-                localStorage.setItem("profileImage", resps.data.profileImage);
-                localStorage.setItem("userType", resps.data.userType);
-                localStorage.setItem("fullName", resps.data.firstName + " " + resps.data.lastName);
-                localStorage.setItem("progress", resps.data.progress);
-                localStorage.setItem("pages", resps.data.pages);
-                localStorage.setItem("workBook", resps.data.workBook);
+                localStorage.setItem("profileImage", resps.profileImage);
+                localStorage.setItem("userType", resps.userType);
+                localStorage.setItem("fullName", resps.firstName + " " + resps.lastName);
+                localStorage.setItem("progress", resps.progress);
+                localStorage.setItem("pages", resps.pages);
+                localStorage.setItem("workBook", resps.workBook);
                 this.show = true;
                 this.makeToast("success", "Sucessfull login");
                 console.log("user");
                 this.$router.replace("/question/main");
-              } else if (!resps.data.canAccess) {
-                this.$store.commit('set', ['user', resps.data]);
+              } else if (!resps.canAccess) {
+                this.$store.commit('set', ['user', resps]);
                 this.$store.commit('set', ['token', resp.data.id]);
                 this.$router.replace("/verify");
                 this.show = true;
               }
-            } else if (resps.data.userType == "admin") {
-              console.log(resps.data.profileImage);
+            } else if (resps.userType == "admin") {
+              console.log(resps.profileImage);
               localStorage.setItem("token", resp.data.id);
               localStorage.setItem("userId", resp.data.userId);
-              localStorage.setItem("profileImage", resps.data.profileImage);
-              localStorage.setItem("userType", resps.data.userType);
-              localStorage.setItem("fullName", resps.data.firstName + " " + resps.data.lastName);
-              localStorage.setItem("progress", resps.data.progress);
-              localStorage.setItem("pages", resps.data.pages);
-              localStorage.setItem("workBook", resps.data.workBook);
+              localStorage.setItem("profileImage", resps.profileImage);
+              localStorage.setItem("userType", resps.userType);
+              localStorage.setItem("fullName", resps.firstName + " " + resps.lastName);
+              localStorage.setItem("progress", resps.progress);
+              localStorage.setItem("pages", resps.pages);
+              localStorage.setItem("workBook", resps.workBook);
               this.show = true;
               this.makeToast("success", "Sucessfull login");
               this.$router.replace("/admin/view");
-            } else if (resps.data.userType == "mentor") {
+            } else if (resps.userType == "mentor") {
               console.log("mentor");
               localStorage.setItem("token", resp.data.id);
               localStorage.setItem("userId", resp.data.userId);
-              localStorage.setItem("profileImage", resps.data.profileImage);
-              localStorage.setItem("userType", resps.data.userType);
-              localStorage.setItem("fullName", resps.data.firstName + " " + resps.data.lastName);
-              localStorage.setItem("progress", resps.data.progress);
-              localStorage.setItem("pages", resps.data.pages);
-              localStorage.setItem("workBook", resps.data.workBook);
+              localStorage.setItem("profileImage", resps.profileImage);
+              localStorage.setItem("userType", resps.userType);
+              localStorage.setItem("fullName", resps.firstName + " " + resps.lastName);
+              localStorage.setItem("progress", resps.progress);
+              localStorage.setItem("pages", resps.pages);
+              localStorage.setItem("workBook", resps.workBook);
               this.show = true;
               this.makeToast("success", "Sucessfull login");
               this.$router.replace("/admin/view");
             }
-          });
+         
         })
         .catch((err) => {
           if (err.response) {
