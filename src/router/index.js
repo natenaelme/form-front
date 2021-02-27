@@ -38,6 +38,7 @@ const home = () => import("@/forms/question");
 const HowToBuild = () => import("@/forms/HowToBuild");
 const SignIn = () => import("@/containers/Login");
 const Verify = () => import("@/containers/Verification");
+const Payment = () => import("@/containers/PaymentOption");
 const SignUp = () => import("@/containers/SignUp");
 const Main = () => import("@/forms/Selector");
 const ProcessOfChange = () => import("@/forms/ProcessOfChange");
@@ -186,6 +187,11 @@ function configRoutes() {
       path:"/verify",
       component: Verify,
       name : "verify"
+    },
+    {
+      path:"/payment",
+      component: Payment,
+      name : "payment"
     },
     {
       path: "/signup",

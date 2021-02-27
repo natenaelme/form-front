@@ -1,5 +1,10 @@
 {
   "Common": {
+    "Payment":"Payment Options",
+    "PaymentKey":"Payment Verification Key",
+    "PaymentKeyDetail":"If you have payment verification key you can activate your account using the key.",
+    "UploadDepositInformation":"Upload Deposit Information",
+    "DepositDetail": "If you have make a deposit to a bank you can upload the transactionl information and wait for verification key",
     "Day": "Day",
     "Date": "Date",
     "PowerFullProcess":"Powerful Process",
