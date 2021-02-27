@@ -41,7 +41,6 @@
                           name="verification"
                         />
                       </div>
-                      
 
                       <hr />
                     </form>
@@ -77,11 +76,12 @@
   </div>
 </template>
 <script>
-const { getterVerKey, patchDataId } = require("../assets/js/service");
+const { PostVerification, patchDataId } = require("../assets/js/service");
 import "bootstrap-vue/dist/bootstrap-vue.css";
 
 export default {
   mounted() {
+    
     console.log(this.$store.state.user);
     this.user = this.$store.state.user;
     this.token = this.$store.state.token;
@@ -108,115 +108,152 @@ export default {
     verify() {
       this.show = false;
       if (this.verification) {
-        getterVerKey("key", this.verification)
-          .then((resp) => {
-            if (resp.data.length > 0) {
-              console.log(resp);
-
-              if (resp.data[0].used) {
-                this.show = true;
-                this.makeToast(
-                  "danger",
-                  "this verification key has been used before"
-                );
-              } else {
-                console.log("sssssssssssssssssaaaaaaaaaaaaa");
-
-                var data = {
-                  canAccess: true,
-                  workBook: resp.data[0].workbook,
-                  verificationId: resp.data[0].id,
-                };
-                patchDataId(this.user.id, "users/", this.token, data)
-                  .then((resps) => {
-                    console.log(resps.data);
-                    var verData = {
-                      used: true,
-                      userId: resps.data.id,
-                    };
-                    patchDataId(
-                      resp.data[0].id,
-                      "verifications/",
-                      this.token,
-                      verData
-                    )
-                      .then((responce) => {
-                        localStorage.setItem("token", this.token);
-                        localStorage.setItem("userId", resps.data.id);
-                        localStorage.setItem(
-                          "profileImage",
-                          resps.data.profileImage
-                        );
-                        localStorage.setItem("userType", resps.data.userType);
-                        localStorage.setItem(
-                          "fullName",
-                          resps.data.firstName + " " + resps.data.lastName
-                        );
-                        localStorage.setItem("progress", resps.data.progress);
-                        localStorage.setItem("pages", resps.data.pages);
-                        localStorage.setItem("workBook", resps.data.workBook);
-
-                        this.$router.replace("/question/main");
-                        this.show=true;
-                        this.makeToast(
-                          "success",
-                          "Dear " +
-                            resp.data.firstName +
-                            " you have success Verified Your Account"
-                        );
-                      })
-                      .catch((err) => {
-                        if (err.response) {
-                          // client received an error response (5xx, 4xx)
-                          this.makeToast(
-                            "danger",
-                            "There is Some Error.Please Check your Form"
-                          );
-                          this.show=true;
-                        } else if (err.request) {
-                          this.makeToast("danger", "Connection Problem");
-                          this.show=true;
-                        } else {
-                          this.makeToast("danger", "Some Error has Happened");
-                          this.show=true;
-                        }
-                      });
-                  })
-                  .catch((err) => {
-                    if (err.response) {
-                      // client received an error response (5xx, 4xx)
-                      this.makeToast(
-                        "danger",
-                        "There is Some Error.Please Check your Form"
-                      );
-                      this.show=true;
-                    } else if (err.request) {
-                      this.makeToast("danger", "Connection Problem");
-                      this.show=true;
-                    } else {
-                      this.makeToast("danger", "Some Error has Happened");
-                      this.show=true;
-                    }
-                  });
-              }
+        let database = "/verifications/verifyUser";
+        let data = {
+          id: this.user.id,
+          verification: this.verification,
+        };
+        PostVerification(database, this.token, data).then(
+          (resps) => {
+            console.log(resps.data.responce);
+            if (resps.data.responce.problem != null || resps.data.responce.problem != undefined) {
+              console.log("problem");
+              this.show=true;
+              this.makeToast("danger", resps.data.responce.problem);
             } else {
-              this.show = true;
-              this.makeToast("danger", "this verification key dosn't exist");
-            }
-          })
-          .catch((err) => {
-            if (err.response) {
-              // client received an error response (5xx, 4xx)
-              this.makeToast(
-                "danger",
-                "There is Some Error.Please Check your Form"
+              
+              localStorage.setItem("token", this.token);
+              localStorage.setItem("userId", resps.data.responce.id);
+              localStorage.setItem("profileImage", resps.data.responce.profileImage);
+              localStorage.setItem("userType", resps.data.responce.userType);
+              localStorage.setItem(
+                "fullName",
+                resps.data.responce.firstName + " " + resps.data.responce.lastName
               );
-            } else if (err.request) {
-              this.makeToast("danger", "Connection Problem");
-            } else {
-              this.makeToast("danger", "Some Error has Happened");
+              localStorage.setItem("progress", resps.data.responce.progress);
+              localStorage.setItem("pages", resps.data.responce.pages);
+              localStorage.setItem("workBook", resps.data.responce.workBook);
+
+              this.$router.replace("/question/main");
+              this.show = true;
+              this.makeToast(
+                "success",
+                "Dear " +
+                  resps.data.firstName +
+                  " you have success Verified Your Account"
+              );
             }
-          });
+          }
+        );
+        // getterVerKey("key", this.verification)
+        //   .then((resp) => {
+        //     if (resp.data.length > 0) {
+        //       console.log(resp);
+
+        //       if (resp.data[0].used) {
+        //         this.show = true;
+        //         this.makeToast(
+        //           "danger",
+        //           "this verification key has been used before"
+        //         );
+        //       } else {
+        //         console.log("sssssssssssssssssaaaaaaaaaaaaa");
+
+        //         var data = {
+        //           canAccess: true,
+        //           workBook: resp.data[0].workbook,
+        //           verificationId: resp.data[0].id,
+        //         };
+        //         patchDataId(this.user.id, "users/", this.token, data)
+        //           .then((resps) => {
+        //             console.log(resps.data);
+        //             var verData = {
+        //               used: true,
+        //               userId: resps.data.id,
+        //             };
+        //             patchDataId(
+        //               resp.data[0].id,
+        //               "verifications/",
+        //               this.token,
+        //               verData
+        //             )
+        //               .then((responce) => {
+        //                 localStorage.setItem("token", this.token);
+        //                 localStorage.setItem("userId", resps.data.id);
+        //                 localStorage.setItem(
+        //                   "profileImage",
+        //                   resps.data.profileImage
+        //                 );
+        //                 localStorage.setItem("userType", resps.data.userType);
+        //                 localStorage.setItem(
+        //                   "fullName",
+        //                   resps.data.firstName + " " + resps.data.lastName
+        //                 );
+        //                 localStorage.setItem("progress", resps.data.progress);
+        //                 localStorage.setItem("pages", resps.data.pages);
+        //                 localStorage.setItem("workBook", resps.data.workBook);
+
+        //                 this.$router.replace("/question/main");
+        //                 this.show=true;
+        //                 this.makeToast(
+        //                   "success",
+        //                   "Dear " +
+        //                     resp.data.firstName +
+        //                     " you have success Verified Your Account"
+        //                 );
+        //               })
+        //               .catch((err) => {
+        //                 if (err.response) {
+        //                   // client received an error response (5xx, 4xx)
+        //                   this.makeToast(
+        //                     "danger",
+        //                     "There is Some Error.Please Check your Form"
+        //                   );
+        //                   this.show=true;
+        //                 } else if (err.request) {
+        //                   this.makeToast("danger", "Connection Problem");
+        //                   this.show=true;
+        //                 } else {
+        //                   this.makeToast("danger", "Some Error has Happened");
+        //                   this.show=true;
+        //                 }
+        //               });
+        //           })
+        //           .catch((err) => {
+        //             if (err.response) {
+        //               // client received an error response (5xx, 4xx)
+        //               this.makeToast(
+        //                 "danger",
+        //                 "There is Some Error.Please Check your Form"
+        //               );
+        //               this.show=true;
+        //             } else if (err.request) {
+        //               this.makeToast("danger", "Connection Problem");
+        //               this.show=true;
+        //             } else {
+        //               this.makeToast("danger", "Some Error has Happened");
+        //               this.show=true;
+        //             }
+        //           });
+        //       }
+        //     } else {
+        //       this.show = true;
+        //       this.makeToast("danger", "this verification key dosn't exist");
+        //     }
+        //   })
+        //   .catch((err) => {
+        //     if (err.response) {
+        //       // client received an error response (5xx, 4xx)
+        //       this.makeToast(
+        //         "danger",
+        //         "There is Some Error.Please Check your Form"
+        //       );
+        //     } else if (err.request) {
+        //       this.makeToast("danger", "Connection Problem");
+        //     } else {
+        //       this.makeToast("danger", "Some Error has Happened");
+        //     }
+        //   });
       }
     },
   },
