@@ -119,7 +119,7 @@ export default {
               } else if (!resps.canAccess) {
                 this.$store.commit('set', ['user', resps]);
                 this.$store.commit('set', ['token', resp.data.id]);
-                this.$router.replace("/verify");
+                this.$router.replace("/payment");
                 this.show = true;
               }
             } else if (resps.userType == "admin") {
