@@ -28,7 +28,7 @@
               </b-row>
             </b-card>
           </b-col>
-          <b-col md="6" sm="12">
+          <b-col md="6" sm="12" @click="routeTo('/deposit')">
             <b-card no-body class="overflow-hidden hoverableButton">
               <b-row no-gutters>
                 <b-col md="6">

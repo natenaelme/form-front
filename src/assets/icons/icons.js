@@ -37,7 +37,8 @@ import {
   cilCalendarCheck,
   cilColumns,
   cilBasket,
-  
+  cilBank,
+  cilAvTimer,
   cilBell,
   cilCalculator,
   cilCalendar,
@@ -96,6 +97,7 @@ export const iconsSet = Object.assign(
     cilCalendarCheck,
     cilPlus,
     cilColumns,
+    cilBank,
     cilBasket,
     cilBell,
     cilLibraryAdd,
@@ -139,7 +141,8 @@ export const iconsSet = Object.assign(
     cilUser,
     cilUserFemale,
     cilUserFollow,
-    cilXCircle
+    cilXCircle,
+    cilAvTimer
   },
   {
     cifUs,

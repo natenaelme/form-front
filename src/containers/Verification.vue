@@ -54,8 +54,8 @@
                     </button>
 
                     <div class="text-center">
-                      <router-link to="/login">{{
-                        $t("Common.BackLogin")
+                      <router-link to="/payment">{{
+                        $t("Common.BackPayment")
                       }}</router-link>
                     </div>
                     <div v-if="!show" class="text-center">
@@ -144,7 +144,20 @@ export default {
               );
             }
           }
-        );
+        )     
+             .catch((err) => {
+            if (err.response) {
+              // client received an error response (5xx, 4xx)
+              this.makeToast(
+                "danger",
+                "There is Some Error.Please Check your Form"
+              );
+            } else if (err.request) {
+              this.makeToast("danger", "Connection Problem");
+            } else {
+              this.makeToast("danger", "Some Error has Happened");
+            }
+          })
         // getterVerKey("key", this.verification)
         //   .then((resp) => {
         //     if (resp.data.length > 0) {
@@ -241,19 +254,7 @@ export default {
         //       this.makeToast("danger", "this verification key dosn't exist");
         //     }
         //   })
-        //   .catch((err) => {
-        //     if (err.response) {
-        //       // client received an error response (5xx, 4xx)
-        //       this.makeToast(
-        //         "danger",
-        //         "There is Some Error.Please Check your Form"
-        //       );
-        //     } else if (err.request) {
-        //       this.makeToast("danger", "Connection Problem");
-        //     } else {
-        //       this.makeToast("danger", "Some Error has Happened");
-        //     }
-        //   });
+
       }
     },
   },

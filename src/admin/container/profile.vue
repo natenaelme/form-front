@@ -152,6 +152,7 @@ Your Mentor Message : {{user.mentorMessage}}
                                         </div>
 
                                     </div>
+                                    
                                 </div>
                             </b-col>
                         </div>

@@ -114,6 +114,7 @@
 </template>
 
 <script>
+import Vue from "vue"
 import {
     required,
     email,
@@ -127,17 +128,18 @@ const {
 import vue2Dropzone from "vue2-dropzone";
 import "vue2-dropzone/dist/vue2Dropzone.min.css";
 
-import Vue from "vue"
-import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
-import {
-    BootstrapVue,
-    IconsPlugin
-} from "bootstrap-vue"
+import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
+
+
 Vue.use(BootstrapVue);
-Vue.use(IconsPlugin);
+
+Vue.use(IconsPlugin);;
 
 export default {
+    mounted() {
+        this.makeToast("Some Error has Happened");
+    },
     components: {
         vueDropzone: vue2Dropzone,
     },
@@ -205,15 +207,15 @@ export default {
 
         }
     },
-    methods: {
 
-        makeToast(variant, message) {
-            this.$bvToast.toast(message, {
-                title: variant,
-                variant: variant,
-                solid: true
-            })
-        },
+    methods: {
+    makeToast(variant, message) {
+      this.$bvToast.toast(message, {
+        title: variant,
+        variant: variant,
+        solid: true,
+      });
+    },
         handleSubmit() {
             this.submitted = true;
 
@@ -225,7 +227,7 @@ export default {
             if (this.user.profileImage) {
                 this.show = false;
                 delete this.user.confirmPassword;
-                posts("/users", this.user)
+                posts("users", this.user)
                     .then((resp) => {
                         console.log(resp);
                         this.makeToast("success", "Dear " + this.user.firstName + " you have success fully registered");
@@ -246,10 +248,11 @@ export default {
                             this.show = true;
                             console.log(err);
                         } else if (err.request) {
-                            this.$toasted.show("Connection Problem");
+                            console.log("dfghjkjhgfdfghjjhgfddfghjhgfdfg");
+                            this.makeToast("Connection Problem");
                             this.show = true;
                         } else {
-                            this.$toasted.show("Some Error has Happened");
+                            this.makeToast("Some Error has Happened");
                             this.show = true;
                         }
                     });

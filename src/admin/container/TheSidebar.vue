@@ -30,6 +30,15 @@
     <div v-if="userType == 'mentor'">
       <CRenderFunction flat :content-to-render="mentor" />
     </div>
+        <div v-if="userType == 'accountant'">
+      <CRenderFunction flat :content-to-render="accountant" />
+    </div>
+       <div v-if="userType == 'it'">
+      <CRenderFunction flat :content-to-render="it" />
+    </div>
+           <div v-if="userType == 'customer_service'">
+      <CRenderFunction flat :content-to-render="customer_service" />
+    </div>
 
     <CSidebarMinimizer
       class="d-md-down-none"
@@ -58,6 +67,65 @@ export default {
               name: "View",
               to: "/admin/view",
               icon: "cil-columns",
+              user: "all",
+            },
+          ],
+        },
+      ],
+      accountant: [
+        {
+          _name: "CSidebarNav",
+          _children: [
+            {
+              _name: "CSidebarNavItem",
+              name: "View",
+              to: "/admin/view",
+              icon: "cil-columns",
+              user: "all",
+            },
+            {
+              _name: "CSidebarNavItem",
+              name: "Waiting For Approval",
+              to: "/admin/view_un_approved",
+              icon: "cil-calendar-check",
+              user: "admin",
+            },
+            
+            {
+              _name: "CSidebarNavDropdown",
+              name: "Verification",
+              route: "/base",
+              icon: "cil-check",
+              items: [
+                {
+                  _name: "CSidebarNavItem",
+                  name: "Generate Verification",
+                  to: "/admin/verification",
+                  icon: "",
+                  user: "admin",
+                },
+                {
+                  _name: "CSidebarNavItem",
+                  name: "View Verification",
+                  to: "/admin/view_verification",
+                  icon: "",
+                  user: "admin",
+                },
+                 
+              ],
+            },
+            {
+              _name: "CSidebarNavItem",
+              name: "View Deposit",
+              to: "/admin/view_deposit",
+              icon: "cil-bank",
+              user: "all",
+            },
+                        {
+              _name: "CSidebarNavItem",
+              name: "Users With E-Pin",
+              to: "/admin/view_unverified",
+              icon: "cil-av-timer",
               user: "all",
             },
           ],
@@ -108,7 +176,99 @@ export default {
                   icon: "",
                   user: "admin",
                 },
+                 
               ],
+            },
+            {
+              _name: "CSidebarNavItem",
+              name: "View Deposit",
+              to: "/admin/view_deposit",
+              icon: "cil-bank",
+              user: "all",
+            },
+                        {
+              _name: "CSidebarNavItem",
+              name: "Users With E-Pin",
+              to: "/admin/view_unverified",
+              icon: "cil-av-timer",
+              user: "all",
+            },
+                                    {
+              _name: "CSidebarNavItem",
+              name: "User Management",
+              to: "/admin/view_all_users",
+              icon: "cil-user-follow",
+              user: "all",
+            },
+          ],
+        },
+      ],
+      it: [
+        {
+          _name: "CSidebarNav",
+          _children: [
+            {
+              _name: "CSidebarNavItem",
+              name: "View Deposit",
+              to: "/admin/view_deposit",
+              icon: "cil-bank",
+              user: "all",
+            },
+            
+            {
+              _name: "CSidebarNavDropdown",
+              name: "Verification",
+              route: "/base",
+              icon: "cil-check",
+              items: [
+                {
+                  _name: "CSidebarNavItem",
+                  name: "Generate Verification",
+                  to: "/admin/verification",
+                  icon: "",
+                  user: "admin",
+                },
+                {
+                  _name: "CSidebarNavItem",
+                  name: "View Verification",
+                  to: "/admin/view_verification",
+                  icon: "",
+                  user: "admin",
+                },
+                 
+              ],
+            },
+
+                        {
+              _name: "CSidebarNavItem",
+              name: "Users With E-Pin",
+              to: "/admin/view_unverified",
+              icon: "cil-av-timer",
+              user: "all",
+            },
+          ],
+        },
+      ],
+            customer_service: [
+        {
+          _name: "CSidebarNav",
+          _children: [
+            {
+              _name: "CSidebarNavItem",
+              name: "View Deposit",
+              to: "/admin/view_deposit",
+              icon: "cil-bank",
+              user: "all",
+            },
+            
+
+
+                        {
+              _name: "CSidebarNavItem",
+              name: "Users With E-Pin",
+              to: "/admin/view_unverified",
+              icon: "cil-av-timer",
+              user: "all",
             },
           ],
         },

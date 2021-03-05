@@ -58,14 +58,15 @@
                     <div class="col-sm-12">
                       <div class="form-group">
                         <label for="lastName">Level</label>
-                        <b-form-select 
-                        v-model="user.level" :options="leveles" size="sm" 
-                        class="form-control"
+                        <b-form-select
+                          v-model="user.level"
+                          :options="leveles"
+                          size="sm"
+                          class="form-control"
                           :class="{
                             'is-invalid': submitted && $v.user.level.$error,
                           }"
                         >
-
                         </b-form-select>
                         <div
                           v-if="submitted && !$v.user.level.required"
@@ -75,7 +76,29 @@
                         </div>
                       </div>
                     </div>
+                                      <div class="col-sm-12">
+                    <div class="form-group">
+                      <label for="lastName">User Type</label>
+                      <b-form-select
+                        v-model="user.userType"
+                        :options="userType"
+                        size="sm"
+                        class="form-control"
+                        :class="{
+                          'is-invalid': submitted && $v.user.userType.$error,
+                        }"
+                      >
+                      </b-form-select>
+                      <div
+                        v-if="submitted && !$v.user.userType.required"
+                        class="invalid-feedback"
+                      >
+                        User Type Is Required
+                      </div>
+                    </div>
                   </div>
+                  </div>
+
                   <div class="form-group">
                     <div class="form-group">
                       <label for="email">Email</label>
@@ -206,13 +229,18 @@ export default {
   },
   data() {
     return {
-        leveles: [
-          
-          { value: 1, text: ' First Level' },
-          { value: 2, text: ' Second Level' },
-          { value: 3, text: ' Third Level' },
-          { value: 4, text: ' Fourth Level' }, 
-          ],
+      userType: [
+        { value: "mentor", text: "Mentor" },
+        { value: "accountant", text: "Accountant" },
+        { value: "it", text: "IT" },
+        { value: "customer_service", text: "Customor Service" },
+      ],
+      leveles: [
+        { value: 1, text: " First Level" },
+        { value: 2, text: " Second Level" },
+        { value: 3, text: " Third Level" },
+        { value: 4, text: " Fourth Level" },
+      ],
       user: {
         firstName: "",
         lastName: "",
@@ -249,8 +277,11 @@ export default {
       lastName: {
         required,
       },
-      level:{
-          required
+      level: {
+        required,
+      },
+      userType: {
+        required,
       },
       email: {
         required,

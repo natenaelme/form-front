@@ -1,6 +1,11 @@
 <template>
 <div>
+    <b-button variant="primary" to='add_mentor'>
 
+        <CIcon name="cil-plus" />
+        Add User
+
+    </b-button>
 
     <h3 class="text-center">List of Mentor</h3>
     <div class="table-responsive-lg">
@@ -13,7 +18,7 @@
                     <th scope="col">Email</th>
                     <th scope="col">Level</th>
                     <th scope="col">Profile</th>
-                    <th scope="col">View List Of Users</th>
+                    <th scope="col">User Type</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,7 +29,7 @@
                     <th>{{"Level " +user.level}}</th>
                     <th><img :src="user.profileImage" class="rounded-circle" width="50em" height="50em" alt=""></th>
 
-                    <th><button class="btn btn-outline-dark" @click="test(user)">View</button></th>
+                    <th>{{user.userType}}</th>
                 </tr>
 
             </tbody>
@@ -49,7 +54,7 @@
 
 <script>
 const {
-    getterMentors
+    getterAllUsers
 } = require('../assets/js/service')
 
 export default {
@@ -62,7 +67,7 @@ export default {
     mounted() {
         this.loading = true;
         let token = localStorage.getItem('token')
-        getterMentors(token, 'mentor').then(resp => {
+        getterAllUsers(token, 'icam').then(resp => {
             this.usersData = resp.data;
             console.log(this.usersData)
             this.loading = false;

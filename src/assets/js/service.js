@@ -11,6 +11,7 @@ const imgUrl="https://api.cloudinary.com/v1_1/dhvxgn9xz/image/upload?upload_pres
 // const apiUrl="https://breakthrogh.herokuapp.com/api/";
 // const apiUrl="https://alphaworkbook.com:/api/";
 // const apiUrl = "http://localhost:3000/api/";
+const perPage = 20;
 const apiUrl="https://5.79.66.86:54141/api/";
 const Habit = [
 "/question/habit", 
@@ -77,6 +78,20 @@ let userInfo = {
 export function getters(dataBase){
     return(Vue.axios.get(apiUrl+dataBase))
 }
+export function getterPerPage(dataBase,page,include){
+    console.log("page"+page);
+    let skip = (parseInt(page)-1) * perPage;
+    if(include == "where"){
+        return(Vue.axios.get(apiUrl+dataBase +`?filter={"limit":`+perPage+`,"skip":`+skip + `,"include":"`+"user"+`","where":{"approvedByAccountant":"true"}}`))
+    }
+    else if(include != "where" && include != null){
+        return(Vue.axios.get(apiUrl+dataBase +`?filter={"limit":`+perPage+`,"skip":`+skip + `,"include":"`+include+`"}`))
+    }
+    else{
+        return(Vue.axios.get(apiUrl+dataBase +`?filter[limit]=`+perPage+`&filter[skip]=`+skip))
+    }
+    
+}
 export function getHabitPages(){
     return(Habit)
 }
@@ -98,11 +113,19 @@ export function logout(token){
 export function getterVerKey(type,workbook){
     return(Vue.axios.get(apiUrl+'/verifications'+`?filter={"where":{"`+type+`":"` + workbook +`"}}`));
 }
+export function getterDeposit(type,UserId){
+    return(Vue.axios.get(apiUrl+'/Deposites'+`?filter={"where":{"`+type+`":"` + UserId +`"}}`));
+}
 export function getterUsers(token,userType){
     return(Vue.axios.get(apiUrl+'/users'+`?filter={"where":{"userType":"` + userType +`",`+`"canAccess":`+ true + `}}`+'&access_token=' + token))
 }
 export function getterMentors(token,userType){
     return(Vue.axios.get(apiUrl+'/users'+`?filter={"where":{"userType":"` + userType +`"}}`+'&access_token=' + token))
+}
+export function getterAllUsers(token,where){
+    if(where = "icam"){
+        return(Vue.axios.get(apiUrl+'/users'+`?filter={"where":{"or":[{"userType":"mentor"},{"userType":"it"},{"userType":"accountant"},{"userType":"customer_service"}]}}`+'&access_token=' + token))
+    }
 }
 export function getterUnApproUsers(token,userType){
     return(Vue.axios.get(apiUrl+'/users'+`?filter={"where":{"userType":"` + userType +`",`+`"canAccess":`+ false + `}}`+'&access_token=' + token))

@@ -27,6 +27,9 @@ router.beforeEach((to, from, next) => {
   else if(to.name =='verify'){
     next();
   }
+  else if(to.name =='deposit'){
+    next();
+  }
   else if(to.name == 'payment'){
     next();
   }

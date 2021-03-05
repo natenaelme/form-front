@@ -13,7 +13,7 @@
                     <th scope="col">User Name</th>
                     <th scope="col">Progress</th>
                     <th scope="col">Approval</th>
-                    <th scope="col">View</th>
+                    <th scope="col" v-if="userType != 'accountant'">View</th>
                 </tr>
             </thead>
             <tbody>
@@ -36,7 +36,7 @@
                         <p v-if="user.Approved" style="color:green">Approved</p>
                         <p v-if="!user.Approved" style="color:red">Not Approved</p>
                     </th>
-                    <th><button class="btn btn-outline-dark" @click="test(user)">View</button></th>
+                    <th v-if="userType != 'accountant'"><button class="btn btn-outline-dark" @click="test(user)">View</button></th>
                 </tr>
 
             </tbody>
@@ -68,6 +68,7 @@ const {
     MindProgrammingPages,
     getHabitPages,
     TeamBuildingPages,
+    getterId,
     getMentorsData,
     getUserData
 } = require('../assets/js/service')
@@ -76,28 +77,40 @@ export default {
     data() {
         return {
             usersData: {},
-            loading: false
+            loading: false,
+            userType : null,
         }
     },
     mounted() {
         this.loading = true;
         let token = localStorage.getItem('token');
         let id = localStorage.getItem('userId');
-        let userType = localStorage.getItem('userType');
+        
         let dataBase = '/users';
-
-        if (userType == 'admin') {
+        getterId(dataBase+'/',id,token).then(resp=>{
+            console.log("useruseruseruser");
+            console.log(resp.data);
+            this.userType =resp.data.userType;
+            if (this.userType == 'admin') {
             getterUsers(token, 'user').then(resp => {
                 this.usersData = resp.data;
                 this.loading = false;
             })
-        } else if (userType == 'mentor') {
+        } else if (this.userType == 'mentor') {
             getUserData(dataBase, id, token).then(resp => {
                 this.usersData = resp.data;
                 this.loading = false;
                 console.log(this.users)
             })
         }
+        else if (this.userType == 'accountant') {
+            getterUsers(token, 'user').then(resp => {
+                this.usersData = resp.data;
+                this.loading = false;
+            })
+        }
+        })
+        
 
     },
     methods: {

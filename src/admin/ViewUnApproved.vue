@@ -11,7 +11,7 @@
                     <th scope="col">Email</th>
                     <th scope="col">Profile</th>
                     <th scope="col">User Name</th>
-                    <th scope="col">View</th>
+                    <th scope="col" v-if="userType != 'accountant'">View</th>
                 </tr>
             </thead>
             <tbody v-if="usersData">
@@ -23,7 +23,7 @@
                     <th>
                         {{user.username}}
                     </th>
-                    <th>
+                    <th v-if="userType != 'accountant'">
                         <div class="mb-2">
 
                             <b-button @click="$bvModal.show('modal-'+(index))">Approve</b-button>
@@ -75,7 +75,8 @@
 <script>
 const {
     getterUnApproUsers,
-    patchDataId
+    patchDataId,
+    getterId
 } = require('../assets/js/service')
 
 export default {
@@ -85,16 +86,24 @@ export default {
             selectedUser: '',
             modalShow: false,
             selected: '',
-            loading: false
+            loading: false,
+            userType:null,
         }
     },
     mounted() {
         this.loading = true;
+        let id = localStorage.getItem('userId')
         let token = localStorage.getItem('token')
+        let dataBase = '/users/';
+        getterId(dataBase,id,token).then(resp=>{
+            console.log("useruseruseruser");
+            console.log(resp.data);
+            this.userType =resp.data.userType;
+        
         getterUnApproUsers(token, 'user').then(resp => {
             this.usersData = resp.data
             this.loading = false;
-        })
+        })})
 
     },
     methods: {
