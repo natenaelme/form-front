@@ -12,7 +12,7 @@ const imgUrl="https://api.cloudinary.com/v1_1/dhvxgn9xz/image/upload?upload_pres
 // const apiUrl="https://alphaworkbook.com:/api/";
 // const apiUrl = "http://localhost:3000/api/";
 const perPage = 20;
-const apiUrl="https://5.79.66.86:54141/api/";
+const apiUrl="http://5.79.66.86:61217/api/";
 const Habit = [
 "/question/habit", 
 "/question/how_to_build", 
