@@ -67,6 +67,13 @@
                       <p v-if="!Deposit.userId" style="color: red">
                         You Have To Login First
                       </p>
+                      <div class="col-sm-12">
+                                        <label for="dropzone">Picther</label>
+                                        <vue-dropzone ref="myVueDropzone" id="dropzone" @vdropzone-success="vsuccess" :options="vdropzoneOptions"></vue-dropzone>
+                                        <div v-if="!imageuploaded" style="color:red" class="text-center">
+                                            the image is not uploaded
+                                        </div>
+                                    </div>
                     </form>
                     <p v-if="haveDeposit" style="color: green">
                       {{ $t("Common.waitToE-Pin") }}
@@ -102,8 +109,14 @@
   </div>
 </template>
 <script>
-const { posts, getterDeposit, patchData } = require("../assets/js/service");
-export default {
+const { posts, getterDeposit, patchData,getUrl } = require("../assets/js/service");
+import vue2Dropzone from "vue2-dropzone";
+import "vue2-dropzone/dist/vue2Dropzone.min.css";
+
+export default { 
+  components: {
+        vueDropzone: vue2Dropzone,
+    },
   mounted() {
     if (this.$store.state.user == null || this.$store.state.token == null) {
       this.$router.replace("/login");
@@ -127,18 +140,39 @@ export default {
     return {
       haveDeposit: false,
       user: null,
+      imageuploaded:true,
       show: true,
       Loaded: false,
       Deposit: {
         fullName: null,
         transactionId: null,
         userId: null,
+        imageOfSleep:null,
       },
       edit: false,
       token: null,
+                  vdropzoneOptions: {
+                url: getUrl(),
+                thumbnailWidth: 150,
+                maxFilesize: 3.5,
+                addRemoveLinks: true,
+
+                maxFiles: 1,
+                dictDefaultMessage: "<i class='fa fa-cloud-upload'></i> UPLOAD PICTURE",
+                headers: {
+                    "X-Requested-With": "XMLHttpRequest",
+                },
+
+            },
     };
   },
   methods: {
+      vsuccess(file, response) {
+            console.log(response);
+            console.log(response.secure_url);
+            this.Deposit.imageOfSleep = response.secure_url
+
+        },
     makeToast(variant, message) {
       this.$bvToast.toast(message, {
         title: variant,
@@ -148,6 +182,7 @@ export default {
     },
     sendDeposit() {
       if (this.edit == false) {
+        if(this.Deposit.imageOfSleep){
         if (
           this.Deposit.fullName != null &&
           this.Deposit.transactionId != null &&
@@ -173,6 +208,9 @@ export default {
                 this.makeToast("danger", "Some Error has Happened");
               }
             });
+        }
+        }else{
+          this.imageuploaded = false;
         }
       } else {
         console.log("patch");
