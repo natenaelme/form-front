@@ -7,12 +7,15 @@
           <th scope="col">Deposit Full Name</th>
           <th scope="col">Deposite Number</th>
           <th scope="col">Users Account Information</th>
+          <th scope="col">Image</th>
           <th scope="col">Send E-Epin</th>
+          
           <th scope="col">Aprroved By Accountant</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(verification, index) in verification" :key="index">
+          
           <th>{{ index + 1 }}</th>
           <th>
             {{ verification.fullName }}
@@ -31,6 +34,30 @@
               <br />
               {{ "User Name :" + verification.user.username }}
             </p>
+          </th>
+          <th>
+                       <img :src="verification.imageOfSleep" @click="$bvModal.show('bv-modall-'+index)" class="rounded-circle butImag" width="50em" height="50em" alt="">
+ 
+
+
+  <b-modal :id="'bv-modall-'+index" hide-footer>
+    <template #modal-title>
+      Diposit Information
+    </template>
+    <div class="d-block">
+      <p>
+                 Full Name : {{
+                    verification.user.firstName +
+                    " " +
+                    verification.user.lastName
+                  }}
+                </p>
+                <p>Transaction Id :{{verification.transactionId}}</p>
+                    <p class="text-center"><img :src="verification.imageOfSleep" alt=""></p>
+                    
+    </div>
+    
+  </b-modal>
           </th>
           <th>
             <p style="color: green" v-if="verification.send">E-Pin Sent</p>
@@ -92,11 +119,30 @@
 
                 
               </b-modal>
+               <b-modal
+                :id="'Image-' + index"
+                title="Diposit Information"
+                @ok="SentEpin(verification)"
+              >
+                <p>
+                  {{
+                    verification.user.firstName +
+                    " " +
+                    verification.user.lastName
+                  }}
+                </p>
+                    {{verification.transactionId}}
+                    <img :src="verification.imageOfSleep" alt="">
+                <p class="my-4">Are you sure you have sent the E-Pin</p>
+
+                
+              </b-modal>
             </div>
           </th>
         </tr>
       </tbody>
     </table>
+    
     <b-pagination
       @input="pageChange(currentPage)"
       v-model="currentPage"
@@ -230,4 +276,8 @@ export default {
 };
 </script>
 <style>
+.butImag:hover{
+opacity: 0.5;
+};
+
 </style>
