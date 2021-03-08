@@ -178,7 +178,11 @@ export default {
         if (resp.data.userType == "user") {
           this.$router.replace("/question/main");
         } else {
-          this.$router.replace("/admin/view");
+                        if(resp.data.userType == "it" || resp.data.userType == "customer_service"){
+                this.$router.replace("/admin/view_deposit");
+              }else{
+              this.$router.replace("/admin/view");}
+          
         }
       });
     }
