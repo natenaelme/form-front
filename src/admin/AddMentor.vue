@@ -55,27 +55,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-sm-12">
-                      <div class="form-group">
-                        <label for="lastName">Level</label>
-                        <b-form-select
-                          v-model="user.level"
-                          :options="leveles"
-                          size="sm"
-                          class="form-control"
-                          :class="{
-                            'is-invalid': submitted && $v.user.level.$error,
-                          }"
-                        >
-                        </b-form-select>
-                        <div
-                          v-if="submitted && !$v.user.level.required"
-                          class="invalid-feedback"
-                        >
-                          Level is required
-                        </div>
-                      </div>
-                    </div>
+
                                       <div class="col-sm-12">
                     <div class="form-group">
                       <label for="lastName">User Type</label>
@@ -96,9 +76,29 @@
                         User Type Is Required
                       </div>
                     </div>
+                  </div><div class="col-sm-12"  v-if="user.userType == 'mentor'">
+                      <div class="form-group">
+                        <label for="lastName">Level</label>
+                        <b-form-select
+                          v-model="user.level"
+                          :options="leveles"
+                          size="sm"
+                          class="form-control"
+                          :class="{
+                            'is-invalid': submitted && $v.user.level.$error,
+                          }"
+                        >
+                        </b-form-select>
+                        <div
+                          v-if="submitted && !$v.user.level.required"
+                          class="invalid-feedback"
+                        >
+                          Level is required
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  </div>
-
+                    
                   <div class="form-group">
                     <div class="form-group">
                       <label for="email">Email</label>
@@ -277,9 +277,7 @@ export default {
       lastName: {
         required,
       },
-      level: {
-        required,
-      },
+      
       userType: {
         required,
       },
@@ -331,7 +329,7 @@ export default {
               (this.user.firstName = ""),
               (this.user.lastName = "");
             this.show = true;
-            this.$router.replace("mentor");
+            this.$router.replace("view_all_users");
           })
           .catch((err) => {
             console.log(this.form);
