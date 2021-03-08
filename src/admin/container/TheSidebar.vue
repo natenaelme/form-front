@@ -195,7 +195,7 @@ export default {
             },
                                     {
               _name: "CSidebarNavItem",
-              name: "User Management",
+              name: "Staff Management",
               to: "/admin/view_all_users",
               icon: "cil-user-follow",
               user: "all",
