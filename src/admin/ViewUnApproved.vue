@@ -1,6 +1,6 @@
 <template>
 <div>
-    <h3 class="text-center">List of users</h3>
+    <h3 class="text-center">List of Customers</h3>
     <div class="table-responsive-lg">
         <table class="table">
 

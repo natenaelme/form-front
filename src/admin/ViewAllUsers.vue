@@ -6,8 +6,9 @@
         Add User
 
     </b-button>
+    
 
-    <h3 class="text-center">List of Mentor</h3>
+    <h3 class="text-center">List Of Staff</h3>
     <div class="table-responsive-lg">
         <table class="table">
 
@@ -60,6 +61,12 @@ const {
 export default {
     data() {
         return {
+                  userType: [
+        { value: "mentor", text: "Mentor" },
+        { value: "accountant", text: "Accountant" },
+        { value: "it", text: "IT" },
+        { value: "customer_service", text: "Customor Service" },
+      ],
             usersData: {},
             loading: ''
         }
