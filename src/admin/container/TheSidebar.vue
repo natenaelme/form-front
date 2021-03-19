@@ -76,6 +76,14 @@ export default {
         {
           _name: "CSidebarNav",
           _children: [
+
+             {
+              _name: "CSidebarNavItem",
+              name: "View Deposit",
+              to: "/admin/view_deposit",
+              icon: "cil-bank",
+              user: "all",
+            },
             {
               _name: "CSidebarNavItem",
               name: "View",
@@ -83,7 +91,7 @@ export default {
               icon: "cil-columns",
               user: "all",
             },
-            {
+                        {
               _name: "CSidebarNavItem",
               name: "Waiting For Approval",
               to: "/admin/view_un_approved",
@@ -114,13 +122,7 @@ export default {
                  
               ],
             },
-            {
-              _name: "CSidebarNavItem",
-              name: "View Deposit",
-              to: "/admin/view_deposit",
-              icon: "cil-bank",
-              user: "all",
-            },
+           
                         {
               _name: "CSidebarNavItem",
               name: "Users With E-Pin",
