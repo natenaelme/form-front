@@ -146,8 +146,10 @@ export default {
               localStorage.setItem("pages", resps.pages);
               localStorage.setItem("workBook", resps.workBook);
               this.show = true;
-              this.makeToast("success", "Sucessfull login");
+              this.makeToast("success", "Sucessfull login"  );
               if(resps.userType == "it" || resps.userType == "customer_service"){
+                this.$router.replace("/admin/view_deposit");
+              }else if(resps.userType == "accountant"){
                 this.$router.replace("/admin/view_deposit");
               }else{
               this.$router.replace("/admin/view");}
@@ -178,9 +180,14 @@ export default {
         if (resp.data.userType == "user") {
           this.$router.replace("/question/main");
         } else {
+          console.log("user type : " + resp.data.userType == "accountant");
                         if(resp.data.userType == "it" || resp.data.userType == "customer_service"){
                 this.$router.replace("/admin/view_deposit");
-              }else{
+              }else if(resp.data.userType == "accountant"){
+                this.$router.replace("/admin/view_deposit");
+              }
+              
+              else{
               this.$router.replace("/admin/view");}
           
         }
