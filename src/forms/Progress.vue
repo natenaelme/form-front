@@ -1757,6 +1757,7 @@ export default {
             this.mentalBank = resp.data.Daily;
             this.len = resp.data.Daily.length - 1;
             console.log("len len len len len " + this.len);
+            console.log(this.mentalBank);
             var formatted_date = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
                     console.log("asdfghjkl");
 
@@ -1979,6 +1980,12 @@ export default {
                 event.push(value);
             }
         })
+        this.form.Daily[this.len].answer1[ind] = {
+          ValueEvents: this.selected[ind].ValueEvents,
+          HourlyRate: this.selected[ind].HourlyRate,
+          Hours: 0,
+          Deposit:this.selected[ind].FlatRate,
+        };
         this.events = event;
         console.log(this.selected[ind].FlatRate);
       if (this.selected[ind].FlatRate) {

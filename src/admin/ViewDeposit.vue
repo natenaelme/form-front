@@ -36,7 +36,7 @@
             </p>
           </th>
           <th>
-                       <img :src="verification.imageOfSleep" @click="$bvModal.show('bv-modall-'+index)" class="rounded-circle butImag" width="50em" height="50em" alt="">
+                       <img style="width:100%" :src="verification.imageOfSleep" @click="$bvModal.show('bv-modall-'+index)" class="rounded-circle butImag" width="50em" height="50em" alt="">
  
 
 
@@ -53,7 +53,7 @@
                   }}
                 </p>
                 <p>Transaction Id :{{verification.transactionId}}</p>
-                    <p class="text-center"><img :src="verification.imageOfSleep" alt=""></p>
+                    <p class="text-center"><img style="width:100%" :src="verification.imageOfSleep" alt=""></p>
                     
     </div>
     
@@ -132,7 +132,7 @@
                   }}
                 </p>
                     {{verification.transactionId}}
-                    <img :src="verification.imageOfSleep" alt="">
+                    <img style="width:100%" :src="verification.imageOfSleep" alt="">
                 <p class="my-4">Are you sure you have sent the E-Pin</p>
 
                 
