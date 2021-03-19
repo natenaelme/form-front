@@ -332,6 +332,12 @@ export default {
         })
         this.events = event;
         console.log(this.selected[ind].FlatRate);
+        this.form.Daily[this.len].answer1[ind] = {
+          ValueEvents: this.selected[ind].ValueEvents,
+          HourlyRate: this.selected[ind].HourlyRate,
+          Hours: 0,
+          Deposit:this.selected[ind].FlatRate,
+        };
       if (this.selected[ind].FlatRate) {
                 Vue.set(
           this.Diposit,
@@ -340,7 +346,8 @@ export default {
         );
               let sum = 0;
       this.Diposit.forEach((value, index) => {
-        sum = sum + parseInt(value);
+        sum = parseInt(sum) + parseInt(value);
+        console.log("sum of today + " + sum);
       });
       this.form.Daily[this.len].TodaysDeposite = sum;
       this.form.Daily[this.len].NewMbBalance = sum + this.lastDepo;
@@ -372,7 +379,7 @@ export default {
       }
       let sum = 0;
       this.Diposit.forEach((value, index) => {
-        sum = sum + value;
+        sum = sum + parseInt(value);
       });
       this.form.Daily[this.len].TodaysDeposite = sum;
       this.form.Daily[this.len].NewMbBalance = sum + this.lastDepo;
