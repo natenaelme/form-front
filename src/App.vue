@@ -65,4 +65,7 @@ export default {
     }
 
 }
+.list-group-item{
+    background: #ebedef !important;
+}
 </style>
