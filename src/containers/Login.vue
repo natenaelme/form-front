@@ -134,7 +134,7 @@ export default {
               localStorage.setItem("workBook", resps.workBook);
               this.show = true;
               this.makeToast("success", "Sucessfull login");
-              this.$router.replace("/admin/view");
+              this.$router.replace("/admin/dashboard");
             } else if (resps.userType == "mentor" || resps.userType == "accountant" || resps.userType == "it" || resps.userType == "customer_service") {
               console.log("mentor");
               localStorage.setItem("token", resp.data.id);
@@ -147,13 +147,9 @@ export default {
               localStorage.setItem("workBook", resps.workBook);
               this.show = true;
               this.makeToast("success", "Sucessfull login"  );
-              if(resps.userType == "it" || resps.userType == "customer_service"){
-                this.$router.replace("/admin/view_deposit");
-              }else if(resps.userType == "accountant"){
-                this.$router.replace("/admin/view_deposit");
-              }else{
-              this.$router.replace("/admin/view");}
-            }
+              
+              this.$router.replace("/admin/dashboard");}
+            
          
         })
         .catch((err) => {

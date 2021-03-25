@@ -14,6 +14,7 @@
                     <th scope="col">Progress</th>
                     <th scope="col">Approval</th>
                     <th scope="col" v-if="userType != 'accountant'">View</th>
+                    <th v-if="userType == 'mentor'">ViewMessage</th>
                 </tr>
             </thead>
             <tbody>
@@ -37,6 +38,7 @@
                         <p v-if="!user.Approved" style="color:red">Not Approved</p>
                     </th>
                     <th v-if="userType != 'accountant'"><button class="btn btn-outline-dark" @click="test(user)">View</button></th>
+                    <th v-if="userType == 'mentor'"><button class="btn btn-outline-dark" @click="message(user)">ViewMessage</button></th>
                 </tr>
 
             </tbody>
@@ -119,6 +121,12 @@ export default {
                 localStorage.setItem('userFullName', user.firstName + " " + user.lastName),
                 localStorage.setItem('userProfilePic', user.profileImage),
                 this.$router.replace('/admin/main_view')
+        },
+        message(user){
+                        localStorage.setItem('userToView', user.id),
+                localStorage.setItem('userFullName', user.firstName + " " + user.lastName),
+                localStorage.setItem('userProfilePic', user.profileImage),
+                this.$router.replace('/admin/message')
         },
         maxValue(WorkBook) {
             let max;

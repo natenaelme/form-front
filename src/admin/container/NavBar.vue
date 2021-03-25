@@ -1,6 +1,7 @@
 <template>
 <div>
     <div>
+        
         <b-navbar toggleable="sm" variant="light" type="light">
             <b-navbar-toggle target="nav-text-collapse"></b-navbar-toggle>
 
@@ -15,7 +16,36 @@
                 </b-navbar-nav>
 
             </b-collapse>
-
+            <CHeaderNav class="mr-4">
+      <CHeaderNavItem class="d-md-down-none mx-2">
+        <CHeaderNavLink>
+          <CIcon name="cil-bell"/>
+        </CHeaderNavLink>
+      </CHeaderNavItem>
+      <CHeaderNavItem class="d-md-down-none mx-2">
+        <CHeaderNavLink>
+          <CIcon name="cil-list"/>
+        </CHeaderNavLink>
+      </CHeaderNavItem>
+      <CHeaderNavItem class="d-md-down-none mx-2">
+        <CHeaderNavLink>
+          <CIcon name="cil-envelope-open"/>
+        </CHeaderNavLink>
+      </CHeaderNavItem>
+      <TheHeaderDropdownAccnt/>
+    </CHeaderNav>
+        <b-navbar-nav>
+            jjj
+          <router-link to="notification">
+            <b-avatar
+              :badge="UnreadMessages"
+              variant="primary"
+              badge-variant="dark"
+              icon="b-icon-bell-fill"
+            ></b-avatar>
+          </router-link>
+        </b-navbar-nav>
+ <b-icon icon="bell-fill" class="border rounded p-2"></b-icon>
             <b-nav-item-dropdown>
                 <!-- Using 'button-content' slot -->
                 <template v-slot:button-content>
@@ -38,7 +68,15 @@
 const {
     logout
 } = require('../../assets/js/service')
+import Vue from "vue"
 import LocaleSwitcher from '../../containers/LocaleSwitcher'
+import "bootstrap-vue/dist/bootstrap-vue.css";
+import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
+
+
+Vue.use(BootstrapVue);
+
+Vue.use(IconsPlugin);;
 export default {
     name: 'NavBar',
     components: {

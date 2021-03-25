@@ -9,10 +9,37 @@ Vue.use(BVToastPlugin);
 Vue.use(VueAxios, axios) 
 const imgUrl="https://api.cloudinary.com/v1_1/dhvxgn9xz/image/upload?upload_preset=sravrhin";
 // const apiUrl="https://breakthrogh.herokuapp.com/api/";
-// const apiUrl="https://alphaworkbook.com:/api/";
+const apiUrl="https://alphaworkbook.com:/api/";
 // const apiUrl = "http://localhost:3000/api/";
 const perPage = 20;
-const apiUrl="http://5.79.66.86:61217/api/";
+// const apiUrl="http://5.79.66.86:61217/api/";
+const chapters = [
+    {
+        value:"1,1",
+        text:"Chapter 1 : Vision",
+        rout:"/question/how_to_search"
+    },
+    {
+        value:"1,2",
+        text:"Chapter 2 : Dream",
+        rout:"question/my_dream"
+    },
+    {
+        value:"1,3",
+        text:"Chapter 3 : Goal",
+        rout:"/question/financial_goal"
+    },
+    {
+        value:"1,4",
+        text:"Chapter 4 : Action Plan",
+        rout:"/question/action_plan"
+    },
+    {
+        value:"1,5",
+        text:"Chapter 5 : Mental Bank",
+        rout:"/question/my_new_mental"
+    }
+]
 const Habit = [
 "/question/habit", 
 "/question/how_to_build", 
@@ -75,6 +102,30 @@ let userInfo = {
     userFirstName:'',
     userLastName:''
 }
+export function getAllChapters(){
+    return chapters
+}
+export function getChapters(workbook){
+    let singleWorkbookChapters=[];
+    chapters.forEach(element => {
+        console.log((element.value).split(",")[0] == workbook);
+        if((element.value).split(",")[0] == workbook){
+            singleWorkbookChapters.push(element)
+        }
+    });
+    console.log(singleWorkbookChapters);
+    return singleWorkbookChapters
+}
+export function getSingleCahpter(value){
+    
+    let result ;
+    chapters.forEach(element => {
+        console.log(element.value == value);
+        if(element.value == value){
+            result=element
+        }
+    });return result;
+}
 export function getters(dataBase){
     return(Vue.axios.get(apiUrl+dataBase))
 }
@@ -130,6 +181,10 @@ export function getterAllUsers(token,where){
 export function getterUnApproUsers(token,userType){
     return(Vue.axios.get(apiUrl+'/users'+`?filter={"where":{"userType":"` + userType +`",`+`"canAccess":`+ false + `}}`+'&access_token=' + token))
 }
+export function getterWhereQ(database,token,type,value,type2,value2,include,order){
+    console.log(apiUrl+'/'+database);
+    return(Vue.axios.get(apiUrl+database+`?filter={"where":{"and":[{"`+type+`":"` + value +`"},{"`+type2+`":"` + value2 +`"}]},"include":"`+include+`","order": "Date `+order+`"}`+'&access_token=' + token))
+}
 export function getterId(dataBase,id,token){
     return(Vue.axios.get(apiUrl+dataBase+id+'?'+'access_token=' + token))
 }
@@ -143,7 +198,9 @@ export function getterIdForImage(dataBase,id,token){
 export function PostVerification(dataBase,token,data){
     return(Vue.axios.post(apiUrl+dataBase+'?'+'access_token=' + token + '&Data='+JSON.stringify(data)))
 }
-
+export function Gets(dataBase,token,data){
+    return(Vue.axios.get(apiUrl+dataBase+'?'+'access_token=' + token + '&Data='+JSON.stringify(data)))
+}
 export function getUserData(dataBase,id,token){
     return(Vue.axios.get(apiUrl+"users/"+id+dataBase+'?'+'access_token=' + token))
 }

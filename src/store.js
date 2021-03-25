@@ -7,6 +7,7 @@ const state = {
   sidebarMinimize: false,
   user:null,
   token:null,
+  DashBoardData:null
 }
 
 const mutations = {

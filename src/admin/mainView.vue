@@ -62,19 +62,7 @@
             </b-col>
 
         </b-row>
-        <b-row>
-            Messge for Applicant
-            
-              <b-form-textarea v-model="mentorMessage">
-                  
-              </b-form-textarea>
-              
-              <b-button variant="success" @click="sendMessage()" style="float:right">send 
-                  <div v-if="messageSending" class="spinner-grow spinner-grow-sm" role="status">
-                    <span class="sr-only">Loading...</span>
-                    </div>
-                </b-button>
-        </b-row>
+
 
     </b-list-group-item>
     <b-list-group-item class="table-responsive">

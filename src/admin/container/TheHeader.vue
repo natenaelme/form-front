@@ -20,6 +20,26 @@
             </CHeaderNavLink>
         </CHeaderNavItem>
     </CHeaderNav>
+    <CHeaderNav v-if="UserType == 'mentor'" class="mr-4">
+      <CHeaderNavItem class="d-md-down-none mx-2">
+        <CHeaderNavLink>
+          
+                  <b-navbar-nav>
+          <router-link to="mentor_notification">
+            <b-avatar
+              :badge="UnreadMessages.toString()"
+              variant="primary"
+              badge-variant="light"
+              icon="b-icon-bell-fill"
+            ></b-avatar>
+          </router-link>
+        </b-navbar-nav>
+        </CHeaderNavLink>
+      </CHeaderNavItem>
+     
+      
+      
+    </CHeaderNav>
     <CHeaderNav class="mr-4">
 
         <TheHeaderDropdownAccnt />
@@ -31,11 +51,38 @@
 <script>
 import TheHeaderDropdownAccnt from './TheHeaderDropdownAccnt'
 import LocaleSwitcher from '../../containers/LocaleSwitcher'
+import "bootstrap-vue/dist/bootstrap-vue.css";
+import Vue from "vue";
+import { BootstrapVue, IconsPlugin, BIconArrowUp } from "bootstrap-vue";
+
+Vue.use(BootstrapVue);
+
+Vue.use(IconsPlugin);
+const {  Gets } = require("../../assets/js/service");
 export default {
+
     name: 'TheHeader',
     components: {
+        
         TheHeaderDropdownAccnt,
         LocaleSwitcher
-    }
+    },
+    data() {
+        return {
+            UnreadMessages:0,
+            UserType : localStorage.getItem("userType")
+        }
+    },
+    mounted() {
+    let token = localStorage.getItem("token");
+    let userId = localStorage.getItem("userId");
+
+    Gets("messages/mentorUnreadMessage", token, { customerId: userId }).then(
+      (resp) => {
+        console.log("count" + resp.data.count);
+        this.UnreadMessages = resp.data.count;
+      }
+    );
+    },
 }
 </script>

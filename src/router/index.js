@@ -38,6 +38,7 @@ const home = () => import("@/forms/question");
 const HowToBuild = () => import("@/forms/HowToBuild");
 const SignIn = () => import("@/containers/Login");
 const Verify = () => import("@/containers/Verification");
+const Notification = () => import("@/containers/Notification");
 const Deposit = ()=>import("@/containers/Deposit");
 const Payment = () => import("@/containers/PaymentOption");
 const SignUp = () => import("@/containers/SignUp");
@@ -78,6 +79,8 @@ const MainViewMentor= () => import("@/mentor/mainView");
 const Admin = () => import("@/admin/container/TheContainer");
 const Profile = () => import("@/admin/container/profile");
 const View = () => import("@/admin/View");
+const Message = () => import("@/admin/Messages");
+const AdminNotification = () => import("@/admin/container/Notification");
 const MainView = () => import("@/admin/mainView");
 const HabitView = () => import("@/admin/HabitView");
 const ViewDeposit = ()=> import("@/admin/ViewDeposit");
@@ -86,6 +89,7 @@ const VerificationKey = () => import("@/admin/VerificationKey");
 const ViewUnVerified = () => import("@/admin/ViewUn");
 const ViewVerification = () => import("@/admin/ViewVer");
 const ViewAllUsers = ()=> import("@/admin/ViewAllUsers");
+const DashBoard = ()=> import("@/admin/Dashboard");
 // const MentorProfile = () => import("@/admin/container/MentorProfile");
 
 
@@ -228,7 +232,19 @@ function configRoutes() {
         }
       },
       children: [
-
+        {
+          path: "dashboard",
+          component: DashBoard,
+          
+        },
+        {
+          path: "message",
+          component : Message,
+        },
+        {
+          path:"mentor_notification",
+          component:AdminNotification,
+        },
         {
           path: "view",
           component: View,
@@ -537,7 +553,10 @@ function configRoutes() {
         }
       },
       children: [
-        
+        {
+          path:'notification',
+          component:Notification
+        },
 
         {
           path:'how_to_search',

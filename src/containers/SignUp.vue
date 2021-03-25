@@ -40,6 +40,27 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="form-group">
+                      <label for="gender">Gender</label>
+                      <b-form-select
+                        v-model="user.gender"
+                        :options="gender"
+                        size="sm"
+                        class="form-control"
+                        :class="{
+                          'is-invalid': submitted && $v.user.gender.$error,
+                        }"
+                      >
+                      </b-form-select>
+                      <div
+                        v-if="submitted && !$v.user.gender.required"
+                        class="invalid-feedback"
+                      >
+                        Gender Is Required
+                      </div>
+                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-group">
                                         <label for="email">Email</label>
                                         <input type="email" v-model="user.email" id="email" name="email" class="form-control" :class="{ 'is-invalid': submitted && $v.user.email.$error }" />
                                         <div v-if="submitted && $v.user.email.$error" class="invalid-feedback">
@@ -86,6 +107,7 @@
                                 </div>
 
                             </form>
+                                       
                             <div class="text-center">
                                 <button class="btn btn-primary btn-block text-white btn-user" @click="handleSubmit()">
                                     {{$t('Login.Register')}}
@@ -145,10 +167,15 @@ export default {
     },
     data() {
         return {
+      gender: [
+        { value: "M", text: "Male" },
+        { value: "F", text: "female" },
 
+      ],
             user: {
                 firstName: "",
                 lastName: "",
+                gender:"",
                 email: "",
                 password: "",
                 username: "",
@@ -187,6 +214,9 @@ export default {
                 required
             },
             lastName: {
+                required
+            },
+            gender:{
                 required
             },
             username: {

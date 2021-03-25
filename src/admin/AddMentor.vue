@@ -9,6 +9,7 @@
                 <div class="text-center">
                   <h4 class="text-dark mb-4">
                     {{ $t("Common.CreateAccount") }}
+                    {{date}}
                   </h4>
                 </div>
                 <form>
@@ -55,6 +56,27 @@
                         </div>
                       </div>
                     </div>
+                    <div  class="col-sm-12">
+                                    <div class="form-group">
+                      <label for="gender">Gender</label>
+                      <b-form-select
+                        v-model="user.gender"
+                        :options="gender"
+                        size="sm"
+                        class="form-control"
+                        :class="{
+                          'is-invalid': submitted && $v.user.gender.$error,
+                        }"
+                      >
+                      </b-form-select>
+                      <div
+                        v-if="submitted && !$v.user.gender.required"
+                        class="invalid-feedback"
+                      >
+                        Gender Is Required
+                      </div>
+                    </div>
+                                </div>
 
                                       <div class="col-sm-12">
                     <div class="form-group">
@@ -222,6 +244,9 @@ import { required, email, minLength, sameAs } from "vuelidate/lib/validators";
 const { posts, getUrl } = require("../assets/js/service");
 import vue2Dropzone from "vue2-dropzone";
 import "vue2-dropzone/dist/vue2Dropzone.min.css";
+var moment = require('moment-timezone');
+
+
 
 export default {
   components: {
@@ -229,6 +254,12 @@ export default {
   },
   data() {
     return {
+            gender: [
+        { value: "M", text: "Male" },
+        { value: "F", text: "female" },
+
+      ],
+      date:moment().tz("America/Los_Angeles").format(),
       userType: [
         { value: "mentor", text: "Mentor" },
         { value: "accountant", text: "Accountant" },
@@ -244,12 +275,13 @@ export default {
       user: {
         firstName: "",
         lastName: "",
+        gender:"",
         email: "",
         password: "",
         confirmPassword: "",
 
         profileImage: "",
-        userType: "mentor",
+        userType: "",
       },
       submitted: false,
       password: "",
@@ -277,7 +309,9 @@ export default {
       lastName: {
         required,
       },
-      
+      gender:{
+        required,
+      },
       userType: {
         required,
       },
