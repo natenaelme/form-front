@@ -292,7 +292,7 @@ export function setUserInfo(token,userType,userFirstName,userLastName){
 }
 export function getUserInfo(){
     return(userInfo);
-}http://alphaworkbook.com
+}
 export function ImageResize(type,image){
     
     var Image = image.split("/upload/");
