@@ -1,6 +1,15 @@
 <template>
   <div>
     <HeaderFile :FirstHeader="$t('My_Dream_Board')" />
+    <div class="text-center">
+ <div v-if="loading" class="lds-ripple">
+            <div></div>
+            <div></div>
+            loading..
+          </div>
+    </div>
+   
+    <div v-if="!loading">
     <b-row style="margin-top: -15%">
       <b-col md="3"></b-col>
       <b-col md="6" v-if="next" class="view overlay">
@@ -134,7 +143,7 @@
           class="health-image image"
           @click="route('physical')"
           style=""
-          :src="images.Health"
+          :src="Imagere(images.Health)"
           alt=""
           width="8%"
           height="30%"
@@ -144,7 +153,7 @@
           class="spirtual-image image"
           @click="route('spirtual')"
           style=""
-          :src="images.Spirtual"
+          :src="Imagere(images.Spirtual)"
           alt=""
           width="8%"
           height="30%"
@@ -153,7 +162,7 @@
           class="vission-image image"
           @click="route('service')"
           style=""
-          :src="images.Vision"
+          :src="Imagere(images.Vision)"
           alt=""
           width="8%"
           height="30%"
@@ -161,7 +170,7 @@
         <img
           class="profile-image"
           style=""
-          :src="profileImage"
+          :src="Imagere(profileImage)"
           alt=""
           width="8%"
           height="30%"
@@ -170,7 +179,7 @@
           class="financial-image image"
           @click="route('financial')"
           style=""
-          :src="images.Finance"
+          :src="Imagere(images.Finance)"
           alt=""
           width="8%"
           height="30%"
@@ -179,7 +188,7 @@
           class="family-image image"
           @click="route('family')"
           style=""
-          :src="images.Family"
+          :src="Imagere(images.Family)"
           alt=""
           width="8%"
           height="30%"
@@ -188,7 +197,7 @@
           class="car-image image"
           @click="route('car')"
           style=""
-          :src="images.Car"
+          :src="Imagere(images.Car)"
           alt=""
           width="8%"
           height="30%"
@@ -197,7 +206,7 @@
           class="house-image image"
           @click="route('my_house')"
           style=""
-          :src="images.House"
+          :src="Imagere(images.House)"
           alt=""
           width="8%"
           height="30%"
@@ -206,7 +215,7 @@
           class="socal-image image"
           @click="route('socal_dream')"
           style=""
-          :src="images.Socal"
+          :src="Imagere(images.Socal)"
           alt=""
           width="8%"
           height="30%"
@@ -215,14 +224,19 @@
           class="knowlage-image image"
           @click="route('my_mental')"
           style=""
-          :src="images.Knowledge"
+          :src="Imagere(images.Knowledge)"
           alt=""
           width="8%"
           height="30%"
         />
       </b-col>
     </b-row>
+    </div>
     <p class="text-center" style="margin-top: 5%; margin-bottom: 0%">
+      
+      <b-button to="/question/my_life"  variant="success"
+        >Back</b-button
+      >
       <b-button to="/question/use_posetive" :disabled="next" variant="success"
         >Next</b-button
       >
@@ -232,13 +246,14 @@
 
 <script>
 import HeaderFile from "../../containers/HeaderFile";
-const { getterIdForImage } = require("../../assets/js/service");
+const { getterIdForImage,ImageResize } = require("../../assets/js/service");
 export default {
   components: {
     HeaderFile,
   },
   data() {
     return {
+      loading : false,
       pages: localStorage.getItem("pages"),
       next: true,
       profileImage: localStorage.getItem("profileImage"),
@@ -248,13 +263,16 @@ export default {
     };
   },
   mounted() {
+    this.loading = true;
     let pages = this.pages.split(",");
     console.log(pages[0]);
 let dataBase = "/users/getImages/";
       getterIdForImage(dataBase, this.id, this.token).then((resp) => {
         this.images = resp.data.images;
-      
+        this.loading=false;
         console.log(this.images);
+      }).catch(err=>{
+        this.loading = false;
       });
     if (pages[0] >= 12) {
       this.next = false;
@@ -262,6 +280,10 @@ let dataBase = "/users/getImages/";
     }
   },
   methods: {
+    Imagere(image){
+            
+            return ImageResize("square tumble",image)
+        },
     route(value) {
       this.$router.replace(value);
     },
@@ -427,12 +449,29 @@ let dataBase = "/users/getImages/";
   clip-path: polygon(76% 27%, 97% 33%, 85% 59%, 63% 81%, 41% 93%, 31% 74%, 57% 52%);
 }
 @media only screen and (max-width: 600px) {
+  .financial-image {
+  width: 40%;
+height: 200px;
+margin-top: -56%;
+margin-left: 65%;
+  clip-path: polygon(
+    84% 68%,
+    83% 93%,
+    18% 73%,
+    18% 58%,
+    14% 45%,
+    10% 35%,
+    59% 1%,
+    70% 17%,
+    75% 29%,
+    83% 52%
+  );
+}
   .health-image {
     width: 40%;
-    height: 200px;
-
-    margin-top: 60%;
-    margin-left: -2%;
+height: 200px;
+margin-top: 67%;
+margin-left: -2%;
     clip-path: polygon(
       42% 1%,
       91% 39%,
@@ -448,15 +487,15 @@ let dataBase = "/users/getImages/";
   .profile-image {
     width: 40%;
     height: 155px;
-    margin-top: 74%;
-    margin-left: -59%;
+margin-top: 80%;
+margin-left: -59%;
     clip-path: circle(40% at 50% 50%);
   }
   .family-image {
     width: 40%;
-    height: 155px;
-    margin-top: -19%;
-    margin-left: 59%;
+   height: 155px;
+margin-top: -19%;
+margin-left: 57%;
     -webkit-clip-path: polygon(
       28% 22%,
       32% 12%,
@@ -471,8 +510,8 @@ let dataBase = "/users/getImages/";
   .car-image {
     width: 40%;
     height: 155px;
-    margin-top: -49%;
-    margin-left: 59%;
+margin-top: -41%;
+margin-left: 59%;
     -webkit-clip-path: polygon(
       66% 44%,
       75% 27%,
@@ -486,9 +525,9 @@ let dataBase = "/users/getImages/";
   }
   .house-image {
     width: 40%;
-    height: 155px;
-    margin-top: -60%;
-    margin-left: 59%;
+height: 155px;
+margin-top: -50%;
+margin-left: 59%;
     -webkit-clip-path: polygon(
       76% 27%,
       97% 33%,
@@ -502,9 +541,9 @@ let dataBase = "/users/getImages/";
   }
   .socal-image {
     width: 40%;
-    height: 155px;
-    margin-top: -52%;
-    margin-left: 31%;
+   height: 185px;
+margin-top: -48%;
+margin-left: 31%;
     -webkit-clip-path: polygon(
       50% 17%,
       59% 15%,
@@ -531,8 +570,8 @@ let dataBase = "/users/getImages/";
   .knowlage-image {
     width: 40%;
     height: 155px;
-    margin-top: -88%;
-    margin-left: 3%;
+margin-top: -81%;
+margin-left: 4%;
     -webkit-clip-path: polygon(
       79% 28%,
       86% 33%,

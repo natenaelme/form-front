@@ -6,11 +6,15 @@
 export default {
     name: 'App'
 }
+
 </script>
 
 <style lang="scss">
 // Import Main styles for this application
 @import 'assets/scss/style';
+.table{
+  font-size: smalls i !important;
+}
 
 @media (max-width: 767px) {
     .hiddenView {

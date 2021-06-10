@@ -1,5 +1,9 @@
 {
   "Common": {
+    "forgetPassword":"Forget Password",
+    "email":"please enter your email address",
+    "changePassword":"Change Password",
+    "send":"Send",
     "Deposit":"Deposit",
     "t-idnotblank":"transaction id can't be empity",
     "fullnameBlank":"Full Name id can't be empity",
@@ -718,10 +722,10 @@
     "None":"None useful Behaviors",
     "Useful":"Useful Behaviors",
     "Hindering":"Hindering Environment",
-    "Daily":"Daily",
-    "Weekly":"Weekly",
-    "Monthly":"Monthly",
-    "Yearly":"Yearly",
+    "Daily":"Daily Action",
+    "Weekly":"Weekly Action",
+    "Monthly":"Monthly Action",
+    "Yearly":"Yearly Action",
     "Calendar":"Calendar",
 
     "LongTerm":"Long Term",

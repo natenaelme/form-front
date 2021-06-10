@@ -2,20 +2,8 @@
 <div>
             <b-row>
                 <b-container>
-                Selcet a chapter
-                <b-form-select v-model="selectedChapter" id="select"  :options="chapter" size="sm" class="mt-3">
-
-    </b-form-select>
-            Messge for customer
-              <b-form-textarea v-model="mentorMessage">
-                  
-              </b-form-textarea>
-              <br>
-              <b-button variant="success" @click="sendMessage()" :disabled="!selectedChapter || !mentorMessage" style="float:right">send 
-                  <div v-if="messageSending" class="spinner-grow spinner-grow-sm" role="status">
-                    <span class="sr-only">Loading...</span>
-                    </div>
-                </b-button>
+               
+            
                 </b-container>
         </b-row>
     <label for="select"><strong>Select Pages</strong> </label>
@@ -33,6 +21,10 @@
         </div><br>
     </div>
     <router-view></router-view>
+    <p style="text-align:center">
+            <b-button variant="success" @click="routeToComponentNext" >next</b-button>
+
+    </p>
 
 </div>
 </template>
@@ -43,7 +35,7 @@ export default {
     data() {
         return {
             show: true,
-            selected: '',
+            selected: 'how_to_search',
             selectedChapter:null,
             messageSending:false,
             mentorMessage:null,
@@ -53,7 +45,7 @@ export default {
                 {
                     value: "how_to_search",
                     text: this.$i18n.t("How_To_Search.HowToSearch"),
-
+ 
                 },
                 {
                     value: "personal_information",
@@ -165,8 +157,8 @@ export default {
     },
     methods: {
          makeToast(variant, message) {
-      this.$bvToast.toast(message, {
-        title: variant,
+      let messagehead;if(variant=="success"){messagehead="success"}else{messagehead="error"}this.$bvToast.toast(message, {
+        title: messagehead,
         variant: variant,
         solid: true,
       });
@@ -177,7 +169,16 @@ export default {
             this.Vission = this.Vission;
             this.$router.replace(this.selected)
         },
+        routeToComponentNext() {
+            let route = this.Vission.filter(vetion=>vetion.value == this.selected);
+            
+            if(this.Vission.indexOf(this.selected)<this.Vission.length){
+                this.$router.replace(this.Vission[this.Vission.indexOf(route[0])+1].value);
+                this.selected = this.Vission[this.Vission.indexOf(route[0])+1].value;
+            }
+        },
         sendMessage(){
+            
             this.messageSending = true;
       console.log("ress");
       let newMessage = {

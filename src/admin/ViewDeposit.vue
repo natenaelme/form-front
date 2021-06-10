@@ -1,6 +1,16 @@
 <template>
   <div>
+    <b-card v-if="verification">
+      <label for="">Filter</label>
+      <b-form-select @change="filterDeposit()" v-model="selected" class="mb-3">
+      <b-form-select-option :value="null">All</b-form-select-option>
+      <b-form-select-option :value="true">Approved</b-form-select-option>
+      <b-form-select-option :value="false">Not Approved </b-form-select-option>
+      </b-form-select>
+    </b-card>
+    <h3 class="text-center">Deposit List</h3>
     <table class="table">
+      
       <thead>
         <tr>
           <th scope="col">#</th>
@@ -33,10 +43,12 @@
               }}
               <br />
               {{ "User Name :" + verification.user.username }}
+              <br>
+              {{"email :" + verification.user.email}}
             </p>
           </th>
           <th>
-                       <img style="width:100%" :src="verification.imageOfSleep" @click="$bvModal.show('bv-modall-'+index)" class="rounded-circle butImag" width="50em" height="50em" alt="">
+           <img style="width:50px;height:50px" :src="verification.imageOfSleep" @click="$bvModal.show('bv-modall-'+index)" class="rounded-circle butImag" width="50em" height="50em" alt="">
  
 
 
@@ -63,7 +75,7 @@
             <p style="color: green" v-if="verification.send">E-Pin Sent</p>
             <p style="color: red" v-if="!verification.send">E-Pin Not Sent</p>
           </th>
-          <th v-if="userType != 'accountant'">
+          <th v-if="userType != 'it'">
             <p style="color: green" v-if="verification.approvedByAccountant">
               Approved
             </p>
@@ -71,7 +83,7 @@
               Not Approved
             </p>
           </th>
-          <th v-if="userType == 'accountant'">
+          <th v-if="userType == 'it'">
             <div class="mb-2">
               
               <b-button v-if="!verification.approvedByAccountant" @click="$bvModal.show('modal-' + index)"
@@ -92,18 +104,18 @@
 
                 <p class="my-4">Are you sure to Approve this account</p>
 
-                >
+                
               </b-modal>
             </div>
           </th>
                     <th v-if="userType == 'it'">
             <div class="mb-2">
               
-              <b-button v-if="!verification.send" @click="$bvModal.show('modal-' + index)"
+              <b-button v-if="!verification.send" @click="$bvModal.show('modal-ver' + index)"
                 >E-Pin Sent Approve</b-button
               ><p v-if="verification.send" style="color:green"> E-Pin Sent</p>
               <b-modal
-                :id="'modal-' + index"
+                :id="'modal-ver' + index"
                 title="Approve Diposit"
                 @ok="SentEpin(verification)"
               >
@@ -142,7 +154,14 @@
         </tr>
       </tbody>
     </table>
-    
+    <div v-if="loading" class="text-center">
+
+            <div class="lds-ripple">
+                <div></div>
+                <div></div>
+
+            </div>loading..
+        </div><br>
     <b-pagination
       @input="pageChange(currentPage)"
       v-model="currentPage"
@@ -157,10 +176,11 @@
   </div>
 </template>
 <script>
-const { getters, getterPerPage, getterId,patchDataId } = require("../assets/js/service");
+const { getters, getterPerPage, getterId,patchDataId,postsVerification } = require("../assets/js/service");
 import "bootstrap-vue/dist/bootstrap-vue.css";
 export default {
   mounted() {
+    this.loading =true;
     let token = localStorage.getItem("token");
     let id = localStorage.getItem("userId");
 
@@ -169,39 +189,74 @@ export default {
       console.log("useruseruseruser");
       console.log(resp.data);
       this.userType = resp.data.userType;
-      if(this.userType == "it"){
+      if(this.userType == "accountant"){
               getters("/Deposites/count").then((resp) => {
-        this.rows = Math.ceil(resp.data.count / 20);
+        this.rows = Math.ceil(resp.data.count / 10);
         console.log(this.rows);
         getterPerPage("Deposites", 1, "where").then((resp) => {
           this.verification = resp.data;
+          this.loading = false;
           console.log(resp.data);
         });
+      }).catch(err=>{
+        this.loading =false;
       })
       }else{
       getters("/Deposites/count").then((resp) => {
-        this.rows = Math.ceil(resp.data.count / 20);
+        this.rows = Math.ceil(resp.data.count / 10);
+        
         console.log(this.rows);
         getterPerPage("Deposites", 1, "user").then((resp) => {
           this.verification = resp.data;
+          this.allDeposite = resp.data;
+          this.loading= false;
           console.log(resp.data);
+        }).catch(err=>{
+          this.loading =false
         });
+      }).catch(err=>{
+        this.loading=false;
       });}
     });
   },
   data() {
     return {
+      selected:null,
+      loading:false,
       rows: 0,
       perPage: 1,
       currentPage: 1,
       verification: null,
       userType: null,
+      allDeposite:null,
     };
   },
   methods: {
+    filterDeposit(){
+      console.log("Sdddddffffffsd");
+      console.log( this.selected + "false")
+      console.log(this.selected == "false");
+      if(this.selected == null){
+        console.log("alll");
+        console.log(this.allDeposite);
+        this.verification = this.allDeposite;
+      }else if(!this.selected){
+        this.verification = this.allDeposite;
+        console.log("not approve");
+        this.verification = this.verification.filter(ver=>ver.approvedByAccountant == false);
+        console.log(this.verification.filter(ver=>ver.approvedByAccountant == false));
+      }else if(this.selected){
+        this.verification = this.allDeposite;
+        this.verification = this.verification.filter((ver)=>ver.approvedByAccountant == true);
+        console.log(this.verification.filter((ver)=>ver.approvedByAccountant == true));
+      }
+      
+      
+      
+    },
     makeToast(variant, message) {
-      this.$bvToast.toast(message, {
-        title: variant,
+      let messagehead;if(variant=="success"){messagehead="success"}else{messagehead="error"}this.$bvToast.toast(message, {
+        title: messagehead,
         variant: variant,
         solid: true,
       });
@@ -238,12 +293,12 @@ export default {
     },
     approveUser(verification) {
       console.log(verification);
-      let dataBase = "Deposites/";
+      let dataBase = "/users/depositeAproveByAccountant";
       let token = localStorage.getItem("token");
 
       verification.approvedByAccountant = true;
 
-      patchDataId(verification.id, dataBase, token, verification).then((resp) => {
+      postsVerification( dataBase, {id:verification.id}).then((resp) => {
         console.log(resp);
         getterPerPage("Deposites", page, "user")
           .then((resp) => {
@@ -268,6 +323,7 @@ export default {
     },
     pageChange(page) {
       console.log(this.currentPage);
+      this.selected = null;
       getterPerPage("Deposites", page, "user").then((resp) => {
         this.verification = resp.data;
       });
@@ -279,5 +335,6 @@ export default {
 .butImag:hover{
 opacity: 0.5;
 };
+
 
 </style>

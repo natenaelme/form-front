@@ -1,6 +1,45 @@
 <template>
 <div>
+    
+        <b-card>
+            <h5>filter data by approval date</h5>
+        <b-row>
+      <b-col>
+        <b-form-datepicker v-model="filterData.StartingDate" placeholder="Select Staring Date" ></b-form-datepicker>
+      </b-col>
+      <b-col>
+        <b-form-datepicker v-model="filterData.EndDate" placeholder="Select End Date" ></b-form-datepicker>
+      </b-col>
+    </b-row>
+    <p style="color:red" v-if="incorectDate">fill the date correctly to filter the Data</p>
+    <br>
+    <b-button style="float: right" @click="filterByDate()" variant="primary">Filter</b-button>
+    <br>
+        <br>
+       <b-row>
+           <b-col>
+               <b-input-group  class="mt-3">
+                   <div class="input-group-prepend">
+    <b-form-select v-model="selected" class="mb-3">
+      <b-form-select-option value="email">Search by email</b-form-select-option>
+      <b-form-select-option value="username">Search by User Name</b-form-select-option>
+      
+    </b-form-select>
+
+  </div>
+    <b-form-input v-bind:class="{  'is-invalid': searchempity }" :placeholder="selected" v-model="searchValue" style="width: 0% !important;"></b-form-input>
+    
+    <b-input-group-append>
+      <b-button style="height: 35px;" @click="search()" variant="primary"><CIcon name="cil-magnifying-glass"/> Search</b-button>
+    </b-input-group-append>
+  </b-input-group>
+           </b-col>
+       </b-row>
+     
+    </b-card>
+    
     <h3 class="text-center">List of Customers</h3>
+    <p v-if="filteredData">from date : {{filterData.StartingDate}}  to date : {{filterData.EndDate}}</p>
     <div class="table-responsive-lg">
         <table class="table">
 
@@ -22,7 +61,7 @@
                     <th>{{index+1}}</th>
                     <th>{{user.firstName + " " + user.lastName}}</th>
                     <th>{{user.email}}</th>
-                    <th><img :src="user.profileImage" class="rounded-circle" width="50em" height="50em" alt=""></th>
+                    <th><img :src="Imagere(user.profileImage)" class="rounded-circle" width="50em" height="50em" alt=""></th>
                     <th>{{user.username}}</th>
                     <th>
                         <b-container>
@@ -57,6 +96,18 @@
 
             </div>loading..
         </div><br>
+        <b-pagination
+        v-if="!filteredData"
+      @input="pageChange(currentPage)"
+      v-model="currentPage"
+      :total-rows="rows"
+      :per-page="perPage"
+      first-text="First"
+      prev-text="Prev"
+      next-text="Next"
+      last-text="Last"
+      align="center"
+    ></b-pagination>
 
     </div>
 
@@ -72,15 +123,33 @@ const {
     TeamBuildingPages,
     getterId,
     getMentorsData,
+    postsVerification,
+    getterwhere,
+    getterWhere,
+    ImageResize,
+    getterWh,
     getUserData
 } = require('../assets/js/service')
 
 export default {
     data() {
         return {
+            selected: 'email',
+            searchValue: null,
+            searchempity:false,
+            placeholderForsearch:'email',
+            filterData:{
+        StartingDate:null,
+        EndDate:null
+      },
+      filteredData:false,
             usersData: {},
             loading: false,
             userType : null,
+            incorectDate:false,
+            rows: 0,
+            perPage: 1,
+      currentPage: 1,
         }
     },
     mounted() {
@@ -94,10 +163,15 @@ export default {
             console.log(resp.data);
             this.userType =resp.data.userType;
             if (this.userType == 'admin') {
-            getterUsers(token, 'user').then(resp => {
+            getterWhere('users/count','canAccess',true,'userType','user').then(resp=>{
+                this.rows = Math.ceil(resp.data.count / 10);
+                console.log("count count of he verified users"+resp.data.count);
+                getterUsers(token,1,'user').then(resp => {
                 this.usersData = resp.data;
                 this.loading = false;
+                })
             })
+           
         } else if (this.userType == 'mentor') {
             getUserData(dataBase, id, token).then(resp => {
                 this.usersData = resp.data;
@@ -116,6 +190,54 @@ export default {
 
     },
     methods: {
+          Imagere(image){
+            
+            return ImageResize("square tumble",image)
+        },
+         pageChange(page) {
+             this.loading = true;
+             let token = localStorage.getItem('token');
+             this.usersData = {};
+         getterUsers(token,page,'user').then(resp => {
+                this.usersData = resp.data;
+                this.loading = false;
+                })
+    },
+    search(){
+        if(this.searchValue){
+            this.loading = true;
+            this.usersData = {};
+            this.searchempity = false;
+            let token = localStorage.getItem('token');
+            getterWh('users',token,this.selected,this.searchValue,'canAccess',true,'userType','user').then(resp=>{
+                console.log("search result getterwhere getterwhere");
+                console.log(resp.data);
+                 this.filteredData =true;
+            this.usersData = resp.data;
+                this.loading = false;
+
+            })
+        }else{
+            this.searchempity = true;
+        }
+    },
+    filterByDate(){
+        console.log(this.filterData);
+         this.loading = true;
+             this.usersData = {};
+             this.filterData.type = "AprovedDate";
+        if(this.filterData.StartingDate && this.filterData.EndDate){
+        postsVerification("users/filterUserByApprovalDate",this.filterData).then(resp=>{
+            console.log(resp.data.responce);
+            this.filteredData =true;
+            this.usersData = resp.data.responce;
+                this.loading = false;
+
+        })
+        }else{
+            this.incorectDate = true;
+        }
+    },
         test(user) {
             localStorage.setItem('userToView', user.id),
                 localStorage.setItem('userFullName', user.firstName + " " + user.lastName),

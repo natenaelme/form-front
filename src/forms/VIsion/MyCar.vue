@@ -88,7 +88,7 @@
 
                     <b-list-group-item>
                         <div class="col-sm-12">
-                            <label for="dropzone"><strong>{{ $t("Financial.Picture") }}</strong></label>
+                            <label for="dropzone"><strong>{{ $t("MyCar.Picture") }}</strong></label>
                             <vue-dropzone ref="myVueDropzone" id="dropzone" @vdropzone-success="vsuccess" :options="vdropzoneOptions"></vue-dropzone>
                             <div v-if="!imageuploaded" style="color:red" class="text-center">
                                 the image is not uploaded
@@ -318,7 +318,7 @@ export default {
         },
         makeToast(variant, message) {
             this.$bvToast.toast(message, {
-                title: variant,
+                title: "Error",
                 variant: variant,
                 solid: true
             })

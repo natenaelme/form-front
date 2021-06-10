@@ -36,14 +36,32 @@ export default {
         let token = localStorage.getItem('token');
 
         let id = localStorage.getItem('userId');
+        console.log("ggggggggggggggggggggggggg");
         getterId('users/', id, token).then(resp => {
-            this.value = resp.data.progress
-        })
+            console.log("testetsteetstesetsetes");
+            this.value = resp.data.progress;
+        }).catch((err) => {
+            console.log("testetsteetstesetsetes");
+            console.log(err);
+            if (err.response) {
+              // client received an error response (5xx, 4xx)
+
+              this.makeToast(
+                "danger",
+                "the Information that you entered is not correct.or the email allrady existed"
+              );
+              console.log(err);
+            } else if (err.request) {
+              this.$toasted.show("Connection Problem");
+            } else {
+              this.$toasted.show("Some Error has Happened");
+            }
+          });
     },
     methods: {
         makeToast(variant, message) {
             this.$bvToast.toast(message, {
-                title: variant,
+                title: "Error",
                 variant: variant,
                 solid: true
             })

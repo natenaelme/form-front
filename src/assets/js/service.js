@@ -1,17 +1,18 @@
 import Vue from 'vue'
 
-import axios from 'axios'
+import http from "./http-client";
 import VueAxios from 'vue-axios'
 import { BootstrapVue, BVToastPlugin } from "bootstrap-vue";
 Vue.use(BootstrapVue);
 Vue.use(BVToastPlugin);
 
-Vue.use(VueAxios, axios) 
+// Vue.use(VueAxios, axios) 
 const imgUrl="https://api.cloudinary.com/v1_1/dhvxgn9xz/image/upload?upload_preset=sravrhin";
 // const apiUrl="https://breakthrogh.herokuapp.com/api/";
 const apiUrl="https://alphaworkbook.com:/api/";
 // const apiUrl = "http://localhost:3000/api/";
-const perPage = 20;
+const perPage = 10;
+const CloudnaryUrl = "https://res.cloudinary.com/dhvxgn9xz/image/upload/";
 // const apiUrl="http://5.79.66.86:61217/api/";
 const chapters = [
     {
@@ -102,6 +103,7 @@ let userInfo = {
     userFirstName:'',
     userLastName:''
 }
+let token = localStorage.getItem("tocken");
 export function getAllChapters(){
     return chapters
 }
@@ -126,20 +128,30 @@ export function getSingleCahpter(value){
         }
     });return result;
 }
+export function getApiUrl(){
+    return apiUrl;
+}
 export function getters(dataBase){
-    return(Vue.axios.get(apiUrl+dataBase))
+    // console.log(this.token);
+    token = localStorage.getItem("token");
+    console.log(userInfo);
+    console.log(apiUrl+dataBase +'access_token=' + token);
+    return(http.get(apiUrl+dataBase +'?access_token=' + localStorage.getItem("token")))
+}
+export function getterWhere(dataBase,whereType,whereValue,whereType2,whereValue2){
+    return(http.get(apiUrl+dataBase +'?access_token=' + localStorage.getItem("token")+'&where={"'+whereType+'":"'+whereValue+'","'+whereType2+'":"'+whereValue2+'"}'))
 }
 export function getterPerPage(dataBase,page,include){
     console.log("page"+page);
     let skip = (parseInt(page)-1) * perPage;
     if(include == "where"){
-        return(Vue.axios.get(apiUrl+dataBase +`?filter={"limit":`+perPage+`,"skip":`+skip + `,"include":"`+"user"+`","where":{"approvedByAccountant":"true"}}`))
+        return(http.get(apiUrl+dataBase +`?access_token=` + token +`&filter={"limit":`+perPage+`,"skip":`+skip + `,"include":"`+"user"+`","where":{"approvedByAccountant":"true"}}`))
     }
     else if(include != "where" && include != null){
-        return(Vue.axios.get(apiUrl+dataBase +`?filter={"limit":`+perPage+`,"skip":`+skip + `,"include":"`+include+`"}`))
+        return(http.get(apiUrl+dataBase +`?access_token=` + token +`&filter={"limit":`+perPage+`,"skip":`+skip + `,"include":"`+include+`"}`))
     }
     else{
-        return(Vue.axios.get(apiUrl+dataBase +`?filter[limit]=`+perPage+`&filter[skip]=`+skip))
+        return(http.get(apiUrl+dataBase +`?access_token=` + token +`&filter[limit]=`+perPage+`&filter[skip]=`+skip))
     }
     
 }
@@ -159,95 +171,115 @@ export function TeamBuildingPages(){
     return(TeamBuilding)
 }
 export function logout(token){
-    return (Vue.axios.post(apiUrl + '/users/logout'+'?'+'access_token=' + token ))
+    return (http.post(apiUrl + '/users/logout'+'?'+'access_token=' + token ))
 }
 export function getterVerKey(type,workbook){
-    return(Vue.axios.get(apiUrl+'/verifications'+`?filter={"where":{"`+type+`":"` + workbook +`"}}`));
+    return(http.get(apiUrl+'/verifications'+'?access_token=' + token+`&filter={"where":{"`+type+`":"` + workbook +`"}}`));
+}
+export function getterwhere(database,type,value){
+    return(http.get(apiUrl+database+'?access_token=' + token+`&filter={"where":{"`+type+`":"` + value +`"}}`));
 }
 export function getterDeposit(type,UserId){
-    return(Vue.axios.get(apiUrl+'/Deposites'+`?filter={"where":{"`+type+`":"` + UserId +`"}}`));
+    return(http.get(apiUrl+'/Deposites'+'?access_token=' + token+`&filter={"where":{"`+type+`":"` + UserId +`"}}`));
 }
-export function getterUsers(token,userType){
-    return(Vue.axios.get(apiUrl+'/users'+`?filter={"where":{"userType":"` + userType +`",`+`"canAccess":`+ true + `}}`+'&access_token=' + token))
+export function getterUsers(token,page,userType){
+    let skip = (parseInt(page)-1) * perPage;
+    console.log("skip number" + skip);
+    console.log(apiUrl+'/users'+`?filter={"where":{"userType":"` + userType +`",`+`"canAccess":`+ true + `},"limit":`+perPage+`,"skip":`+skip + `}`+'&access_token=' + token)
+    return(http.get(apiUrl+'/users'+`?filter={"where":{"userType":"` + userType +`",`+`"canAccess":`+ true + `},"limit":`+perPage+`,"skip":`+skip + `}`+'&access_token=' + token))
 }
+
 export function getterMentors(token,userType){
-    return(Vue.axios.get(apiUrl+'/users'+`?filter={"where":{"userType":"` + userType +`"}}`+'&access_token=' + token))
+    return(http.get(apiUrl+'/users'+`?filter={"where":{"userType":"` + userType +`"}}`+'&access_token=' + token))
 }
 export function getterAllUsers(token,where){
     if(where = "icam"){
-        return(Vue.axios.get(apiUrl+'/users'+`?filter={"where":{"or":[{"userType":"mentor"},{"userType":"it"},{"userType":"accountant"},{"userType":"customer_service"}]}}`+'&access_token=' + token))
+        return(http.get(apiUrl+'/users'+`?filter={"where":{"or":[{"userType":"mentor"},{"userType":"it"},{"userType":"accountant"},{"userType":"customer_service"}]}}`+'&access_token=' + token))
     }
 }
-export function getterUnApproUsers(token,userType){
-    return(Vue.axios.get(apiUrl+'/users'+`?filter={"where":{"userType":"` + userType +`",`+`"canAccess":`+ false + `}}`+'&access_token=' + token))
+export function getterUnApproUsers(token,page,userType){
+    let skip = (parseInt(page)-1) * perPage;
+    console.log("skip number" + skip);
+    return(http.get(apiUrl+'/users'+`?filter={"where":{"userType":"` + userType +`",`+`"canAccess":`+ false + `},"limit":`+perPage+`,"skip":`+skip +`}`+'&access_token=' + token))
 }
 export function getterWhereQ(database,token,type,value,type2,value2,include,order){
     console.log(apiUrl+'/'+database);
-    return(Vue.axios.get(apiUrl+database+`?filter={"where":{"and":[{"`+type+`":"` + value +`"},{"`+type2+`":"` + value2 +`"}]},"include":"`+include+`","order": "Date `+order+`"}`+'&access_token=' + token))
+    return(http.get(apiUrl+database+`?filter={"where":{"and":[{"`+type+`":"` + value +`"},{"`+type2+`":"` + value2 +`"}]},"include":"`+include+`","order": "Date `+order+`"}`+'&access_token=' + token))
+}
+export function getterWh(database,token,type,value,type2,value2,type3,value3){
+    console.log(apiUrl+'/'+database);
+    return(http.get(apiUrl+database+`?filter={"where":{"and":[{"`+type+`":"` + value +`"},{"`+type2+`":"` + value2 +`"},{"`+type3+`":"` + value3 +`"}]}}`+'&access_token=' + token))
 }
 export function getterId(dataBase,id,token){
-    return(Vue.axios.get(apiUrl+dataBase+id+'?'+'access_token=' + token))
+    return(http.get(apiUrl+dataBase+id+'?'+'access_token=' + token))
 }
 export function filterverbyDate(dataBase,id,token){
     
-    return(Vue.axios.get(apiUrl+dataBase+id+'?'+'access_token=' + token))
+    return(http.get(apiUrl+dataBase+id+'?'+'access_token=' + token))
 }
 export function getterIdForImage(dataBase,id,token){
-    return(Vue.axios.get(apiUrl+dataBase+'?id='+id+'&access_token=' + token)) 
+    return(http.get(apiUrl+dataBase+'?id='+id+'&access_token=' + token)) 
 }
 export function PostVerification(dataBase,token,data){
-    return(Vue.axios.post(apiUrl+dataBase+'?'+'access_token=' + token + '&Data='+JSON.stringify(data)))
+    return(http.post(apiUrl+dataBase+'?'+'access_token=' + token + '&Data='+JSON.stringify(data)))
+}
+export function ForgetPassword(dataBase,data){
+    return(http.post(apiUrl+dataBase+'?' + 'Data='+JSON.stringify(data)))
 }
 export function Gets(dataBase,token,data){
-    return(Vue.axios.get(apiUrl+dataBase+'?'+'access_token=' + token + '&Data='+JSON.stringify(data)))
+    return(http.get(apiUrl+dataBase+'?'+'access_token=' + token + '&Data='+JSON.stringify(data)))
 }
 export function getUserData(dataBase,id,token){
-    return(Vue.axios.get(apiUrl+"users/"+id+dataBase+'?'+'access_token=' + token))
+    return(http.get(apiUrl+"users/"+id+dataBase+'?'+'access_token=' + token))
 }
 export function getUserDataInclude(include,id,token){
-    return(Vue.axios.get(apiUrl+"users/"+id+'?filter={"include":"'+include+'"}'+'&access_token=' + token))
+    return(http.get(apiUrl+"users/"+id+'?filter={"include":"'+include+'"}'+'&access_token=' + token))
 }
 export function getUserDataMentor(dataBase,id,token){
-    return(Vue.axios.get(apiUrl+"users/"+id+'?filter={"include":"mentors"}'+'&access_token=' + token))
+    return(http.get(apiUrl+"users/"+id+'?filter={"include":"mentors"}'+'&access_token=' + token))
 }
 export function Login(data){
     console.log("test Login");
-    return(Vue.axios.post(apiUrl+"users/login"+'?include=User',data))
+    return(http.post(apiUrl+"users/login"+'?include=User',data))
 }
 export function getUserDataSingleMentor(id,token){
-    return(Vue.axios.get(apiUrl+"mentors/"+id+'?'+'access_token=' + token))
+    return(http.get(apiUrl+"mentors/"+id+'?'+'access_token=' + token))
 }
 export function getMentorsData(dataBase,id,token){
-    return(Vue.axios.get(apiUrl+"mentors/"+id+dataBase+'?'+'access_token=' + token))
+    return(http.get(apiUrl+"mentors/"+id+dataBase+'?'+'access_token=' + token))
 }
 export function getDataOfUsers(dataBase,id,token){
-    return(Vue.axios.get(apiUrl+"users/"+id+'?'+'access_token=' + token))
+    return(http.get(apiUrl+"users/"+id+'?'+'access_token=' + token))
+}
+export function getDataOfUsersWithInclude(dataBase,id,token,include){
+    console.log(apiUrl+"users/"+id+'?'+'access_token=' + token+'&filter={"include":"'+include+'"}');
+    return(http.get(apiUrl+"users/"+id+'?'+'access_token=' + token+'&filter={"include":"'+include+'"}'))
 }
 export function getMentors(token){
-    return(Vue.axios.get(apiUrl+'mentors'+'?'+'access_token=' + token))
+    return(http.get(apiUrl+'mentors'+'?'+'access_token=' + token))
 }
 export function patchData(dataBase,token,data){
-    return(Vue.axios.patch(apiUrl+dataBase+'?'+'access_token=' + token, data))
+    return(http.patch(apiUrl+dataBase+'?'+'access_token=' + token, data))
 }
 export function patchDataId(id,dataBase,token,data){
     
-    return(Vue.axios.patch(apiUrl+dataBase+id+'?'+'access_token=' + token, data))
+    return(http.patch(apiUrl+dataBase+id+'?'+'access_token=' + token, data))
 }
 export function posts(dataBase,data){
     console.log(data);
-    return(Vue.axios.post(apiUrl+dataBase,data))
+    return(http.post(apiUrl+dataBase+'?access_token=' + token,data))
 }
 export function postsToken(dataBase,data,token){
-    return(Vue.axios.post(apiUrl+dataBase+'?'+'access_token=' + token,data))
+    return(http.post(apiUrl+dataBase+'?'+'access_token=' + token,data))
 }
 export function postsVerification(dataBase,data){
     console.log(data)
-    return(Vue.axios.post(apiUrl+dataBase+'?Data='+JSON.stringify(data)))
+    return(http.post(apiUrl+dataBase+'?access_token=' + token+'&Data='+JSON.stringify(data)))
 }
 
 export function Notification(variant, message) { 
-    this.$bvToast.toast(message, {
-        title: variant,
+    let messagehead;if(variant=="success"){messagehead="success"}else{messagehead="error"}this.$bvToast.toast(message, {
+        title: messagehead,
         variant: variant,
         solid: true
     })
@@ -260,4 +292,15 @@ export function setUserInfo(token,userType,userFirstName,userLastName){
 }
 export function getUserInfo(){
     return(userInfo);
-}
+}http://alphaworkbook.com
+export function ImageResize(type,image){
+    
+    var Image = image.split("/upload/");
+    var imageurl;
+    if(type == "square tumble"){
+      imageurl = CloudnaryUrl + "q_10/c_thumb,w_200,g_face,ar_1:1,c_fill,g_auto,e_art:hokusai/" + Image[1];
+      
+      return imageurl;
+    }
+    return;
+  }

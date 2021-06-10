@@ -1713,14 +1713,15 @@ export default {
   },
   methods: {
     makeToast(variant, message) {
-      this.$bvToast.toast(message, {
-        title: variant,
+      let messagehead;if(variant=="success"){messagehead="success"}else{messagehead="error"}this.$bvToast.toast(message, {
+        title: messagehead,
         variant: variant,
         solid: true,
         view: true,
       });
     },
     SilenceTime(value) {
+      
       this.show = false;
       this.view = true;
       let dataBase = value;
@@ -2062,7 +2063,17 @@ export default {
       console.log("the last data");
       this.lastData.Daily.push(newDayData);
         console.log(this.lastData);
+        console.log("events");
+        console.log(this.events);
         patchData(dataBase,this.token,this.lastData).then((resp)=>{
+          let event = [];
+          this.events.forEach((value,index)=>{
+                 let sel =value;
+                sel.disabled= false;
+                event.push(sel)
+                
+                });
+                this.events = event;
                 this.form= {
         
         Daily: [

@@ -20,7 +20,7 @@
                 id="input-1"
                 style="font-size: 12px"
                 v-model="form.history[index].year"
-                type="number"
+                type="date"
                 required
                 placeholder=""
               ></b-form-input>
@@ -158,8 +158,8 @@ export default {
   },
   methods: {
     makeToast(variant, message) {
-      this.$bvToast.toast(message, {
-        title: variant,
+      let messagehead;if(variant=="success"){messagehead="success"}else{messagehead="error"}this.$bvToast.toast(message, {
+        title: messagehead,
         variant: variant,
         solid: true,
       });

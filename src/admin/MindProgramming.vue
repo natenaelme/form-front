@@ -2,20 +2,8 @@
 <div>
      <b-row>
                 <b-container>
-                Selcet a chapter
-                <b-form-select v-model="selectedChapter" id="select"  :options="chapter" size="sm" class="mt-3">
-
-    </b-form-select>
-            Messge for customer
-              <b-form-textarea v-model="mentorMessage">
-                  
-              </b-form-textarea>
-              <br>
-              <b-button variant="success" @click="sendMessage()" :disabled="!selectedChapter || !mentorMessage" style="float:right">send 
-                  <div v-if="messageSending" class="spinner-grow spinner-grow-sm" role="status">
-                    <span class="sr-only">Loading...</span>
-                    </div>
-                </b-button>
+               
+           
                 </b-container>
         </b-row>
     <label for="select"><strong>Select Pages</strong> </label>
@@ -33,7 +21,10 @@
         </div><br>
     </div>
     <router-view></router-view>
+     <p style="text-align:center">
+            <b-button variant="success" @click="routeToComponentNext" >next</b-button>
 
+    </p>
 </div>
 </template>
 
@@ -47,7 +38,7 @@ export default {
             selectedChapter:null,
             messageSending:false,
             mentorMessage:null,
-            selected: '',
+            selected: 'alpha_belief',
             Habit: [
                 // {
                 //     value: null,
@@ -82,13 +73,21 @@ export default {
         this.chapter = getChapters("2")
     },
     methods: {
+      routeToComponentNext() {
+            let route = this.Habit.filter(vetion=>vetion.value == this.selected);
+            
+            if(this.Habit.indexOf(this.selected)<this.Habit.length){
+                this.$router.replace(this.Habit[this.Habit.indexOf(route[0])+1].value);
+                this.selected = this.Habit[this.Habit.indexOf(route[0])+1].value;
+            }
+        },
         routeToComponent() {
             console.log(this.selected);
             this.$router.replace(this.selected)
         },
          makeToast(variant, message) {
-      this.$bvToast.toast(message, {
-        title: variant,
+      let messagehead;if(variant=="success"){messagehead="success"}else{messagehead="error"}this.$bvToast.toast(message, {
+        title: messagehead,
         variant: variant,
         solid: true,
       });

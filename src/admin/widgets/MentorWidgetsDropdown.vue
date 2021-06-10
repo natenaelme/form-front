@@ -10,7 +10,7 @@
             pointed
             class="mt-3 mx-3"
             style="height:70px"
-            :data-points="[]"
+            :data-points="[65, 59, 84, 84, 51, 55, 40]"
             point-hover-background-color="primary"
             label="Members"
             labels="months"
@@ -19,7 +19,7 @@
       </CWidgetDropdown>
     </CCol>
     <CCol sm="6" lg="3" v-if='numberofApprovedUsers!="loading .."&&numberOfUnApprovedUsers!="loading .."'>
-      <CWidgetDropdown color="warning" :header="numberOfUnApprovedUsers" text="Unapproved Customers">
+      <CWidgetDropdown color="danger" :header="numberOfUnApprovedUsers" text="Unapproved Customers">
         <template #default>
           
         </template>
@@ -28,7 +28,7 @@
             pointed
             class="mt-3 mx-3"
             style="height:70px"
-            :data-points="[]"
+            :data-points="[1, 18, 9, 17, 34, 22, 11]"
             point-hover-background-color="info"
             :options="{ elements: { line: { tension: 0.00001 }}}"
             label="Members"
@@ -38,7 +38,7 @@
       </CWidgetDropdown>
     </CCol>
     <CCol sm="6" lg="3" v-if='numberofApprovedUsers!="loading .."&&numberOfUnApprovedUsers!="loading .."'>
-      <CWidgetDropdown color="success" :header="numberofApprovedUsers" text="Approved Customers">
+      <CWidgetDropdown color="danger" :header="numberofApprovedUsers" text="Approved Customers">
         <template #default>
           
         </template>
@@ -47,7 +47,7 @@
             pointed
             class="mt-3 mx-3"
             style="height:70px"
-            :data-points="[]"
+            :data-points="[1, 18, 9, 17, 34, 22, 11]"
             point-hover-background-color="info"
             :options="{ elements: { line: { tension: 0.00001 }}}"
             label="Members"
@@ -66,7 +66,7 @@
             pointed
             class="mt-3 mx-3"
             style="height:70px"
-            :data-points="[]"
+            :data-points="[1, 18, 9, 17, 34, 22, 11]"
             point-hover-background-color="info"
             :options="{ elements: { line: { tension: 0.00001 }}}"
             label="Members"
@@ -89,7 +89,7 @@
             class="mt-3"
             style="height:70px"
             background-color="rgba(255,255,255,.2)"
-            :data-points="[]"
+            :data-points="[78, 81, 80, 45, 34, 12, 40]"
             :options="{ elements: { line: { borderWidth: 2.5 }}}"
             point-hover-background-color="warning"
             label="Members"
@@ -146,13 +146,8 @@ export default {
     console.log(this.DashboardData);
     var dashboardData =  this.DashboardData;
       this.allcustomer = (dashboardData.allCustomers).toString();
-      if(dashboardData.numberofApprovedUsers!= undefined)this.numberofApprovedUsers = (dashboardData.numberofApprovedUsers).toString();
-      if(dashboardData.numberOfUnApprovedUsers!= undefined)this.numberOfUnApprovedUsers = (dashboardData.numberOfUnApprovedUsers).toString();
-      console.log(dashboardData.numberOfUnApprovedUsers + " dsfsd")
-      console.log(this.numberofApprovedUsers  +  "dddfssssssssss" + this.numberOfUnApprovedUs);
-      if(dashboardData.unVerifiedCustomers!= undefined){this.unverifiedCustomers = (dashboardData.unVerifiedCustomers).toString()};
-      if(dashboardData.verifiedCustomers!= undefined)this.verifiedCustomers = (dashboardData.verifiedCustomers).toString();
-      if(dashboardData.approvedCustomers!= undefined)this.approvedCustomers = (dashboardData.approvedCustomers).toString();
+      if(dashboardData.numberofApprovedUsers)this.numberofApprovedUsers = (dashboardData.numberofApprovedUsers).toString();
+      if(dashboardData.numberOfUnApprovedUsers)this.numberOfUnApprovedUsers = (dashboardData.numberOfUnApprovedUsers).toString();
     
   },
   methods: {

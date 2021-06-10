@@ -12,12 +12,28 @@
 
         </b-row>
         <b-row style="height:100%" class="Aligner">
+            
+           
             <b-col class="align-middle Aligner-item">
                 <img class="border  img-profile" thumbnail fluid :src="profileImage" width=80em height=80em alt="">
                 <label for="" style="padding-left:10px"> User Name : {{fullName}}</label><br>
                 <b-button v-if="!Approved" @click="approveUser()" variant="primary">Approve Users Answer</b-button>
             </b-col>
+ <b-col v-if="user.data.verifications">
+                <p>Approved Using E-Pin 
+                    <br>
+                    Used Key : {{user.data.verifications.key}}
+                </p>
 
+                
+            </b-col>
+             <b-col v-if="!user.data.verifications">
+                <p>Approved By Admin 
+                   
+                </p>
+
+                
+            </b-col>
             <b-col>
                 <p v-if="mentorId">Mentor Name : {{mentorName}}</p>
                 <p v-if="!mentorId">Assigne Mentor
@@ -67,10 +83,10 @@
     </b-list-group-item>
     <b-list-group-item class="table-responsive">
         <b-button-group class="tabel">
-            <b-button :class="{ 'btn-success': title == $t('Common.Vision')}" @click="TitleChange($t('Common.Vision'))" to="/admin/main_view/vision">{{$t('Common.Vision')}}</b-button>
-            <b-button :class="{ 'btn-success': title == $t('Common.Habit')}" @click="TitleChange($t('Common.Habit'))" to="/admin/main_view/habit_view">{{$t('Common.Habit')}}</b-button>
-            <b-button :class="{ 'btn-success': title == $t('Common.MindProgramming')}" @click="TitleChange($t('Common.MindProgramming'))" to="/admin/main_view/mind_programming">{{$t('Common.MindProgramming')}}</b-button>
-            <b-button :class="{ 'btn-success': title == $t('Common.TeamBuilding')}" @click="TitleChange($t('Common.TeamBuilding'))" to="/admin/main_view/teambuilding_view">{{$t('Common.TeamBuilding')}}</b-button>
+            <b-button v-if="workBook >= 1" :class="{ 'btn-success': title == $t('Common.Vision')}" @click="TitleChange($t('Common.Vision'))" to="/admin/main_view/vision">{{$t('Common.Vision')}}</b-button>
+            <b-button v-if="workBook >= 2" :class="{ 'btn-success': title == $t('Common.Habit')}" @click="TitleChange($t('Common.Habit'))" to="/admin/main_view/habit_view">{{$t('Common.Habit')}}</b-button>
+            <b-button v-if="workBook >= 3" :class="{ 'btn-success': title == $t('Common.MindProgramming')}" @click="TitleChange($t('Common.MindProgramming'))" to="/admin/main_view/mind_programming">{{$t('Common.MindProgramming')}}</b-button>
+            <b-button v-if="workBook >= 4" :class="{ 'btn-success': title == $t('Common.TeamBuilding')}" @click="TitleChange($t('Common.TeamBuilding'))" to="/admin/main_view/teambuilding_view">{{$t('Common.TeamBuilding')}}</b-button>
         </b-button-group>
     </b-list-group-item>
     <b-list-group-item>
@@ -91,7 +107,8 @@ import {
     getDataOfUsers,
     patchDataId,
     getMentors,
-    getterMentors
+    getterMentors,
+    getDataOfUsersWithInclude
 } from '../assets/js/service'
 import "bootstrap-vue/dist/bootstrap-vue.css";
 export default {
@@ -126,8 +143,10 @@ export default {
             this.mentors = resp.data;
             console.log(this.mentors)
 
-            getDataOfUsers('users/', id, token).then(
+            getDataOfUsersWithInclude('users/', id, token,"verifications").then(
                 resp => {
+                    console.log("user data");
+                    console.log(resp.data);
                     this.user = resp;
                     this.mentorMessage = resp.data.mentorMessage;
                     this.fullName = resp.data.firstName + ' ' + resp.data.lastName;
@@ -161,7 +180,7 @@ export default {
         },
         makeToast(variant, message) {
             this.$bvToast.toast(message, {
-                title: variant,
+                title: "Error",
                 variant: variant,
                 solid: true
             })

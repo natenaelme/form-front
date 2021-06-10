@@ -37,6 +37,8 @@ const ActionPlan =() => import("@/forms/VIsion/ActionPlan");
 const home = () => import("@/forms/question");
 const HowToBuild = () => import("@/forms/HowToBuild");
 const SignIn = () => import("@/containers/Login");
+const Reset = ()=> import("@/containers/ResetPassword");
+const ForgetPassword = ()=> import("@/containers/ForgetPassword");
 const Verify = () => import("@/containers/Verification");
 const Notification = () => import("@/containers/Notification");
 const Deposit = ()=>import("@/containers/Deposit");
@@ -90,6 +92,7 @@ const ViewUnVerified = () => import("@/admin/ViewUn");
 const ViewVerification = () => import("@/admin/ViewVer");
 const ViewAllUsers = ()=> import("@/admin/ViewAllUsers");
 const DashBoard = ()=> import("@/admin/Dashboard");
+const MentorDashBoard = ()=> import("@/admin/MentorDashboard");
 // const MentorProfile = () => import("@/admin/container/MentorProfile");
 
 
@@ -192,6 +195,16 @@ function configRoutes() {
       name: 'login'
     },
     {
+      path: "/reset_password",
+      component: Reset,
+      name: 'reset_password'
+    },
+    {
+      path: "/forget_password",
+      component: ForgetPassword,
+      name: 'forget_password'
+    },
+    {
       path:"/verify",
       component: Verify,
       name : "verify"
@@ -235,6 +248,11 @@ function configRoutes() {
         {
           path: "dashboard",
           component: DashBoard,
+          
+        },
+        {
+          path: "mentordashboard",
+          component: MentorDashBoard,
           
         },
         {

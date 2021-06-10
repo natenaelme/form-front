@@ -35,6 +35,9 @@
                     <div class="text-center">
                       <router-link to="/signup">{{ $t("Common.CreateAccount") }}</router-link>
                     </div>
+                     <div class="text-center">
+                      <router-link to="/forget_password">{{ $t("Common.forgetPassword") }}</router-link>
+                    </div>
                     <div v-if="!show" class="text-center">
                       <div class="lds-ripple">
                         <div></div>
@@ -82,8 +85,8 @@ export default {
 
   methods: {
     makeToast(variant, message) {
-      this.$bvToast.toast(message, {
-        title: variant,
+      let messagehead;if(variant=="success"){messagehead="success"}else{messagehead="error"}this.$bvToast.toast(message, {
+        title: messagehead,
         variant: variant,
         solid: true,
       });
@@ -118,6 +121,8 @@ export default {
                 this.$router.replace("/question/main");
               } else if (!resps.canAccess) {
                 this.$store.commit('set', ['user', resps]);
+                console.log("testesss");
+                console.log(this.$store.state.user);
                 this.$store.commit('set', ['token', resp.data.id]);
                 this.$router.replace("/payment");
                 this.show = true;

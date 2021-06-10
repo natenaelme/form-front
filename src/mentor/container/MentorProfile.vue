@@ -156,7 +156,7 @@ export default {
 
         makeToast(variant, message) {
             this.$bvToast.toast(message, {
-                title: variant,
+                title: "Error",
                 variant: variant,
                 solid: true
             })

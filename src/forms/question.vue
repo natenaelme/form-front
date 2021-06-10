@@ -104,12 +104,33 @@ export default {
         localStorage.setItem("workBook", resp.data.workBook),
         localStorage.setItem("userType", resp.data.userType),
         console.log("work" + resp.data.workBook);
-    });
+    }).catch((err) => {
+            console.log("testetsteetstesetsetes");
+            console.log(err.response.status);
+            if(error.response.status == 401){
+              console.log("Unauterize user");
+            }
+            if (err.response) {
+              // client received an error response (5xx, 4xx)
+
+              this.makeToast(
+                "danger",
+                "the Information that you entered is not correct.or the email allrady existed"
+              );
+              console.log(err);
+            } 
+            
+            else if (err.request) {
+              this.$toasted.show("Connection Problem");
+            } else {
+              this.$toasted.show("Some Error has Happened");
+            }
+          });
   },
   methods: {
     makeToast(variant, message) {
-      this.$bvToast.toast(message, {
-        title: variant,
+      let messagehead;if(variant=="success"){messagehead="success"}else{messagehead="error"}this.$bvToast.toast(message, {
+        title: messagehead,
         variant: variant,
         solid: true,
       });

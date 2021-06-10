@@ -31,6 +31,8 @@
               }}
               <br />
               {{ "User Name :" + verification.user.username }}
+              <br>
+              {{"Email :" + verification.user.email}}
             </p>
           </th>
           <th>
@@ -48,23 +50,34 @@
         </tr>
       </tbody>
     </table>
+<div v-if="loading" class="text-center">
 
+            <div class="lds-ripple">
+                <div></div>
+                <div></div>
+
+            </div>loading..
+        </div><br>
   </div>
 </template>
 <script>
 const { getters, getterPerPage } = require("../assets/js/service");
 export default {
   mounted() {
+    this.loading =true;
     getters("Deposites/getNotVerifide", 1, "user").then((resp) => {
       console.log(resp);
       this.rows = Math.ceil(resp.data.responce[0].length / 20);
       
       this.verification = resp.data.responce;
+      this.loading =false;
+    }).catch(err=>{
+      this.loading =false;
     });
   },
   data() {
     return {
-
+loading: false,
       verification: null,
     };
   },

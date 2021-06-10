@@ -35,7 +35,7 @@
               class="progress-xs mt-2"
               :precision="1"
               color="success"
-              :value="40"
+              :value="allVerifiedCustomer/allCustomers*100"
             />
           </CCol>
           <CCol md sm="12" class="mb-sm-2 mb-0 d-md-down-none">
@@ -45,7 +45,7 @@
               class="progress-xs mt-2"
               :precision="1"
               color="info"
-              :value="20"
+              :value="approvedCustomer/allCustomers*100"
             />
           </CCol>
 

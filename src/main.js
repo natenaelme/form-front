@@ -8,6 +8,8 @@ import { iconsSet as icons } from './assets/icons/icons.js'
 import store from './store'
 import i18n from './i18n'
 import Vuelidate from 'vuelidate'
+import axios from 'axios'
+const {getApiUrl} = require("../src/assets/js/service")
 
 
 Vue.config.performance = true
@@ -33,6 +35,12 @@ router.beforeEach((to, from, next) => {
   else if(to.name == 'payment'){
     next();
   }
+  else if(to.name == 'reset_password'){
+    next();
+  }
+  else if(to.name == 'forget_password'){
+    next();
+  }
   else if(to.name != "login"){
     console.log("exit")
     if (!localStorage.getItem("token")) {
@@ -45,6 +53,30 @@ router.beforeEach((to, from, next) => {
   }
   
 });
+const http = axios.create({
+  baseURL: "https://alphaworkbook.com:/api/",});
+http.interceptors.response.use(null, function (error) {
+  console.log("checks every response");
+  if (error.response.status === 401) {
+    Store.dispatch(
+      "check",
+      "- some one have loged in with your account or token have expired"
+    )
+
+
+    // router.replace('/Login')
+  }
+  else if (error.response.status === 403) {
+
+    // router.push('/Forbidden')
+  }
+
+  else {
+    console.log(error);
+  }
+  return Promise.reject(error)
+})
+
 
 const auth = window.localStorage.getItem("auth");
 
